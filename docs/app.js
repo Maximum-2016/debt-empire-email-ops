@@ -1,3 +1,53 @@
+/* Debt Empire Email Ops UI — MGP wall · GitHub Pages safe */
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+
+const BASE = (() => {
+  let path = location.pathname;
+  if (path.endsWith("/")) path = path.slice(0, -1);
+  if (path.endsWith("index.html")) path = path.slice(0, -10).replace(/\/$/, "");
+  return path; // e.g. "" or "/debt-empire-email-ops"
+})();
+
+const STATIC_MAP = {
+  "/api/health": "data/health.json",
+  "/api/brands": "data/brands.json",
+  "/api/sequences": "data/sequences.json",
+  "/api/calendar": "data/calendar.json",
+  "/api/brand-cycle": "data/brand-cycle.json",
+  "/api/contacts": "data/contacts.json",
+  "/api/enrollments": "data/enrollments.json",
+  "/api/suppressions": "data/suppressions.json",
+  "/api/send-log": "data/send_log.json",
+};
+
+function withBase(rel) {
+  if (!rel.startsWith("/")) rel = "/" + rel;
+  return BASE + rel;
+}
+
+async function api(path, opts = {}) {
+  const method = (opts.method || "GET").toUpperCase();
+  const apiPath = path.split("?")[0];
+  try {
+    const res = await fetch(withBase(path), {
+      headers: { "Content-Type": "application/json", ...(opts.headers || {}) },
+      ...opts,
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || res.statusText);
+    return data;
+  } catch (err) {
+    if (method !== "GET" && method !== "HEAD") {
+      throw new Error("Read-only GitHub Pages demo — use local server for enroll/send. " + (err && err.message ? err.message : ""));
+    }
+    const rel = STATIC_MAP[apiPath];
+    if (!rel) throw err;
+    const res2 = await fetch(withBase("/" + rel));
+    if (!res2.ok) throw new Error("Static fallback failed for " + apiPath);
+    return res2.json();
+  }
+}
 
 async function populateJourneySelects() {
   const seq = await api("/api/sequences");
@@ -12,20 +62,6 @@ async function populateJourneySelects() {
     const el = document.getElementById(id);
     if (el) el.innerHTML = opts;
   }
-}
-
-/* Debt Empire Email Ops UI — MGP wall */
-const $ = (s, el = document) => el.querySelector(s);
-const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-
-async function api(path, opts = {}) {
-  const res = await fetch(path, {
-    headers: { "Content-Type": "application/json", ...(opts.headers || {}) },
-    ...opts,
-  });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || res.statusText);
-  return data;
 }
 
 function msg(el, text, kind = "info") {
@@ -48,7 +84,7 @@ $$(".tabs button").forEach((btn) => {
 async function loadHealth() {
   const h = await api("/api/health");
   const el = $("#health");
-  const keys = h.provider.keys_present;
+  const keys = (h.provider && h.provider.keys_present) || false;
   el.textContent = `DRY_RUN=${h.dry_run} · ${h.provider.provider} keys=${keys ? "yes" : "no"}`;
   el.className = "status " + (h.dry_run || !keys ? "warn" : "ok");
 }

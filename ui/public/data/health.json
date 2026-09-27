@@ -1,15 +1,1 @@
-{
-  "ok": true,
-  "wall": "MGP",
-  "umbrella": "Debt Empire",
-  "dry_run": true,
-  "static_demo": true,
-  "provider": {
-    "provider": "mailgun",
-    "keys_present": false,
-    "dry_run": true
-  },
-  "brand_count": 14,
-  "per_brand_journeys": 14,
-  "total_nurture_by_brand_emails": 350
-}
+{"dry_run":true,"provider":{"provider":"mailgun","keys_present":false},"mode":"static-demo"}
