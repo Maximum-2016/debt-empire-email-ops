@@ -379,7 +379,7 @@ function renderEnroll() {
     <button class="primary" id="btn-enroll">Enroll</button>
     <div id="enroll-msg"></div>
     <div class="card" style="margin-top:1rem;overflow:auto"><table>
-      <thead><tr><th>Cohort</th><th>Email</th><th>Journey</th><th>Enrolled</th></tr></thead>
+      <thead><tr><th>Cohort</th><th>Email</th><th>Journey</th><th>Status</th><th>Enrolled</th><th>Actions</th></tr></thead>
       <tbody id="enroll-body"></tbody>
     </table></div>`;
   $("#btn-enroll").onclick = async () => {
@@ -405,10 +405,46 @@ async function loadEnrollments() {
   const data = await api("/api/enrollments");
   const body = $("#enroll-body");
   if (!body) return;
-  body.innerHTML = data.enrollments.map((e) => `<tr>
+  body.innerHTML = data.enrollments.map((e) => {
+    const st = e.status || "active";
+    let actions = "";
+    if (st === "active") {
+      actions = `<button class="btn-pause" data-email="${escapeHtml(e.email)}" data-journey="${escapeHtml(e.journey)}">Pause</button>`;
+    } else if (st === "paused") {
+      actions = `<button class="btn-resume" data-email="${escapeHtml(e.email)}" data-journey="${escapeHtml(e.journey)}">Resume</button>`;
+    } else {
+      actions = `<span class="muted">—</span>`;
+    }
+    return `<tr>
     <td>${escapeHtml(e.cohort)}</td><td>${escapeHtml(e.email)}</td>
-    <td>${escapeHtml(e.journey)}</td><td>${escapeHtml(e.enrolled_at)}</td>
-  </tr>`).join("") || `<tr><td colspan="4">None yet</td></tr>`;
+    <td>${escapeHtml(e.journey)}</td><td>${escapeHtml(st)}</td><td>${escapeHtml(e.enrolled_at)}</td>
+    <td>${actions}</td>
+  </tr>`;
+  }).join("") || `<tr><td colspan="6">None yet</td></tr>`;
+  body.querySelectorAll(".btn-pause").forEach((btn) => {
+    btn.onclick = async () => {
+      try {
+        await api("/api/pause", {
+          method: "POST",
+          body: JSON.stringify({ email: btn.dataset.email, journey: btn.dataset.journey }),
+        });
+        msg($("#enroll-msg"), `Paused ${btn.dataset.email} / ${btn.dataset.journey}`, "ok");
+        loadEnrollments();
+      } catch (err) { msg($("#enroll-msg"), err.message, "err"); }
+    };
+  });
+  body.querySelectorAll(".btn-resume").forEach((btn) => {
+    btn.onclick = async () => {
+      try {
+        await api("/api/resume", {
+          method: "POST",
+          body: JSON.stringify({ email: btn.dataset.email, journey: btn.dataset.journey }),
+        });
+        msg($("#enroll-msg"), `Resumed ${btn.dataset.email} / ${btn.dataset.journey}`, "ok");
+        loadEnrollments();
+      } catch (err) { msg($("#enroll-msg"), err.message, "err"); }
+    };
+  });
 }
 
 async function renderPreview() {

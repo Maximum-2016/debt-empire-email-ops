@@ -191,6 +191,35 @@ def stop_sibling_nurtures(enrollments: list, email: str, keep_journey: str | Non
         out.append(e)
     return out
 
+
+def infer_brand_id(enrollment: dict) -> str | None:
+    """Infer brand_id from nurture-<id> journey or explicit fields."""
+    if enrollment.get("brand_id"):
+        return enrollment["brand_id"]
+    if enrollment.get("winning_brand"):
+        return enrollment["winning_brand"]
+    j = enrollment.get("journey") or ""
+    if j.startswith("nurture-"):
+        return j[len("nurture-"):] or None
+    return None
+
+
+def enrich_enrollment(e: dict) -> dict:
+    out = dict(e)
+    bid = infer_brand_id(out)
+    if bid and not out.get("brand_id"):
+        out["brand_id"] = bid
+    return out
+
+
+def contact_for_email(email: str) -> dict | None:
+    email = (email or "").lower().strip()
+    for c in load_json(DATA / "contacts.json"):
+        if c.get("email", "").lower() == email:
+            return c
+    return None
+
+
 def is_suppressed(email: str) -> bool:
     email = (email or "").lower().strip()
     for row in load_json(DATA / "suppressions.json"):
@@ -431,6 +460,23 @@ class Handler(SimpleHTTPRequestHandler):
                     for t in cal.get("touches") or []
                 ],
             })
+        if path == "/api/status":
+            email = (qs.get("email") or [None])[0]
+            return self.status({"email": email} if email else {})
+        if path == "/api/atlas/email/health":
+            return self._json(200, {
+                "ok": True,
+                "wall": "MGP",
+                "umbrella": "Debt Empire",
+                "arm": "email-marketing",
+                "version": "2.0",
+                "dry_run": DRY_RUN,
+                "provider": provider_ready(),
+                "time": now_iso(),
+            })
+        if path == "/api/atlas/email/status":
+            email = (qs.get("email") or [None])[0]
+            return self.status({"email": email} if email else {})
         return self._json(404, {"error": "unknown endpoint"})
 
     def api_post(self, path, body):
@@ -454,6 +500,25 @@ class Handler(SimpleHTTPRequestHandler):
             return self.cycle_advance(body)
         if path == "/api/campaigns/generate":
             return self.campaigns_generate(body)
+        if path == "/api/pause":
+            return self.pause(body)
+        if path == "/api/resume":
+            return self.resume(body)
+        if path == "/api/status":
+            return self.status(body)
+        # ATLAS Email arm aliases (same handlers)
+        if path == "/api/atlas/email/enroll":
+            return self.enroll(body)
+        if path == "/api/atlas/email/pause":
+            return self.pause(body)
+        if path == "/api/atlas/email/resume":
+            return self.resume(body)
+        if path == "/api/atlas/email/convert":
+            return self.convert(body)
+        if path == "/api/atlas/email/cycle/advance":
+            return self.cycle_advance(body)
+        if path == "/api/atlas/email/status":
+            return self.status(body)
         return self._json(404, {"error": "unknown endpoint"})
 
 
@@ -489,6 +554,145 @@ class Handler(SimpleHTTPRequestHandler):
         except Exception as e:
             return self._json(500, {"error": str(e)})
         return self._json(200, result)
+
+
+    def pause(self, body):
+        """Pause active enrollment(s) for an email. Optional journey filter."""
+        email = (body.get("email") or "").lower().strip()
+        journey = (body.get("journey") or "").strip() or None
+        reason = body.get("reason")
+        if not email:
+            return self._json(400, {"error": "email required"})
+        enrollments = load_json(DATA / "enrollments.json")
+        paused = []
+        for i, e in enumerate(enrollments):
+            if e.get("email", "").lower() != email:
+                continue
+            if e.get("status") != "active":
+                continue
+            if journey and e.get("journey") != journey:
+                continue
+            updated = {
+                **e,
+                "status": "paused",
+                "paused_at": now_iso(),
+            }
+            if reason is not None:
+                updated["pause_reason"] = reason
+            enrollments[i] = updated
+            paused.append(enrich_enrollment(updated))
+        if not paused:
+            return self._json(404, {"error": "no active enrollment matching", "email": email, "journey": journey})
+        save_json(DATA / "enrollments.json", enrollments)
+        return self._json(200, {"ok": True, "email": email, "paused": paused, "count": len(paused)})
+
+    def resume(self, body):
+        """Resume paused enrollment(s). Will not resume terminal or suppressed."""
+        email = (body.get("email") or "").lower().strip()
+        journey = (body.get("journey") or "").strip() or None
+        if not email:
+            return self._json(400, {"error": "email required"})
+        if is_suppressed(email):
+            return self._json(403, {"error": "contact is suppressed — cannot resume"})
+        terminal = {"stopped_converted", "converted", "rotated"}
+        enrollments = load_json(DATA / "enrollments.json")
+        resumed = []
+        blocked = []
+        for i, e in enumerate(enrollments):
+            if e.get("email", "").lower() != email:
+                continue
+            if journey and e.get("journey") != journey:
+                continue
+            st = e.get("status")
+            if st in terminal:
+                blocked.append({"id": e.get("id"), "status": st, "reason": "terminal_status"})
+                continue
+            if st != "paused":
+                continue
+            updated = {**e, "status": "active", "resumed_at": now_iso()}
+            updated.pop("pause_reason", None)
+            # keep paused_at for history; clear live pause marker conceptually via status
+            enrollments[i] = updated
+            resumed.append(enrich_enrollment(updated))
+        if not resumed:
+            if blocked and journey:
+                return self._json(400, {
+                    "error": "cannot resume terminal enrollment",
+                    "email": email,
+                    "blocked": blocked,
+                })
+            return self._json(404, {"error": "no paused enrollment matching", "email": email, "journey": journey})
+        save_json(DATA / "enrollments.json", enrollments)
+        return self._json(200, {
+            "ok": True,
+            "email": email,
+            "resumed": resumed,
+            "count": len(resumed),
+            "blocked": blocked or None,
+        })
+
+    def status(self, body):
+        """ATLAS-facing status for one email."""
+        email = (body.get("email") or "").lower().strip()
+        if not email:
+            return self._json(400, {"error": "email required"})
+        suppressed = is_suppressed(email)
+        contact = contact_for_email(email)
+        enrollments = load_json(DATA / "enrollments.json")
+        mine = [enrich_enrollment(e) for e in enrollments if e.get("email", "").lower() == email]
+        active = [e for e in mine if e.get("status") == "active"]
+        paused = [e for e in mine if e.get("status") == "paused"]
+        history_statuses = {"converted", "rotated", "stopped_converted"}
+        history = [e for e in mine if e.get("status") in history_statuses]
+
+        order = cycle_order()
+        converted = bool(contact and contact.get("converted"))
+        winning = (contact or {}).get("winning_brand")
+        current_brand = None
+        for e in active:
+            j = e.get("journey") or ""
+            if j.startswith("nurture-"):
+                current_brand = e.get("brand_id") or j[len("nurture-"):]
+                break
+            if j == "client-edu" and e.get("winning_brand"):
+                current_brand = e.get("winning_brand")
+        if current_brand is None:
+            for e in paused:
+                j = e.get("journey") or ""
+                if j.startswith("nurture-"):
+                    current_brand = e.get("brand_id") or j[len("nurture-"):]
+                    break
+
+        next_actions = []
+        if not suppressed and not converted:
+            next_actions.append("enroll")
+        if active and not suppressed:
+            next_actions.append("pause")
+        if paused and not suppressed:
+            next_actions.append("resume")
+        if active and any(str(e.get("journey", "")).startswith("nurture-") for e in active) and not converted and not suppressed:
+            next_actions.append("convert")
+            next_actions.append("cycle_advance")
+        # Always allow status re-check
+        # (status itself is not listed — next_actions are mutation/ops actions that make sense)
+
+        return self._json(200, {
+            "email": email,
+            "suppressed": suppressed,
+            "contact": contact,
+            "active": active,
+            "paused": paused,
+            "history": history,
+            "brand_cycle": {
+                "order": order,
+                "current_brand": current_brand,
+                "converted": converted,
+                "winning_brand": winning,
+            },
+            "dry_run": DRY_RUN,
+            "provider": PROVIDER,
+            "next_actions": next_actions,
+        })
 
     def convert(self, body):
         """Conversion exit: stop sibling brand nurtures; hand to client-edu for winning brand."""

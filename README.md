@@ -117,7 +117,8 @@ DRY_RUN=true python3 server.py
 ```
 
 → **http://127.0.0.1:8765/**  
-API contract for ATLAS: `ui/ATLAS_PLUGIN.md`  
+API contract for ATLAS: `ui/ATLAS_PLUGIN.md` (v2.0 — pause/resume/status + `/api/atlas/email/*`)  
+ATLAS Email arm handoff: `docs/ATLAS-EMAIL-ARM.md`  
 This-week test plan: `TEST-WEEK.md`
 
 
