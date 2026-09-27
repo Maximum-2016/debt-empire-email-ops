@@ -1,0 +1,349 @@
+{
+  "wall": "MGP",
+  "umbrella_external": "Debt Empire",
+  "version": "1.2.0",
+  "updated": "2026-09-27",
+  "brands": [
+    {
+      "id": "dag",
+      "display_name": "DAG Law",
+      "wall": "MGP",
+      "entity_type": "law_firm",
+      "status": "active_existing",
+      "domain": "daglaw.com",
+      "from_domain": "mail.daglaw.com",
+      "from_email": "education@mail.daglaw.com",
+      "from_name_pattern": "{{person}} \u00b7 DAG Law",
+      "reply_to": "intake@daglaw.com",
+      "brand_url": "https://daglaw.com",
+      "booking_url_key": "booking_dag",
+      "legal_disclaimer_key": "law_firm",
+      "voice": "formal_authority",
+      "journey_ownership": [
+        "nurture",
+        "client-edu",
+        "reengage"
+      ],
+      "notes": "PA law firm / Debtors Advocacy Group"
+    },
+    {
+      "id": "bds",
+      "display_name": "Business Debt Solutions",
+      "wall": "MGP",
+      "entity_type": "settlement_llc",
+      "status": "active_existing",
+      "domain": "businessdebtsolutions.com",
+      "from_domain": "mail.businessdebtsolutions.com",
+      "from_email": "maria@mail.businessdebtsolutions.com",
+      "from_name_pattern": "{{person}} at Business Debt Solutions",
+      "reply_to": "support@businessdebtsolutions.com",
+      "brand_url": "https://businessdebtsolutions.com",
+      "booking_url_key": "booking_bds",
+      "legal_disclaimer_key": "settlement_non_law",
+      "voice": "direct_merchant",
+      "journey_ownership": [
+        "nurture",
+        "client-edu",
+        "reengage",
+        "partner"
+      ],
+      "notes": "MCA settlement LLC \u2014 not a law firm"
+    },
+    {
+      "id": "bdn",
+      "display_name": "Business Debt Ninjas",
+      "wall": "MGP",
+      "entity_type": "media",
+      "status": "active_existing",
+      "domain": "businessdebtninjas.com",
+      "from_domain": "mail.businessdebtninjas.com",
+      "from_email": "crew@mail.businessdebtninjas.com",
+      "from_name_pattern": "The Ninjas",
+      "reply_to": "hello@businessdebtninjas.com",
+      "brand_url": "https://businessdebtninjas.com",
+      "booking_url_key": "booking_bds",
+      "legal_disclaimer_key": "media_education",
+      "voice": "education_sharp",
+      "journey_ownership": [
+        "nurture",
+        "client-edu",
+        "reengage",
+        "partner"
+      ],
+      "notes": "Media/education skin for BDS lane"
+    },
+    {
+      "id": "mda",
+      "display_name": "MCA Debt Advisors",
+      "wall": "MGP",
+      "entity_type": "settlement_llc",
+      "status": "active_existing",
+      "domain": "mcadebtadvisors.com",
+      "from_domain": "mail.mcadebtadvisors.com",
+      "from_email": "advisors@mail.mcadebtadvisors.com",
+      "from_name_pattern": "{{person}} \u00b7 MCA Debt Advisors",
+      "reply_to": "hello@mcadebtadvisors.com",
+      "brand_url": "https://mcadebtadvisors.com",
+      "booking_url_key": "booking_mda",
+      "legal_disclaimer_key": "settlement_non_law",
+      "voice": "consultative",
+      "journey_ownership": [
+        "nurture",
+        "reengage"
+      ],
+      "notes": "Advisory/settlement-adjacent"
+    },
+    {
+      "id": "lsp",
+      "display_name": "Level Set Partners",
+      "wall": "MGP",
+      "entity_type": "partner",
+      "status": "use_carefully",
+      "domain": "levelsetpartners.com",
+      "from_domain": "mail.levelsetpartners.com",
+      "from_email": "partners@mail.levelsetpartners.com",
+      "from_name_pattern": "{{person}} \u00b7 Level Set Partners",
+      "reply_to": "partners@levelsetpartners.com",
+      "brand_url": "https://levelsetpartners.com",
+      "booking_url_key": "booking_lsp",
+      "legal_disclaimer_key": "partner",
+      "voice": "b2b_partner",
+      "journey_ownership": [
+        "partner"
+      ],
+      "notes": "SF-linked \u2014 use carefully; partner track primary"
+    },
+    {
+      "id": "mrd",
+      "display_name": "Merchant Relief Desk",
+      "wall": "MGP",
+      "entity_type": "proposed_skin",
+      "status": "proposed_skin",
+      "domain": "merchantreliefdesk.com",
+      "from_domain": "mail.merchantreliefdesk.com",
+      "from_email": "desk@mail.merchantreliefdesk.com",
+      "from_name_pattern": "Relief Desk",
+      "reply_to": "desk@merchantreliefdesk.com",
+      "brand_url": "https://merchantreliefdesk.com",
+      "booking_url_key": "booking_default",
+      "legal_disclaimer_key": "settlement_non_law",
+      "voice": "empathetic_ops",
+      "journey_ownership": [
+        "nurture",
+        "client-edu",
+        "reengage"
+      ],
+      "notes": "Proposed skin / DBA candidate \u2014 not a filed entity"
+    },
+    {
+      "id": "ccc",
+      "display_name": "Cashflow Clarity Co.",
+      "wall": "MGP",
+      "entity_type": "proposed_skin",
+      "status": "proposed_skin",
+      "domain": "cashflowclarityco.com",
+      "from_domain": "mail.cashflowclarityco.com",
+      "from_email": "clarity@mail.cashflowclarityco.com",
+      "from_name_pattern": "Clarity Team",
+      "reply_to": "hello@cashflowclarityco.com",
+      "brand_url": "https://cashflowclarityco.com",
+      "booking_url_key": "booking_default",
+      "legal_disclaimer_key": "media_education",
+      "voice": "diagnostic",
+      "journey_ownership": [
+        "nurture",
+        "client-edu",
+        "reengage",
+        "partner"
+      ],
+      "notes": "Proposed skin / DBA candidate"
+    },
+    {
+      "id": "spa",
+      "display_name": "Settlement Path Advisors",
+      "wall": "MGP",
+      "entity_type": "proposed_skin",
+      "status": "proposed_skin",
+      "domain": "settlementpathadvisors.com",
+      "from_domain": "mail.settlementpathadvisors.com",
+      "from_email": "path@mail.settlementpathadvisors.com",
+      "from_name_pattern": "{{person}} \u00b7 Settlement Path Advisors",
+      "reply_to": "path@settlementpathadvisors.com",
+      "brand_url": "https://settlementpathadvisors.com",
+      "booking_url_key": "booking_default",
+      "legal_disclaimer_key": "settlement_non_law",
+      "voice": "steady_guide",
+      "journey_ownership": [
+        "nurture",
+        "reengage"
+      ],
+      "notes": "Proposed skin / DBA candidate"
+    },
+    {
+      "id": "lrl",
+      "display_name": "Ledger Reset Lab",
+      "wall": "MGP",
+      "entity_type": "proposed_skin",
+      "status": "proposed_skin",
+      "domain": "ledgerresetlab.com",
+      "from_domain": "mail.ledgerresetlab.com",
+      "from_email": "lab@mail.ledgerresetlab.com",
+      "from_name_pattern": "The Lab",
+      "reply_to": "lab@ledgerresetlab.com",
+      "brand_url": "https://ledgerresetlab.com",
+      "booking_url_key": "booking_default",
+      "legal_disclaimer_key": "media_education",
+      "voice": "workshop",
+      "journey_ownership": [
+        "nurture",
+        "partner"
+      ],
+      "notes": "Proposed skin / DBA candidate"
+    },
+    {
+      "id": "fintrilo",
+      "display_name": "Fintrilo",
+      "wall": "MGP",
+      "entity_type": "merchant_finance",
+      "status": "active_existing",
+      "domain": "fintrilo.com",
+      "from_domain": "mail.fintrilo.com",
+      "from_email": "liaison@mail.fintrilo.com",
+      "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+      "reply_to": "marketing@fintrilo.com",
+      "brand_url": "https://fintrilo.com",
+      "booking_url_key": "booking_fintrilo",
+      "legal_disclaimer_key": "merchant_finance",
+      "voice": "consultative_b2b",
+      "journey_ownership": [
+        "fintrilo",
+        "partner"
+      ],
+      "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+    },
+    {
+      "id": "aab",
+      "display_name": "Advance Alternatives Brief",
+      "wall": "MGP",
+      "entity_type": "proposed_skin",
+      "status": "proposed_skin",
+      "domain": "advancealternativesbrief.com",
+      "from_domain": "mail.advancealternativesbrief.com",
+      "from_email": "brief@mail.advancealternativesbrief.com",
+      "from_name_pattern": "Alternatives Brief",
+      "reply_to": "brief@advancealternativesbrief.com",
+      "brand_url": "https://advancealternativesbrief.com",
+      "booking_url_key": "booking_default",
+      "legal_disclaimer_key": "media_education",
+      "voice": "skeptical_educator",
+      "journey_ownership": [
+        "nurture",
+        "reengage",
+        "new-skins-batch2"
+      ],
+      "notes": "Proposed skin / DBA candidate \u2014 hard-money alternatives education; not a lender; not a filed entity"
+    },
+    {
+      "id": "abr",
+      "display_name": "ACH Breath Room",
+      "wall": "MGP",
+      "entity_type": "proposed_skin",
+      "status": "proposed_skin",
+      "domain": "achbreathroom.com",
+      "from_domain": "mail.achbreathroom.com",
+      "from_email": "room@mail.achbreathroom.com",
+      "from_name_pattern": "Breath Room",
+      "reply_to": "room@achbreathroom.com",
+      "brand_url": "https://achbreathroom.com",
+      "booking_url_key": "booking_default",
+      "legal_disclaimer_key": "settlement_non_law",
+      "voice": "grounded_ach_relief",
+      "journey_ownership": [
+        "nurture",
+        "reengage",
+        "new-skins-batch2"
+      ],
+      "notes": "Proposed skin / DBA candidate \u2014 ACH/daily-draft relief; not a filed entity"
+    },
+    {
+      "id": "icd",
+      "display_name": "ISO Care Desk",
+      "wall": "MGP",
+      "entity_type": "proposed_skin",
+      "status": "proposed_skin",
+      "domain": "isocaredesk.com",
+      "from_domain": "mail.isocaredesk.com",
+      "from_email": "partners@mail.isocaredesk.com",
+      "from_name_pattern": "ISO Care Desk",
+      "reply_to": "partners@isocaredesk.com",
+      "brand_url": "https://isocaredesk.com",
+      "booking_url_key": "booking_lsp",
+      "legal_disclaimer_key": "partner",
+      "voice": "b2b_partner_ops",
+      "journey_ownership": [
+        "partner",
+        "new-skins-batch2"
+      ],
+      "notes": "Proposed skin / DBA candidate \u2014 ISO/broker handoff hygiene; not a filed entity"
+    },
+    {
+      "id": "mcb",
+      "display_name": "Merchant Crisis Brief",
+      "wall": "MGP",
+      "entity_type": "proposed_skin",
+      "status": "proposed_skin",
+      "domain": "merchantcrisisbrief.com",
+      "from_domain": "mail.merchantcrisisbrief.com",
+      "from_email": "crisis@mail.merchantcrisisbrief.com",
+      "from_name_pattern": "Crisis Brief",
+      "reply_to": "crisis@merchantcrisisbrief.com",
+      "brand_url": "https://merchantcrisisbrief.com",
+      "booking_url_key": "booking_default",
+      "legal_disclaimer_key": "settlement_non_law",
+      "voice": "urgent_calm_triage",
+      "journey_ownership": [
+        "nurture",
+        "reengage",
+        "new-skins-batch2"
+      ],
+      "notes": "Proposed skin / DBA candidate \u2014 acute crisis triage (distinct from MRD calm desk); not a filed entity"
+    },
+    {
+      "id": "slc",
+      "display_name": "Stack Literacy Co.",
+      "wall": "MGP",
+      "entity_type": "proposed_skin",
+      "status": "proposed_skin",
+      "domain": "stackliteracyco.com",
+      "from_domain": "mail.stackliteracyco.com",
+      "from_email": "literacy@mail.stackliteracyco.com",
+      "from_name_pattern": "Stack Literacy",
+      "reply_to": "hello@stackliteracyco.com",
+      "brand_url": "https://stackliteracyco.com",
+      "booking_url_key": "booking_default",
+      "legal_disclaimer_key": "media_education",
+      "voice": "teacher_literacy",
+      "journey_ownership": [
+        "nurture",
+        "partner",
+        "new-skins-batch2"
+      ],
+      "notes": "Proposed skin / DBA candidate \u2014 stacking mechanics literacy; not a filed entity"
+    }
+  ],
+  "disclaimer_keys": [
+    "law_firm",
+    "settlement_non_law",
+    "media_education",
+    "partner",
+    "merchant_finance"
+  ],
+  "booking_url_placeholders": {
+    "booking_default": "https://BOOKING.example/debt-empire",
+    "booking_bds": "https://BOOKING.example/bds",
+    "booking_dag": "https://BOOKING.example/dag",
+    "booking_mda": "https://BOOKING.example/mda",
+    "booking_lsp": "https://BOOKING.example/partners",
+    "booking_fintrilo": "https://BOOKING.example/fintrilo"
+  }
+}

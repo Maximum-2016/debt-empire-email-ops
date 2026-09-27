@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Debt Empire · Email Ops</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="mark">DE</span>
+      <div>
+        <strong>Debt Empire</strong>
+        <div class="sub">Email Ops · MGP wall · never FM</div>
+      </div>
+    </div>
+    <div class="status" id="health">loading…</div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="brands" class="active">Brands</button>
+    <button data-tab="calendar">Sequence calendar</button>
+    <button data-tab="import">CSV import</button>
+    <button data-tab="enroll">Enroll cohort</button>
+    <button data-tab="preview">Dry-run preview</button>
+    <button data-tab="send">Send test</button>
+    <button data-tab="suppress">Suppression</button>
+  </nav>
+
+  <main>
+    <section id="tab-brands" class="panel active"></section>
+    <section id="tab-calendar" class="panel"></section>
+    <section id="tab-import" class="panel"></section>
+    <section id="tab-enroll" class="panel"></section>
+    <section id="tab-preview" class="panel"></section>
+    <section id="tab-send" class="panel"></section>
+    <section id="tab-suppress" class="panel"></section>
+  </main>
+
+  <footer class="foot">
+    Local sandbox · default DRY_RUN=true · plugs into ATLAS later · see ui/ATLAS_PLUGIN.md
+  </footer>
+  <script src="/app.js"></script>
+</body>
+</html>

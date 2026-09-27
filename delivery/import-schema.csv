@@ -1,0 +1,6 @@
+email,first_name,last_name,business_name,phone,country,consent_email,consent_source,consent_timestamp,segment,journey,brand_affinity,salesforce_id,partner_id,notes
+alex.merchant@example.com,Alex,Merchant,Alex's Deli,555-0101,US,express,web_form,2026-09-01T14:00:00-04:00,leads_open,nurture,bds,,,seed fake
+jordan.owner@example.com,Jordan,Owner,Jordan Retail LLC,555-0102,US,express,csv_import,2026-09-10T10:00:00-04:00,leads_stale_90,reengage,mrd,,,seed fake
+sam.enrolled@example.com,Sam,Enrolled,Sam Services Inc,555-0103,US,express,salesforce,2026-08-15T09:00:00-04:00,clients_active,client-edu,bds,SF001,,seed fake
+casey.iso@example.com,Casey,ISO,Casey Capital Partners,555-0104,US,express,partner_form,2026-09-05T11:00:00-04:00,partners_iso,partner,lsp,,ISO-77,seed fake
+riley.ca@example.com,Riley,North,Maple Shop Co,555-0105,CA,express,web_form,2026-09-12T16:00:00-04:00,leads_open,nurture,ccc,,,seed fake CASL-sensitive

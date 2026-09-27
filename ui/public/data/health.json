@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "wall": "MGP",
+  "umbrella": "Debt Empire",
+  "dry_run": true,
+  "static_demo": true,
+  "provider": {
+    "provider": "mailgun",
+    "keys_present": false,
+    "dry_run": true
+  },
+  "time": "static-demo"
+}

@@ -1,0 +1,536 @@
+{
+  "version": "1.2.0",
+  "wall": "MGP",
+  "journeys": {
+    "nurture": {
+      "name": "Lead nurture 10-month",
+      "primary_goal": "booked_discovery_enrollment_call",
+      "touches": [
+        {
+          "id": "nurture_m01_e01",
+          "offset_days": 0,
+          "brand_id": "mrd",
+          "content_path": "content/nurture/month-01/e01-mrd.md",
+          "subject": "Welcome \u2014 let's name the pressure"
+        },
+        {
+          "id": "nurture_m01_e02",
+          "offset_days": 5,
+          "brand_id": "bdn",
+          "content_path": "content/nurture/month-01/e02-bdn.md",
+          "subject": "What \u201cstacked\u201d actually means"
+        },
+        {
+          "id": "nurture_m01_e03",
+          "offset_days": 12,
+          "brand_id": "ccc",
+          "content_path": "content/nurture/month-01/e03-ccc.md",
+          "subject": "Why your mid-week balance lies"
+        },
+        {
+          "id": "nurture_m01_e04",
+          "offset_days": 20,
+          "brand_id": "bds",
+          "content_path": "content/nurture/month-01/e04-bds.md",
+          "subject": "A discovery call \u2014 only when you're ready"
+        },
+        {
+          "id": "nurture_m02_e01",
+          "offset_days": 30,
+          "brand_id": "bdn",
+          "content_path": "content/nurture/month-02/e01-bdn.md",
+          "subject": "Factor rate in plain English"
+        },
+        {
+          "id": "nurture_m02_e02",
+          "offset_days": 37,
+          "brand_id": "ccc",
+          "content_path": "content/nurture/month-02/e02-ccc.md",
+          "subject": "Sketching true cost (illustrative)"
+        },
+        {
+          "id": "nurture_m02_e03",
+          "offset_days": 44,
+          "brand_id": "mda",
+          "content_path": "content/nurture/month-02/e03-mda.md",
+          "subject": "Your options map (teaser)"
+        },
+        {
+          "id": "nurture_m03_e01",
+          "offset_days": 55,
+          "brand_id": "mrd",
+          "content_path": "content/nurture/month-03/e01-mrd.md",
+          "subject": "Pressure-map checklist"
+        },
+        {
+          "id": "nurture_m03_e02",
+          "offset_days": 62,
+          "brand_id": "lrl",
+          "content_path": "content/nurture/month-03/e02-lrl.md",
+          "subject": "Scenario A vs B"
+        },
+        {
+          "id": "nurture_m03_e03",
+          "offset_days": 70,
+          "brand_id": "bds",
+          "content_path": "content/nurture/month-03/e03-bds.md",
+          "subject": "Discovery call \u2014 first firm invite this quarter"
+        },
+        {
+          "id": "nurture_m04_e01",
+          "offset_days": 80,
+          "brand_id": "bdn",
+          "content_path": "content/nurture/month-04/e01-bdn.md",
+          "subject": "How escalation often shows up"
+        },
+        {
+          "id": "nurture_m04_e02",
+          "offset_days": 87,
+          "brand_id": "dag",
+          "content_path": "content/nurture/month-04/e02-dag.md",
+          "subject": "When a notice means it's time for counsel"
+        },
+        {
+          "id": "nurture_m04_e03",
+          "offset_days": 95,
+          "brand_id": "spa",
+          "content_path": "content/nurture/month-04/e03-spa.md",
+          "subject": "Path checkpoints"
+        },
+        {
+          "id": "nurture_m05_e01",
+          "offset_days": 105,
+          "brand_id": "spa",
+          "content_path": "content/nurture/month-05/e01-spa.md",
+          "subject": "What settlement is \u2014 and isn't"
+        },
+        {
+          "id": "nurture_m05_e02",
+          "offset_days": 112,
+          "brand_id": "bds",
+          "content_path": "content/nurture/month-05/e02-bds.md",
+          "subject": "Fit questions before enrollment"
+        },
+        {
+          "id": "nurture_m05_e03",
+          "offset_days": 120,
+          "brand_id": "ccc",
+          "content_path": "content/nurture/month-05/e03-ccc.md",
+          "subject": "Weekly cash picture during hardship"
+        },
+        {
+          "id": "nurture_m06_e01",
+          "offset_days": 130,
+          "brand_id": "lrl",
+          "content_path": "content/nurture/month-06/e01-lrl.md",
+          "subject": "Composite scenario: multi-advance restaurant"
+        },
+        {
+          "id": "nurture_m06_e02",
+          "offset_days": 137,
+          "brand_id": "bdn",
+          "content_path": "content/nurture/month-06/e02-bdn.md",
+          "subject": "Composite: broker-stacked retail"
+        },
+        {
+          "id": "nurture_m06_e03",
+          "offset_days": 145,
+          "brand_id": "mda",
+          "content_path": "content/nurture/month-06/e03-mda.md",
+          "subject": "Second-look advisory"
+        },
+        {
+          "id": "nurture_m07_e01",
+          "offset_days": 155,
+          "brand_id": "dag",
+          "content_path": "content/nurture/month-07/e01-dag.md",
+          "subject": "Personal guaranty \u2014 informational overview"
+        },
+        {
+          "id": "nurture_m07_e02",
+          "offset_days": 162,
+          "brand_id": "dag",
+          "content_path": "content/nurture/month-07/e02-dag.md",
+          "subject": "Account pressure & legal process \u2014 overview"
+        },
+        {
+          "id": "nurture_m07_e03",
+          "offset_days": 170,
+          "brand_id": "mrd",
+          "content_path": "content/nurture/month-07/e03-mrd.md",
+          "subject": "If you're overwhelmed, start with triage"
+        },
+        {
+          "id": "nurture_m08_e01",
+          "offset_days": 180,
+          "brand_id": "spa",
+          "content_path": "content/nurture/month-08/e01-spa.md",
+          "subject": "Readiness checklist"
+        },
+        {
+          "id": "nurture_m08_e02",
+          "offset_days": 187,
+          "brand_id": "bds",
+          "content_path": "content/nurture/month-08/e02-bds.md",
+          "subject": "Enrollment-oriented discovery"
+        },
+        {
+          "id": "nurture_m08_e03",
+          "offset_days": 195,
+          "brand_id": "bdn",
+          "content_path": "content/nurture/month-08/e03-bdn.md",
+          "subject": "Myths that delay good decisions"
+        },
+        {
+          "id": "nurture_m09_e01",
+          "offset_days": 205,
+          "brand_id": "ccc",
+          "content_path": "content/nurture/month-09/e01-ccc.md",
+          "subject": "Refinance vs settle \u2014 questions to ask"
+        },
+        {
+          "id": "nurture_m09_e02",
+          "offset_days": 212,
+          "brand_id": "mda",
+          "content_path": "content/nurture/month-09/e02-mda.md",
+          "subject": "Burned before? Trust rebuild"
+        },
+        {
+          "id": "nurture_m09_e03",
+          "offset_days": 220,
+          "brand_id": "bds",
+          "content_path": "content/nurture/month-09/e03-bds.md",
+          "subject": "Book the call \u2014 no hard-sell script"
+        },
+        {
+          "id": "nurture_m10_e01",
+          "offset_days": 230,
+          "brand_id": "mrd",
+          "content_path": "content/nurture/month-10/e01-mrd.md",
+          "subject": "Still on the daily grind?"
+        },
+        {
+          "id": "nurture_m10_e02",
+          "offset_days": 237,
+          "brand_id": "spa",
+          "content_path": "content/nurture/month-10/e02-spa.md",
+          "subject": "Final path review invite"
+        },
+        {
+          "id": "nurture_m10_e03",
+          "offset_days": 245,
+          "brand_id": "bds",
+          "content_path": "content/nurture/month-10/e03-bds.md",
+          "subject": "Clear CTA + permission to pause"
+        }
+      ]
+    },
+    "client-edu": {
+      "name": "Client education",
+      "primary_goal": "retention_education",
+      "touches": [
+        {
+          "id": "ce_e01",
+          "offset_days": 0,
+          "brand_id": "bds",
+          "content_path": "content/client-edu/e01-bds.md",
+          "subject": "What to expect in the first 30 days"
+        },
+        {
+          "id": "ce_e02",
+          "offset_days": 7,
+          "brand_id": "ccc",
+          "content_path": "content/client-edu/e02-ccc.md",
+          "subject": "Your weekly cash rhythm on program"
+        },
+        {
+          "id": "ce_e03",
+          "offset_days": 14,
+          "brand_id": "mrd",
+          "content_path": "content/client-edu/e03-mrd.md",
+          "subject": "Communication hygiene with creditors"
+        },
+        {
+          "id": "ce_e04",
+          "offset_days": 21,
+          "brand_id": "bdn",
+          "content_path": "content/client-edu/e04-bdn.md",
+          "subject": "Milestone mindset (without fake ROIs)"
+        },
+        {
+          "id": "ce_e05",
+          "offset_days": 28,
+          "brand_id": "dag",
+          "content_path": "content/client-edu/e05-dag.md",
+          "subject": "Know your lanes \u2014 when to escalate to counsel"
+        },
+        {
+          "id": "ce_e06",
+          "offset_days": 35,
+          "brand_id": "bds",
+          "content_path": "content/client-edu/e06-bds.md",
+          "subject": "Check-in CTA \u2014 stay aligned"
+        }
+      ]
+    },
+    "reengage": {
+      "name": "Cold/stale reengage",
+      "primary_goal": "soft_rebook_or_reply",
+      "touches": [
+        {
+          "id": "re_e01",
+          "offset_days": 0,
+          "brand_id": "mrd",
+          "content_path": "content/reengage/e01-mrd.md",
+          "subject": "Still getting hit daily?"
+        },
+        {
+          "id": "re_e02",
+          "offset_days": 5,
+          "brand_id": "bdn",
+          "content_path": "content/reengage/e02-bdn.md",
+          "subject": "One education snack"
+        },
+        {
+          "id": "re_e03",
+          "offset_days": 10,
+          "brand_id": "ccc",
+          "content_path": "content/reengage/e03-ccc.md",
+          "subject": "Cost of waiting \u2014 as a question"
+        },
+        {
+          "id": "re_e04",
+          "offset_days": 15,
+          "brand_id": "spa",
+          "content_path": "content/reengage/e04-spa.md",
+          "subject": "Ready to revisit the path?"
+        },
+        {
+          "id": "re_e05",
+          "offset_days": 20,
+          "brand_id": "bds",
+          "content_path": "content/reengage/e05-bds.md",
+          "subject": "Break-up / pause note"
+        }
+      ]
+    },
+    "partner": {
+      "name": "Partner/referral nurture",
+      "primary_goal": "referral_alignment",
+      "touches": [
+        {
+          "id": "pt_e01",
+          "offset_days": 0,
+          "brand_id": "lsp",
+          "content_path": "content/partner/e01-lsp.md",
+          "subject": "Who Debt Empire helps (partner brief)"
+        },
+        {
+          "id": "pt_e02",
+          "offset_days": 7,
+          "brand_id": "ccc",
+          "content_path": "content/partner/e02-ccc.md",
+          "subject": "Merchant math partners should spot"
+        },
+        {
+          "id": "pt_e03",
+          "offset_days": 14,
+          "brand_id": "bds",
+          "content_path": "content/partner/e03-bds.md",
+          "subject": "How referral handoff works"
+        },
+        {
+          "id": "pt_e04",
+          "offset_days": 21,
+          "brand_id": "bdn",
+          "content_path": "content/partner/e04-bdn.md",
+          "subject": "Broker culture \u2014 what good partners avoid"
+        },
+        {
+          "id": "pt_e05",
+          "offset_days": 28,
+          "brand_id": "lsp",
+          "content_path": "content/partner/e05-lsp.md",
+          "subject": "Reciprocal value + referral CTA"
+        }
+      ]
+    },
+    "fintrilo": {
+      "name": "Fintrilo capacity track",
+      "primary_goal": "liaison_officer_connect",
+      "audience": "SMB owners + ISO/partner overlap (MGP)",
+      "touches": [
+        {
+          "id": "ft_e01",
+          "offset_days": 0,
+          "brand_id": "fintrilo",
+          "content_path": "content/fintrilo/e01-fragmented.md",
+          "subject": "You don't need more vendors \u2014 you need one picture"
+        },
+        {
+          "id": "ft_e02",
+          "offset_days": 4,
+          "brand_id": "fintrilo",
+          "content_path": "content/fintrilo/e02-processing-float.md",
+          "subject": "Your processor has your money. When do you?"
+        },
+        {
+          "id": "ft_e03",
+          "offset_days": 9,
+          "brand_id": "fintrilo",
+          "content_path": "content/fintrilo/e03-liaison.md",
+          "subject": "What a Liaison Officer actually does"
+        },
+        {
+          "id": "ft_e04",
+          "offset_days": 14,
+          "brand_id": "fintrilo",
+          "content_path": "content/fintrilo/e04-clover.md",
+          "subject": "Payments that match how you actually sell"
+        },
+        {
+          "id": "ft_e05",
+          "offset_days": 19,
+          "brand_id": "fintrilo",
+          "content_path": "content/fintrilo/e05-funding.md",
+          "subject": "Funding options when growth (or a gap) shows up"
+        },
+        {
+          "id": "ft_e06",
+          "offset_days": 24,
+          "brand_id": "fintrilo",
+          "content_path": "content/fintrilo/e06-combined.md",
+          "subject": "Fix processing before you fund the leak"
+        },
+        {
+          "id": "ft_e07",
+          "offset_days": 29,
+          "brand_id": "fintrilo",
+          "content_path": "content/fintrilo/e07-partner-iso.md",
+          "subject": "Partner note \u2014 when a merchant needs more than a single product"
+        },
+        {
+          "id": "ft_e08",
+          "offset_days": 35,
+          "brand_id": "fintrilo",
+          "content_path": "content/fintrilo/e08-connect.md",
+          "subject": "Ready when you are \u2014 connect with Fintrilo"
+        }
+      ]
+    },
+    "new-skins-batch2": {
+      "name": "New skins batch2 starter calendar",
+      "primary_goal": "brand_skin_pilot_education",
+      "audience": "MGP merchant / MCA / ISO pilot lists (proposed skins only)",
+      "status": "proposed_only",
+      "notes": "Thin parallel calendar for batch2 proposed skins. Not live. Not FM.",
+      "touches": [
+        {
+          "id": "b2_aab_e01",
+          "offset_days": 0,
+          "brand_id": "aab",
+          "content_path": "content/new-skins-batch2/aab/e01-why-another-advance.md",
+          "subject": "Before you take another advance"
+        },
+        {
+          "id": "b2_abr_e01",
+          "offset_days": 2,
+          "brand_id": "abr",
+          "content_path": "content/new-skins-batch2/abr/e01-daily-draft-math.md",
+          "subject": "What daily drafts actually cost your week"
+        },
+        {
+          "id": "b2_slc_e01",
+          "offset_days": 4,
+          "brand_id": "slc",
+          "content_path": "content/new-skins-batch2/slc/e01-what-stacking-is.md",
+          "subject": "What \"stacking\" actually is"
+        },
+        {
+          "id": "b2_mcb_e01",
+          "offset_days": 6,
+          "brand_id": "mcb",
+          "content_path": "content/new-skins-batch2/mcb/e01-this-week-on-fire.md",
+          "subject": "If this week is on fire"
+        },
+        {
+          "id": "b2_icd_e01",
+          "offset_days": 7,
+          "brand_id": "icd",
+          "content_path": "content/new-skins-batch2/icd/e01-when-to-refer.md",
+          "subject": "When a funded merchant needs a different desk"
+        },
+        {
+          "id": "b2_aab_e02",
+          "offset_days": 9,
+          "brand_id": "aab",
+          "content_path": "content/new-skins-batch2/aab/e02-refinance-vs-stack.md",
+          "subject": "Refinance talk vs. stack talk"
+        },
+        {
+          "id": "b2_abr_e02",
+          "offset_days": 11,
+          "brand_id": "abr",
+          "content_path": "content/new-skins-batch2/abr/e02-nsf-spiral.md",
+          "subject": "The NSF spiral (and how it gets loud)"
+        },
+        {
+          "id": "b2_slc_e02",
+          "offset_days": 13,
+          "brand_id": "slc",
+          "content_path": "content/new-skins-batch2/slc/e02-paying-twice.md",
+          "subject": "The \"paying twice\" feeling \u2014 explained"
+        },
+        {
+          "id": "b2_mcb_e02",
+          "offset_days": 15,
+          "brand_id": "mcb",
+          "content_path": "content/new-skins-batch2/mcb/e02-dont-ghost-funders.md",
+          "subject": "Don't ghost funders in a panic"
+        },
+        {
+          "id": "b2_icd_e02",
+          "offset_days": 16,
+          "brand_id": "icd",
+          "content_path": "content/new-skins-batch2/icd/e02-handoff-hygiene.md",
+          "subject": "Handoff hygiene (what to say / not say)"
+        },
+        {
+          "id": "b2_aab_e03",
+          "offset_days": 18,
+          "brand_id": "aab",
+          "content_path": "content/new-skins-batch2/aab/e03-when-not-to-fund.md",
+          "subject": "When \"more capital\" is the wrong move"
+        },
+        {
+          "id": "b2_abr_e03",
+          "offset_days": 20,
+          "brand_id": "abr",
+          "content_path": "content/new-skins-batch2/abr/e03-breath-room-cta.md",
+          "subject": "A little breath room \u2014 discovery when you're ready"
+        },
+        {
+          "id": "b2_slc_e03",
+          "offset_days": 22,
+          "brand_id": "slc",
+          "content_path": "content/new-skins-batch2/slc/e03-questions-before-renewal.md",
+          "subject": "Questions before any renewal or add-on"
+        },
+        {
+          "id": "b2_mcb_e03",
+          "offset_days": 24,
+          "brand_id": "mcb",
+          "content_path": "content/new-skins-batch2/mcb/e03-72-hour-plan.md",
+          "subject": "A 72-hour plan (then a real review)"
+        },
+        {
+          "id": "b2_icd_e03",
+          "offset_days": 26,
+          "brand_id": "icd",
+          "content_path": "content/new-skins-batch2/icd/e03-reciprocal-value.md",
+          "subject": "Reciprocal value \u2014 keep the book healthy"
+        }
+      ]
+    }
+  }
+}

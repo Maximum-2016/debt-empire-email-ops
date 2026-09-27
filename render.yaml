@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: debt-empire-email-ops
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: DRY_RUN
+        value: "true"
+      - key: EMAIL_UI_HOST
+        value: "0.0.0.0"
