@@ -1,55 +1,31 @@
+
+async function populateJourneySelects() {
+  const seq = await api("/api/sequences");
+  const keys = Object.keys(seq.journeys).sort((a, b) => {
+    const rank = (j) => j.startsWith("nurture-") ? 0 : j === "nurture" ? 1 : 2;
+    return rank(a) - rank(b) || a.localeCompare(b);
+  });
+  const opts = [`<option value="brand-cycle">brand-cycle (meta — start rotation)</option>`]
+    .concat(keys.map((j) => `<option value="${j}">${j} (${seq.journeys[j].touches.length})</option>`))
+    .join("");
+  for (const id of ["enroll-journey", "prev-journey", "send-journey"]) {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = opts;
+  }
+}
+
 /* Debt Empire Email Ops UI — MGP wall */
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
-/* Static Pages demo: fall back to ./data/*.json when /api/* is unreachable */
-let STATIC_MODE = false;
-const STATIC_MAP = {
-  "/api/health": "data/health.json",
-  "/api/brands": "data/brands.json",
-  "/api/sequences": "data/sequences.json",
-  "/api/calendar": "data/calendar.json",
-  "/api/contacts": "data/contacts.json",
-  "/api/enrollments": "data/enrollments.json",
-  "/api/suppressions": "data/suppressions.json",
-  "/api/send-log": "data/send_log.json",
-};
-
-async function fetchStatic(path) {
-  const file = STATIC_MAP[path];
-  if (!file) throw new Error("static demo: " + path + " not available (read-only)");
-  const res = await fetch(file);
-  if (!res.ok) throw new Error("static missing " + file);
-  return res.json();
-}
-
 async function api(path, opts = {}) {
-  const method = (opts.method || "GET").toUpperCase();
-  if (STATIC_MODE) {
-    if (method !== "GET") throw new Error("Static demo is read-only — run the Python server for writes/sends");
-    return fetchStatic(path);
-  }
-  try {
-    const res = await fetch(path, {
-      headers: { "Content-Type": "application/json", ...(opts.headers || {}) },
-      ...opts,
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok) throw new Error(data.error || res.statusText);
-    return data;
-  } catch (e) {
-    // Network / no Python server → enable static fallback for GET
-    if (method === "GET" && STATIC_MAP[path]) {
-      STATIC_MODE = true;
-      const badge = document.getElementById("health");
-      if (badge) {
-        badge.textContent = "STATIC DEMO (read-only) · no Python API";
-        badge.className = "status warn";
-      }
-      return fetchStatic(path);
-    }
-    throw e;
-  }
+  const res = await fetch(path, {
+    headers: { "Content-Type": "application/json", ...(opts.headers || {}) },
+    ...opts,
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || res.statusText);
+  return data;
 }
 
 function msg(el, text, kind = "info") {
@@ -72,12 +48,6 @@ $$(".tabs button").forEach((btn) => {
 async function loadHealth() {
   const h = await api("/api/health");
   const el = $("#health");
-  if (h.static_demo || STATIC_MODE) {
-    STATIC_MODE = true;
-    el.textContent = "STATIC DEMO (read-only) · Mailgun-first · DRY_RUN default · MGP wall";
-    el.className = "status warn";
-    return;
-  }
   const keys = h.provider.keys_present;
   el.textContent = `DRY_RUN=${h.dry_run} · ${h.provider.provider} keys=${keys ? "yes" : "no"}`;
   el.className = "status " + (h.dry_run || !keys ? "warn" : "ok");
@@ -111,7 +81,10 @@ async function renderBrands() {
 async function renderCalendar() {
   const data = await api("/api/calendar");
   const root = $("#tab-calendar");
-  const journeys = Object.keys(data.journeys);
+  const journeys = Object.keys(data.journeys).sort((a, b) => {
+    const rank = (j) => j.startsWith("nurture-") ? 0 : j === "nurture" ? 1 : 2;
+    return rank(a) - rank(b) || a.localeCompare(b);
+  });
   root.innerHTML = `<h2>Sequence calendar</h2>
     <p class="lead">10-month nurture + side tracks. Offsets in days from enrollment.</p>
     <div class="journey-tabs" id="jtabs"></div>
@@ -400,16 +373,7 @@ async function loadSup() {
 }
 
 async function boot() {
-  // Probe health first; on failure api() flips STATIC_MODE and uses ./data/
-  try {
-    await loadHealth();
-  } catch (e) {
-    STATIC_MODE = true;
-    try { await loadHealth(); } catch (_) {
-      $("#health").textContent = "API error: " + e.message;
-      $("#health").className = "status warn";
-    }
-  }
+  await loadHealth();
   await renderBrands();
   await renderCalendar();
   renderImport();

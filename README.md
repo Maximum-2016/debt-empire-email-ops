@@ -1,112 +1,137 @@
-# Debt Empire Email Ops
+# Debt Empire Email Marketing System
 
 **Wall:** MGP only — never FM  
-**External brand:** prefer **"Debt Empire"** over "MGP" in merchant-facing copy  
-**Owner:** Anthony Nocera (GitHub: Maximum-2016)  
-**Provider plan:** **Mailgun-first** go-live · Amazon SES later (parallel adapter)  
-**Default:** `DRY_RUN=true` — no live sends unless keys exist **and** `DRY_RUN=false`
-
-This repo is the public publish pack for the Debt Empire multi-brand email nurture system (content + delivery design + ops UI). **API keys are never committed.** Live Mailgun/SES sends require secrets set in your host environment only.
-
----
-
-## Quick links
-
-| Surface | How |
-|---------|-----|
-| **Static demo (GitHub Pages)** | Read-only UI — brands + sequence calendar from snapped JSON (no Python) |
-| **Local / deployable UI** | `cd ui && DRY_RUN=true python3 server.py` → binds `0.0.0.0`, honors `PORT` |
-| **Docker** | `docker build -t debt-empire-email-ops . && docker run -p 8765:8765 debt-empire-email-ops` |
+**External brand preference:** prefer **"Debt Empire"** over "MGP" in brand-facing copy  
+**Owner:** Anthony Nocera  
+**Status:** Design + content pack (no live sends)
+**Provider plan:** Mailgun-first go-live; Amazon SES later (parallel adapter, then primary with Mailgun backup)  
+**Created:** 2026-09-27 ET
 
 ---
+
+## What this is
+
+A complete multi-brand email nurture and retention system for the Debt Empire / MGP portfolio. Primary goal is **lead nurture → booked discovery / enrollment calls**. The same delivery stack also runs client education/retention, cold/stale re-engage, and partner/referral nurture — as modes of one system, not separate products.
+
+Delivery is **Mailgun-first** for go-live, with Amazon SES as the later-phase provider; both adapters remain available through ATLAS / Email Desk. **Not Instantly.** Domains and API keys are placeholders until Anthony supplies them.
 
 ## Walls (hard rules)
 
 | Rule | Detail |
 |------|--------|
-| Wall | **MGP only.** Do not touch FM vault, FM brands, or Funding Metrics surfaces. |
-| External wording | Prefer **"Debt Empire"** externally. Use "MGP" only in internal ops docs. |
-| Secrets | No API keys, DNS secrets, 2FA codes, or list PII in this repo. Placeholders only. |
-| Sends | Default is dry-run. Live send needs provider keys **and** `DRY_RUN=false` **and** UI `confirm:true`. |
-
----
+| Wall | **MGP only.** Do not touch FM vault, FM brands, or Funding Metrics / Wolf & Cohen surfaces. |
+| External wording | Prefer **"Debt Empire"** when speaking to merchants/partners. Use "MGP" / "Maximum Growth Partners" only in internal ops docs. |
+| Dual-brand | Never present DAG Law + a settlement LLC as "the same company" in one flight. Rotate brands across touches; warm-transfer legal tripwires to DAG. |
+| Secrets | No API keys, DNS secrets, or list PII in this folder. Placeholders only. |
+| Sends | This pack is content + architecture. **No emails are sent from these files.** |
 
 ## Folder map
 
 ```
-debt-empire-email-ops/
+email-empire/
 ├── README.md                 ← you are here
-├── ARCHITECTURE.md
-├── BRAND_KIT.md
-├── CALENDAR-10-MONTH.md
-├── CALENDAR-FINTRILO.md
-├── NEXT-STEPS.md
-├── TEST-WEEK.md
-├── Dockerfile / Procfile     ← Render / Railway / Fly
-├── docs/                     ← GitHub Pages static demo (ui/public snapshot)
-├── content/                  ← nurture, client-edu, reengage, partner, fintrilo, skins
-├── delivery/
-│   ├── PHASES.md             ← Mailgun-first → SES-later
-│   ├── brand-registry.json
-│   ├── sequences.json
-│   └── adapters/
-└── ui/
-    ├── server.py             ← stdlib HTTP API + static file server
-    ├── public/               ← SPA (falls back to public/data/*.json if /api fails)
-    └── seed/fake-contacts.csv
+├── ARCHITECTURE.md           ← SES/Mailgun, brand registry, suppression, bots, compliance
+├── BRAND_KIT.md              ← existing + invented skins, voices, disclaimers
+├── CALENDAR-10-MONTH.md      ← Month 1–10 themes, cadence, brand rotation, CTA arc
+├── CALENDAR-FINTRILO.md      ← Fintrilo capacity track (parallel)
+├── NEXT-STEPS.md             ← what Anthony must provide before go-live
+├── content/
+│   ├── nurture/              ← shared multi-brand 10-month (kept)
+│   ├── nurture-by-brand/     ← per-brand 10-month (25 emails each; primary)
+│   ├── client-edu/           ← 6-email enrolled-client / post-convert track
+│   ├── reengage/             ← 5-email cold/stale track
+│   ├── partner/              ← 5-email ISO/referral track
+│   └── fintrilo/             ← Fintrilo capacity (8 emails + RESEARCH.md)
+├── CALENDAR-BY-BRAND.md      ← per-brand calendars + cycle / conversion exit
+└── delivery/
+    ├── PHASES.md              ← Mailgun-first → SES-later rollout and cutover checklist
+    ├── brand-registry.json
+    ├── brand-cycle.json       ← cycle order + conversion exit machine config
+    ├── sequences.json         ← includes nurture-<brandId> journeys + brand_cycle
+    ├── import-schema.csv
+    ├── bot-ops.md
+    └── adapters/
+        ├── mailgun.md
+        └── ses.md
 ```
+
+## How to run (when wired)
+
+1. Anthony supplies domains and DNS; follow `delivery/PHASES.md`: Mailgun is the Phase 1–2 primary, SES is introduced in Phase 3, and may become primary in Phase 4 (see `NEXT-STEPS.md`).
+2. Ops loads `delivery/brand-registry.json` into ATLAS brand tenancy + Email Desk.
+3. Lists land via Salesforce sync, CSV import (`import-schema.csv`), or form webhooks.
+4. Sequences in `sequences.json` drive schedule offsets; content lives under `content/`.
+5. Email Desk (proposed under ATLAS) owns queue → adapter → send → webhook handling. Rail-guard: consent, suppression, brand identity, kill switch, weekly caps.
+6. **Dry-run first.** No blast without counsel + Anthony yes.
+
+Until keys and lists exist, treat this folder as the **source of truth for copy, brand skins, and ops design**.
+
+## Journeys (same system)
+
+| Journey | Audience | Cadence | Primary CTA |
+|---------|----------|---------|-------------|
+| `nurture-<brandId>` | Leads on one brand skin | Kickoff D0–D12 EOD; then 2/mo months 2–10 (**25**/brand) | Book discovery/enrollment call |
+| `brand-cycle` (meta) | Leads cycling brands until convert | Same cadence per brand; 3-day cooldown on switch; **no two brands same day** | Rotate order in `brand-cycle.json` |
+| `nurture` | Shared multi-brand (optional) | ~2–4 / month over 10 months | Book discovery/enrollment call |
+| `client-edu` | **Post-convert** / enrolled clients | 6 emails over ~6–8 weeks | Portal / check-in / education |
+| `reengage` | Cold / stale / unconverted | 5 emails over ~3–4 weeks | Soft re-book or reply |
+| `partner` | ISOs / referral partners | 5 emails over ~5–6 weeks | Refer a merchant / partner portal |
+| `fintrilo` | SMB + ISO/Biz-Pay overlap (MGP) | 8 emails over ~5 weeks | Liaison Officer connect / funding+payments |
+| `new-skins-batch2` | Pilot lists for batch2 proposed skins | 15 emails over ~26 days | Brand-skin education / soft discovery (proposed_only) |
+
+**Conversion exit:** on `booked_call` / `enrolled` / `convert_flag` → stop all other brand nurtures for that email; hand to `client-edu` for the winning brand only. **No MDA.**
+
+## Brand skins (summary)
+
+**Existing (MGP wall):** DAG Law, Business Debt Solutions, Business Debt Ninjas, Level Set Partners (careful / SF-linked), **Fintrilo** (merchant finance / Biz-Pay ISO overlap — not a proposed skin).
+
+**New (proposed skins / DBA candidates — not filed entities):**
+- Batch 1: Merchant Relief Desk, Cashflow Clarity Co., Settlement Path Advisors, Ledger Reset Lab.
+- Batch 2: Advance Alternatives Brief, ACH Breath Room, ISO Care Desk, Merchant Crisis Brief, Stack Literacy Co. (`content/new-skins-batch2/` · journey `new-skins-batch2`).
+
+Full detail: `BRAND_KIT.md`.
+
+## Related vault / ops
+
+- ATLAS overview: `/workspace/ai-hub/vault/mgp/atlas/`
+- Walls: `/workspace/ai-hub/WALLS.md`
+- Telnyx notes: `/workspace/ai-hub/vault/mgp/refs/TELNYX.md`
+- Portfolio analytics (MGP HUD): `mgp-portfolio-analytics.md`
 
 ---
 
-## Run locally
+*Debt Empire email pack · MGP wall · per-brand cycle · conversion exit · no live sends*
+
+## Local UI (ops sandbox)
 
 ```bash
-cd ui
-DRY_RUN=true EMAIL_UI_HOST=0.0.0.0 python3 server.py
+cd /workspace/ai-hub/vault/mgp/email-empire/ui
+DRY_RUN=true python3 server.py
 ```
 
-Open **http://127.0.0.1:8765/** (or the `PORT` your host assigns).
+→ **http://127.0.0.1:8765/**  
+API contract for ATLAS: `ui/ATLAS_PLUGIN.md`  
+This-week test plan: `TEST-WEEK.md`
 
-Env knobs: `PORT` / `EMAIL_UI_PORT`, `EMAIL_UI_HOST` (default `0.0.0.0`), `EMAIL_PROVIDER` (`mailgun`|`ses`), `MAILGUN_API_KEY`, `MAILGUN_DOMAIN`, AWS/SES vars, `BOOKING_URL`, `UNSUB_URL`, `TEST_FROM_EMAIL`.
 
-**Never put those keys in git.** Set them on Render/Railway/Fly (or your shell) only.
+## Public repo / GitHub Pages
 
----
+This directory is the publish copy pushed to `Maximum-2016/debt-empire-email-ops`.
 
-## Deploy (Render / Railway / Fly)
+| Surface | What |
+|---------|------|
+| **Static demo (GitHub Pages)** | Read-only UI — brands + sequence calendar from snapped JSON (no Python) |
+| **Python ops UI** | `ui/server.py` — enroll, preview, dry-run test send (Mailgun-first, `DRY_RUN` default) |
 
-- Binds `0.0.0.0` and reads `PORT` automatically.
-- `Procfile`: `web: cd ui && DRY_RUN=true python3 server.py`
-- Or build the included `Dockerfile`.
-- Keep `DRY_RUN=true` until you intentionally go live with Mailgun keys.
-
----
-
-## Static GitHub Pages demo
-
-The `docs/` folder is a copy of `ui/public` plus snapped `data/brands.json`, `sequences.json`, `calendar.json`.  
-`app.js` tries `/api/*` first; if that fails (as on Pages), it loads the static JSON — **read-only** brands + calendar. Import / enroll / send need the Python server.
+```
+docs/                     ← GitHub Pages static demo (ui/public snapshot)
+ui/public/data/*.json     ← sequences (incl. nurture-<brand>), brands, calendar + brand_cycle
+delivery/brand-cycle.json ← cycle order + conversion exit
+content/nurture-by-brand/ ← 14 brands × 25 emails
+```
 
 Enable Pages: **Settings → Pages → Source: Deploy from a branch → `main` / `/docs`**.
 
----
+Demo URL: https://maximum-2016.github.io/debt-empire-email-ops/
 
-## Journeys
-
-| Journey | Audience | Cadence |
-|---------|----------|---------|
-| `nurture` | Leads | ~2–4 / month over 10 months |
-| `client-edu` | Enrolled clients | 6 emails over ~6–8 weeks |
-| `reengage` | Cold / stale | 5 emails over ~3–4 weeks |
-| `partner` | ISOs / referral partners | 5 emails over ~5–6 weeks |
-| `fintrilo` | SMB + ISO overlap | 8 emails over ~5 weeks |
-| `new-skins-batch2` | Pilot proposed skins | 15 emails over ~26 days |
-
----
-
-## Status
-
-Design + content pack + ops sandbox UI. **No live sends from this repo.**  
-See `delivery/PHASES.md` and `NEXT-STEPS.md` before go-live.
-
-*Debt Empire email pack · MGP wall · Mailgun-first / SES-later · DRY_RUN default*
+**Conversion exit / brand cycle** documented in `ARCHITECTURE.md` §11b and `CALENDAR-BY-BRAND.md`.

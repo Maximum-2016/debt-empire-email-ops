@@ -31,9 +31,8 @@ DATA = ROOT / "data"
 PUBLIC = ROOT / "public"
 SEED = ROOT / "seed"
 
-# Deploy-friendly: bind all interfaces; honor PORT (Render/Railway/Fly) then EMAIL_UI_PORT
-HOST = os.environ.get("EMAIL_UI_HOST", "0.0.0.0")
-PORT = int(os.environ.get("PORT") or os.environ.get("EMAIL_UI_PORT", "8765"))
+HOST = os.environ.get("EMAIL_UI_HOST", "127.0.0.1")
+PORT = int(os.environ.get("EMAIL_UI_PORT", "8765"))
 DRY_RUN = os.environ.get("DRY_RUN", "true").lower() not in ("0", "false", "no")
 PROVIDER = os.environ.get("EMAIL_PROVIDER", "mailgun").lower()
 
@@ -120,6 +119,37 @@ def find_brand(brand_id: str) -> dict | None:
             return b
     return None
 
+
+
+def brand_cycle_cfg() -> dict:
+    seq = sequences()
+    if seq.get("brand_cycle"):
+        return seq["brand_cycle"]
+    path = DELIVERY / "brand-cycle.json"
+    if path.exists():
+        return load_json(path)
+    return {"enabled": False, "order": [], "rules": {}}
+
+
+def cycle_order() -> list:
+    cfg = brand_cycle_cfg()
+    order = list(cfg.get("order") or [])
+    exclude = set((cfg.get("rules") or {}).get("exclude_brands") or cfg.get("exclude") or ["mda"])
+    return [b for b in order if b not in exclude and b != "mda"]
+
+
+def stop_sibling_nurtures(enrollments: list, email: str, keep_journey: str | None = None) -> list:
+    """Mark other nurture-* enrollments stopped_converted for this email."""
+    out = []
+    for e in enrollments:
+        if e.get("email", "").lower() != email.lower():
+            out.append(e)
+            continue
+        j = e.get("journey") or ""
+        if j.startswith("nurture-") and j != keep_journey and e.get("status") == "active":
+            e = {**e, "status": "stopped_converted", "stopped_at": now_iso()}
+        out.append(e)
+    return out
 
 def is_suppressed(email: str) -> bool:
     email = (email or "").lower().strip()
@@ -308,6 +338,17 @@ class Handler(SimpleHTTPRequestHandler):
             return self._json(200, {"suppressions": load_json(DATA / "suppressions.json")})
         if path == "/api/send-log":
             return self._json(200, {"log": load_json(DATA / "send_log.json")})
+        if path == "/api/brand-cycle":
+            cfg = brand_cycle_cfg()
+            order = cycle_order()
+            journeys = {f"nurture-{b}": sequences()["journeys"].get(f"nurture-{b}") for b in order}
+            return self._json(200, {
+                "enabled": cfg.get("enabled", True),
+                "order": order,
+                "rules": cfg.get("rules") or {},
+                "journeys_present": {k: bool(v) for k, v in journeys.items()},
+                "conversion_exit": (cfg.get("rules") or {}).get("conversion_exit") or cfg.get("conversion_exit"),
+            })
         if path == "/api/calendar":
             # Flatten nurture + side tracks for UI calendar
             seq = sequences()
@@ -343,7 +384,102 @@ class Handler(SimpleHTTPRequestHandler):
             return self.add_suppression(body)
         if path == "/api/suppressions/remove":
             return self.remove_suppression(body)
+        if path == "/api/convert":
+            return self.convert(body)
+        if path == "/api/cycle/advance":
+            return self.cycle_advance(body)
         return self._json(404, {"error": "unknown endpoint"})
+
+
+    def convert(self, body):
+        """Conversion exit: stop sibling brand nurtures; hand to client-edu for winning brand."""
+        email = (body.get("email") or "").lower().strip()
+        winning = (body.get("winning_brand") or body.get("brand_id") or "").strip()
+        trigger = body.get("trigger") or "convert_flag"
+        if trigger not in ("booked_call", "enrolled", "convert_flag"):
+            return self._json(400, {"error": "trigger must be booked_call|enrolled|convert_flag"})
+        if not email or not winning:
+            return self._json(400, {"error": "email and winning_brand required"})
+        if winning == "mda":
+            return self._json(400, {"error": "MDA is dead — pick another brand"})
+        enrollments = load_json(DATA / "enrollments.json")
+        keep = f"nurture-{winning}"
+        enrollments = stop_sibling_nurtures(enrollments, email, keep_journey=keep)
+        # mark winning nurture converted
+        for i, e in enumerate(enrollments):
+            if e.get("email") == email and e.get("journey") == keep and e.get("status") == "active":
+                enrollments[i] = {**e, "status": "converted", "converted_at": now_iso(), "convert_trigger": trigger}
+        # enroll client-edu post-convert
+        cohort = body.get("cohort") or f"post-convert-{winning}"
+        ce_id = f"{cohort}:{email}:client-edu"
+        enrollments = [e for e in enrollments if e.get("id") != ce_id]
+        ce = {
+            "id": ce_id,
+            "cohort": cohort,
+            "email": email,
+            "journey": "client-edu",
+            "enrolled_at": now_iso(),
+            "start_day_offset": 0,
+            "status": "active",
+            "winning_brand": winning,
+            "convert_trigger": trigger,
+            "post_convert": True,
+        }
+        enrollments.append(ce)
+        # stamp contact
+        contacts = load_json(DATA / "contacts.json")
+        for c in contacts:
+            if c.get("email", "").lower() == email:
+                c["converted"] = True
+                c["winning_brand"] = winning
+                c["convert_trigger"] = trigger
+                c["converted_at"] = now_iso()
+        save_json(DATA / "contacts.json", contacts)
+        save_json(DATA / "enrollments.json", enrollments)
+        return self._json(200, {
+            "ok": True,
+            "email": email,
+            "winning_brand": winning,
+            "trigger": trigger,
+            "stopped_siblings": True,
+            "next_journey": "client-edu",
+            "enrollments": [e for e in enrollments if e.get("email") == email],
+        })
+
+    def cycle_advance(self, body):
+        """Advance email to next brand in cycle (blocked if converted/suppressed)."""
+        email = (body.get("email") or "").lower().strip()
+        if not email:
+            return self._json(400, {"error": "email required"})
+        if is_suppressed(email):
+            return self._json(400, {"error": "suppressed"})
+        contacts = load_json(DATA / "contacts.json")
+        contact = next((c for c in contacts if c.get("email", "").lower() == email), None)
+        if contact and contact.get("converted"):
+            return self._json(400, {"error": "already converted — cycle stopped", "winning_brand": contact.get("winning_brand")})
+        order = cycle_order()
+        enrollments = load_json(DATA / "enrollments.json")
+        active = [e for e in enrollments if e.get("email") == email and e.get("status") == "active" and str(e.get("journey","")).startswith("nurture-")]
+        idx = 0
+        if active and active[-1].get("cycle_index") is not None:
+            idx = int(active[-1]["cycle_index"]) + 1
+        elif body.get("cycle_index") is not None:
+            idx = int(body["cycle_index"])
+        if idx >= len(order):
+            return self._json(200, {"ok": True, "done": True, "message": "cycle order exhausted without conversion"})
+        # stop current active nurtures (completed rotation, not conversion)
+        for i, e in enumerate(enrollments):
+            if e.get("email") == email and e.get("status") == "active" and str(e.get("journey","")).startswith("nurture-"):
+                enrollments[i] = {**e, "status": "rotated", "rotated_at": now_iso()}
+        save_json(DATA / "enrollments.json", enrollments)
+        # enroll next via enroll()
+        return self.enroll({
+            "emails": [email],
+            "journey": "brand-cycle",
+            "cycle_index": idx,
+            "cohort": body.get("cohort") or f"cycle-{order[idx]}",
+            "start_day_offset": 0,
+        })
 
     def contacts_seed(self):
         seed_csv = SEED / "fake-contacts.csv"
@@ -397,11 +533,24 @@ class Handler(SimpleHTTPRequestHandler):
         emails = body.get("emails") or []
         journey = body.get("journey") or "nurture"
         cohort = body.get("cohort") or f"test-{datetime.now().strftime('%Y%m%d')}"
+        cycle_index = body.get("cycle_index")
         if body.get("segment"):
             contacts = [c for c in load_json(DATA / "contacts.json") if c.get("segment") == body["segment"]]
             emails = [c["email"] for c in contacts]
         if not emails:
             return self._json(400, {"error": "emails or segment required"})
+
+        # Meta journey: brand-cycle → enroll into nurture-<order[cycle_index]>
+        cycle_meta = None
+        if journey == "brand-cycle":
+            order = cycle_order()
+            if not order:
+                return self._json(400, {"error": "brand cycle order empty"})
+            idx = int(cycle_index if cycle_index is not None else 0) % len(order)
+            brand_id = order[idx]
+            journey = f"nurture-{brand_id}"
+            cycle_meta = {"cycle_index": idx, "brand_id": brand_id, "order": order}
+
         seq = sequences()["journeys"].get(journey)
         if not seq:
             return self._json(400, {"error": f"unknown journey {journey}"})
@@ -414,6 +563,8 @@ class Handler(SimpleHTTPRequestHandler):
             contact = next((c for c in load_json(DATA / "contacts.json") if c["email"].lower() == email_l), None)
             if not contact:
                 continue
+            # Anti-collision: if another nurture-* is active, do not double-enroll same day path
+            # (demo: still allow replace of same journey id)
             rec = {
                 "id": f"{cohort}:{email_l}:{journey}",
                 "cohort": cohort,
@@ -422,12 +573,24 @@ class Handler(SimpleHTTPRequestHandler):
                 "enrolled_at": now_iso(),
                 "start_day_offset": int(body.get("start_day_offset") or 0),
                 "status": "active",
+                "brand_id": seq.get("brand_id") or (seq.get("touches") or [{}])[0].get("brand_id"),
             }
+            if cycle_meta:
+                rec["cycle_index"] = cycle_meta["cycle_index"]
+                rec["cycle_order"] = cycle_meta["order"]
+                rec["cycle_member"] = True
             enrollments = [e for e in enrollments if e.get("id") != rec["id"]]
             enrollments.append(rec)
             created.append(rec)
         save_json(DATA / "enrollments.json", enrollments)
-        return self._json(200, {"ok": True, "enrolled": created, "count": len(created)})
+        return self._json(200, {
+            "ok": True,
+            "enrolled": created,
+            "count": len(created),
+            "cycle": cycle_meta,
+            "note": "Mailgun-first · DRY_RUN default · no MDA · max one brand send/email/day",
+        })
+
 
     def preview(self, body):
         journey = body.get("journey") or "nurture"

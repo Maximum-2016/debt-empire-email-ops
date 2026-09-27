@@ -1,0 +1,36 @@
+    # nurture-dag-m08-e21
+
+    **Subject:** Consultation when the facts warrant it
+    **Preview:** A calm next step when ready.
+    **From brand:** DAG Law
+    **Journey:** nurture-dag
+    **Month:** 8 — Readiness & fit
+    **CTA URL:** `{{booking_url}}?utm_source=email&utm_medium=nurture&utm_campaign=nb_dag_m08&utm_content=dag_m08_e21`
+    **Brand URL token:** `{{brand_url}}`
+
+    ## Body (plain / HTML-ish markdown)
+
+    Hi {{first_name}},
+
+    This note is educational, not legal advice for your specific facts.
+
+    If {{business_name}} is dealing with MCA / daily-ACH pressure, this note from **DAG Law** focuses on: *Consultation when the facts warrant it*.
+
+    No hype — a conversation if legal risk is in play.
+
+    **For {{business_name}} this week:**
+    1. CTA style here: Schedule a consultation.
+2. Browse {{brand_url}} on your own time.
+3. Legal events (suit, levy, freeze) → pause and get counsel.
+
+    No fake stats. No FM-lane hype. Wall: MGP / Debt Empire skins only.
+
+    [Schedule a consultation]({{booking_url}}) · {{brand_url}}
+
+    — DAG Law Client Education
+    ---
+    {{brand_disclaimer}}
+
+    {{postal_address}}
+
+    Prefer not to hear from us? [Unsubscribe]({{unsub_url}}) or reply STOP.

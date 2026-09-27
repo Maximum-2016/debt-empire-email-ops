@@ -1,5 +1,5 @@
 {
-  "version": "1.2.1",
+  "version": "1.3.0",
   "wall": "MGP",
   "journeys": {
     "nurture": {
@@ -531,6 +531,3502 @@
           "subject": "Reciprocal value \u2014 keep the book healthy"
         }
       ]
+    },
+    "nurture-mrd": {
+      "name": "Merchant Relief Desk \u2014 10-month nurture",
+      "primary_goal": "booked_discovery_enrollment_call",
+      "brand_id": "mrd",
+      "cycle_member": true,
+      "cadence": {
+        "kickoff": "every_other_day_d0_to_d12",
+        "months_2_to_10": "2_per_month",
+        "total_touches": 25
+      },
+      "conversion_exit": {
+        "on": [
+          "booked_call",
+          "enrolled",
+          "convert_flag"
+        ],
+        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+      },
+      "touches": [
+        {
+          "id": "nurture_mrd_m01_e01",
+          "offset_days": 0,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-01/e01-welcome.md",
+          "subject": "Welcome \u2014 let's name the pressure",
+          "month": 1,
+          "slot": "welcome"
+        },
+        {
+          "id": "nurture_mrd_m01_e02",
+          "offset_days": 2,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-01/e02-pain.md",
+          "subject": "Urgent vs loud",
+          "month": 1,
+          "slot": "pain"
+        },
+        {
+          "id": "nurture_mrd_m01_e03",
+          "offset_days": 4,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-01/e03-stack.md",
+          "subject": "How many advances are pulling?",
+          "month": 1,
+          "slot": "stack"
+        },
+        {
+          "id": "nurture_mrd_m01_e04",
+          "offset_days": 6,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-01/e04-cost.md",
+          "subject": "30-day cash if nothing changes",
+          "month": 1,
+          "slot": "cost"
+        },
+        {
+          "id": "nurture_mrd_m01_e05",
+          "offset_days": 8,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-01/e05-options.md",
+          "subject": "Pressure-map call exists",
+          "month": 1,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_mrd_m01_e06",
+          "offset_days": 10,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-01/e06-mistakes.md",
+          "subject": "Desperate moves that backfire",
+          "month": 1,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_mrd_m01_e07",
+          "offset_days": 12,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-01/e07-soft_cta.md",
+          "subject": "Book a pressure-map call",
+          "month": 1,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_mrd_m02_e01",
+          "offset_days": 35,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-02/e01-mechanics.md",
+          "subject": "Reading the ACH calendar",
+          "month": 2,
+          "slot": "mechanics"
+        },
+        {
+          "id": "nurture_mrd_m02_e02",
+          "offset_days": 48,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-02/e02-triage.md",
+          "subject": "Pressure-map checklist",
+          "month": 2,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_mrd_m03_e01",
+          "offset_days": 65,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-03/e01-triage.md",
+          "subject": "Pressure-map checklist",
+          "month": 3,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_mrd_m03_e02",
+          "offset_days": 78,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-03/e02-soft_cta.md",
+          "subject": "Book a pressure-map call",
+          "month": 3,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_mrd_m04_e01",
+          "offset_days": 95,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-04/e01-escalation.md",
+          "subject": "When calm triage isn't enough",
+          "month": 4,
+          "slot": "escalation"
+        },
+        {
+          "id": "nurture_mrd_m04_e02",
+          "offset_days": 108,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-04/e02-options.md",
+          "subject": "Pressure-map call exists",
+          "month": 4,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_mrd_m05_e01",
+          "offset_days": 125,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-05/e01-literacy.md",
+          "subject": "Relief vs. settlement language",
+          "month": 5,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_mrd_m05_e02",
+          "offset_days": 138,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-05/e02-readiness.md",
+          "subject": "What we cover on a relief review",
+          "month": 5,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_mrd_m06_e01",
+          "offset_days": 155,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-06/e01-scenarios.md",
+          "subject": "Composite: restaurant with three daily drafts",
+          "month": 6,
+          "slot": "scenarios"
+        },
+        {
+          "id": "nurture_mrd_m06_e02",
+          "offset_days": 168,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-06/e02-literacy.md",
+          "subject": "Relief vs. settlement language",
+          "month": 6,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_mrd_m07_e01",
+          "offset_days": 185,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-07/e01-risk.md",
+          "subject": "If the bank account freezes",
+          "month": 7,
+          "slot": "risk"
+        },
+        {
+          "id": "nurture_mrd_m07_e02",
+          "offset_days": 198,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-07/e02-mistakes.md",
+          "subject": "Desperate moves that backfire",
+          "month": 7,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_mrd_m08_e01",
+          "offset_days": 215,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-08/e01-readiness.md",
+          "subject": "What we cover on a relief review",
+          "month": 8,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_mrd_m08_e02",
+          "offset_days": 228,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-08/e02-soft_cta.md",
+          "subject": "Book a pressure-map call",
+          "month": 8,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_mrd_m09_e01",
+          "offset_days": 245,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-09/e01-trust.md",
+          "subject": "Still getting hit daily?",
+          "month": 9,
+          "slot": "trust"
+        },
+        {
+          "id": "nurture_mrd_m09_e02",
+          "offset_days": 258,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-09/e02-options.md",
+          "subject": "Pressure-map call exists",
+          "month": 9,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_mrd_m10_e01",
+          "offset_days": 275,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-10/e01-commit.md",
+          "subject": "Relief review \u2192 discovery handoff",
+          "month": 10,
+          "slot": "commit"
+        },
+        {
+          "id": "nurture_mrd_m10_e02",
+          "offset_days": 288,
+          "brand_id": "mrd",
+          "content_path": "content/nurture-by-brand/mrd/month-10/e02-trust.md",
+          "subject": "Still getting hit daily?",
+          "month": 10,
+          "slot": "trust"
+        }
+      ]
+    },
+    "nurture-abr": {
+      "name": "ACH Breath Room \u2014 10-month nurture",
+      "primary_goal": "booked_discovery_enrollment_call",
+      "brand_id": "abr",
+      "cycle_member": true,
+      "cadence": {
+        "kickoff": "every_other_day_d0_to_d12",
+        "months_2_to_10": "2_per_month",
+        "total_touches": 25
+      },
+      "conversion_exit": {
+        "on": [
+          "booked_call",
+          "enrolled",
+          "convert_flag"
+        ],
+        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+      },
+      "touches": [
+        {
+          "id": "nurture_abr_m01_e01",
+          "offset_days": 0,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-01/e01-welcome.md",
+          "subject": "Breath room for the ACH week",
+          "month": 1,
+          "slot": "welcome"
+        },
+        {
+          "id": "nurture_abr_m01_e02",
+          "offset_days": 2,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-01/e02-pain.md",
+          "subject": "NSF spiral language",
+          "month": 1,
+          "slot": "pain"
+        },
+        {
+          "id": "nurture_abr_m01_e03",
+          "offset_days": 4,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-01/e03-stack.md",
+          "subject": "Overlapping draft windows",
+          "month": 1,
+          "slot": "stack"
+        },
+        {
+          "id": "nurture_abr_m01_e04",
+          "offset_days": 6,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-01/e04-cost.md",
+          "subject": "What drafts do to operating cash",
+          "month": 1,
+          "slot": "cost"
+        },
+        {
+          "id": "nurture_abr_m01_e05",
+          "offset_days": 8,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-01/e05-options.md",
+          "subject": "Draft-pressure review",
+          "month": 1,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_abr_m01_e06",
+          "offset_days": 10,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-01/e06-mistakes.md",
+          "subject": "Moving money in ways that trigger more retries",
+          "month": 1,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_abr_m01_e07",
+          "offset_days": 12,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-01/e07-soft_cta.md",
+          "subject": "Book breath-room time",
+          "month": 1,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_abr_m02_e01",
+          "offset_days": 35,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-02/e01-mechanics.md",
+          "subject": "ACH timing 101 for merchants",
+          "month": 2,
+          "slot": "mechanics"
+        },
+        {
+          "id": "nurture_abr_m02_e02",
+          "offset_days": 48,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-02/e02-triage.md",
+          "subject": "This week's draft map",
+          "month": 2,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_abr_m03_e01",
+          "offset_days": 65,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-03/e01-triage.md",
+          "subject": "This week's draft map",
+          "month": 3,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_abr_m03_e02",
+          "offset_days": 78,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-03/e02-soft_cta.md",
+          "subject": "Book breath-room time",
+          "month": 3,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_abr_m04_e01",
+          "offset_days": 95,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-04/e01-escalation.md",
+          "subject": "When drafts become legal events",
+          "month": 4,
+          "slot": "escalation"
+        },
+        {
+          "id": "nurture_abr_m04_e02",
+          "offset_days": 108,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-04/e02-options.md",
+          "subject": "Draft-pressure review",
+          "month": 4,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_abr_m05_e01",
+          "offset_days": 125,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-05/e01-literacy.md",
+          "subject": "Breath room vs settlement talk",
+          "month": 5,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_abr_m05_e02",
+          "offset_days": 138,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-05/e02-readiness.md",
+          "subject": "What we cover in breath-room time",
+          "month": 5,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_abr_m06_e01",
+          "offset_days": 155,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-06/e01-scenarios.md",
+          "subject": "Composite: NSF week in a service business",
+          "month": 6,
+          "slot": "scenarios"
+        },
+        {
+          "id": "nurture_abr_m06_e02",
+          "offset_days": 168,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-06/e02-literacy.md",
+          "subject": "Breath room vs settlement talk",
+          "month": 6,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_abr_m07_e01",
+          "offset_days": 185,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-07/e01-risk.md",
+          "subject": "Frozen account? Stop DIY",
+          "month": 7,
+          "slot": "risk"
+        },
+        {
+          "id": "nurture_abr_m07_e02",
+          "offset_days": 198,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-07/e02-mistakes.md",
+          "subject": "Moving money in ways that trigger more retries",
+          "month": 7,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_abr_m08_e01",
+          "offset_days": 215,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-08/e01-readiness.md",
+          "subject": "What we cover in breath-room time",
+          "month": 8,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_abr_m08_e02",
+          "offset_days": 228,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-08/e02-soft_cta.md",
+          "subject": "Book breath-room time",
+          "month": 8,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_abr_m09_e01",
+          "offset_days": 245,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-09/e01-trust.md",
+          "subject": "Still getting hit?",
+          "month": 9,
+          "slot": "trust"
+        },
+        {
+          "id": "nurture_abr_m09_e02",
+          "offset_days": 258,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-09/e02-options.md",
+          "subject": "Draft-pressure review",
+          "month": 9,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_abr_m10_e01",
+          "offset_days": 275,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-10/e01-commit.md",
+          "subject": "Breath-room \u2192 discovery handoff",
+          "month": 10,
+          "slot": "commit"
+        },
+        {
+          "id": "nurture_abr_m10_e02",
+          "offset_days": 288,
+          "brand_id": "abr",
+          "content_path": "content/nurture-by-brand/abr/month-10/e02-trust.md",
+          "subject": "Still getting hit?",
+          "month": 10,
+          "slot": "trust"
+        }
+      ]
+    },
+    "nurture-bdn": {
+      "name": "Business Debt Ninjas \u2014 10-month nurture",
+      "primary_goal": "booked_discovery_enrollment_call",
+      "brand_id": "bdn",
+      "cycle_member": true,
+      "cadence": {
+        "kickoff": "every_other_day_d0_to_d12",
+        "months_2_to_10": "2_per_month",
+        "total_touches": 25
+      },
+      "conversion_exit": {
+        "on": [
+          "booked_call",
+          "enrolled",
+          "convert_flag"
+        ],
+        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+      },
+      "touches": [
+        {
+          "id": "nurture_bdn_m01_e01",
+          "offset_days": 0,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-01/e01-welcome.md",
+          "subject": "Ninja brief: you're not crazy",
+          "month": 1,
+          "slot": "welcome"
+        },
+        {
+          "id": "nurture_bdn_m01_e02",
+          "offset_days": 2,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-01/e02-pain.md",
+          "subject": "The mid-week balance lie",
+          "month": 1,
+          "slot": "pain"
+        },
+        {
+          "id": "nurture_bdn_m01_e03",
+          "offset_days": 4,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-01/e03-stack.md",
+          "subject": "What \u201cstacked\u201d actually means",
+          "month": 1,
+          "slot": "stack"
+        },
+        {
+          "id": "nurture_bdn_m01_e04",
+          "offset_days": 6,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-01/e04-cost.md",
+          "subject": "Paying twice \u2014 the feeling vs. the math",
+          "month": 1,
+          "slot": "cost"
+        },
+        {
+          "id": "nurture_bdn_m01_e05",
+          "offset_days": 8,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-01/e05-options.md",
+          "subject": "Read this before you stack again",
+          "month": 1,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_bdn_m01_e06",
+          "offset_days": 10,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-01/e06-mistakes.md",
+          "subject": "Broker culture traps",
+          "month": 1,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_bdn_m01_e07",
+          "offset_days": 12,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-01/e07-soft_cta.md",
+          "subject": "Curious? Talk to a specialist",
+          "month": 1,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_bdn_m02_e01",
+          "offset_days": 35,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-02/e01-mechanics.md",
+          "subject": "Factor rate in plain English",
+          "month": 2,
+          "slot": "mechanics"
+        },
+        {
+          "id": "nurture_bdn_m02_e02",
+          "offset_days": 48,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-02/e02-triage.md",
+          "subject": "Urgent vs loud \u2014 a merchant drill",
+          "month": 2,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_bdn_m03_e01",
+          "offset_days": 65,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-03/e01-triage.md",
+          "subject": "Urgent vs loud \u2014 a merchant drill",
+          "month": 3,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_bdn_m03_e02",
+          "offset_days": 78,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-03/e02-soft_cta.md",
+          "subject": "Curious? Talk to a specialist",
+          "month": 3,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_bdn_m04_e01",
+          "offset_days": 95,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-04/e01-escalation.md",
+          "subject": "How escalation often shows up",
+          "month": 4,
+          "slot": "escalation"
+        },
+        {
+          "id": "nurture_bdn_m04_e02",
+          "offset_days": 108,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-04/e02-options.md",
+          "subject": "Read this before you stack again",
+          "month": 4,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_bdn_m05_e01",
+          "offset_days": 125,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-05/e01-literacy.md",
+          "subject": "Settlement literacy without the pitch",
+          "month": 5,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_bdn_m05_e02",
+          "offset_days": 138,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-05/e02-readiness.md",
+          "subject": "Myths that delay good decisions",
+          "month": 5,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_bdn_m06_e01",
+          "offset_days": 155,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-06/e01-scenarios.md",
+          "subject": "Composite: broker-stacked retail",
+          "month": 6,
+          "slot": "scenarios"
+        },
+        {
+          "id": "nurture_bdn_m06_e02",
+          "offset_days": 168,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-06/e02-literacy.md",
+          "subject": "Settlement literacy without the pitch",
+          "month": 6,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_bdn_m07_e01",
+          "offset_days": 185,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-07/e01-risk.md",
+          "subject": "When education ends and counsel begins",
+          "month": 7,
+          "slot": "risk"
+        },
+        {
+          "id": "nurture_bdn_m07_e02",
+          "offset_days": 198,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-07/e02-mistakes.md",
+          "subject": "Broker culture traps",
+          "month": 7,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_bdn_m08_e01",
+          "offset_days": 215,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-08/e01-readiness.md",
+          "subject": "Myths that delay good decisions",
+          "month": 8,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_bdn_m08_e02",
+          "offset_days": 228,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-08/e02-soft_cta.md",
+          "subject": "Curious? Talk to a specialist",
+          "month": 8,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_bdn_m09_e01",
+          "offset_days": 245,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-09/e01-trust.md",
+          "subject": "Second look without the shame",
+          "month": 9,
+          "slot": "trust"
+        },
+        {
+          "id": "nurture_bdn_m09_e02",
+          "offset_days": 258,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-09/e02-options.md",
+          "subject": "Read this before you stack again",
+          "month": 9,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_bdn_m10_e01",
+          "offset_days": 275,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-10/e01-commit.md",
+          "subject": "Ready for a human conversation?",
+          "month": 10,
+          "slot": "commit"
+        },
+        {
+          "id": "nurture_bdn_m10_e02",
+          "offset_days": 288,
+          "brand_id": "bdn",
+          "content_path": "content/nurture-by-brand/bdn/month-10/e02-trust.md",
+          "subject": "Second look without the shame",
+          "month": 10,
+          "slot": "trust"
+        }
+      ]
+    },
+    "nurture-ccc": {
+      "name": "Cashflow Clarity Co. \u2014 10-month nurture",
+      "primary_goal": "booked_discovery_enrollment_call",
+      "brand_id": "ccc",
+      "cycle_member": true,
+      "cadence": {
+        "kickoff": "every_other_day_d0_to_d12",
+        "months_2_to_10": "2_per_month",
+        "total_touches": 25
+      },
+      "conversion_exit": {
+        "on": [
+          "booked_call",
+          "enrolled",
+          "convert_flag"
+        ],
+        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+      },
+      "touches": [
+        {
+          "id": "nurture_ccc_m01_e01",
+          "offset_days": 0,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-01/e01-welcome.md",
+          "subject": "Clarity before commitment",
+          "month": 1,
+          "slot": "welcome"
+        },
+        {
+          "id": "nurture_ccc_m01_e02",
+          "offset_days": 2,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-01/e02-pain.md",
+          "subject": "Why your mid-week balance lies",
+          "month": 1,
+          "slot": "pain"
+        },
+        {
+          "id": "nurture_ccc_m01_e03",
+          "offset_days": 4,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-01/e03-stack.md",
+          "subject": "Stacking on a spreadsheet",
+          "month": 1,
+          "slot": "stack"
+        },
+        {
+          "id": "nurture_ccc_m01_e04",
+          "offset_days": 6,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-01/e04-cost.md",
+          "subject": "True cost sketch (illustrative)",
+          "month": 1,
+          "slot": "cost"
+        },
+        {
+          "id": "nurture_ccc_m01_e05",
+          "offset_days": 8,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-01/e05-options.md",
+          "subject": "Clarity session teaser",
+          "month": 1,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_ccc_m01_e06",
+          "offset_days": 10,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-01/e06-mistakes.md",
+          "subject": "Optimizing the wrong line item",
+          "month": 1,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_ccc_m01_e07",
+          "offset_days": 12,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-01/e07-soft_cta.md",
+          "subject": "Run your clarity session",
+          "month": 1,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_ccc_m02_e01",
+          "offset_days": 35,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-02/e01-mechanics.md",
+          "subject": "Holdbacks and effective cost",
+          "month": 2,
+          "slot": "mechanics"
+        },
+        {
+          "id": "nurture_ccc_m02_e02",
+          "offset_days": 48,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-02/e02-triage.md",
+          "subject": "Weekly cash picture under hardship",
+          "month": 2,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_ccc_m03_e01",
+          "offset_days": 65,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-03/e01-triage.md",
+          "subject": "Weekly cash picture under hardship",
+          "month": 3,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_ccc_m03_e02",
+          "offset_days": 78,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-03/e02-soft_cta.md",
+          "subject": "Run your clarity session",
+          "month": 3,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_ccc_m04_e01",
+          "offset_days": 95,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-04/e01-escalation.md",
+          "subject": "When numbers say escalate",
+          "month": 4,
+          "slot": "escalation"
+        },
+        {
+          "id": "nurture_ccc_m04_e02",
+          "offset_days": 108,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-04/e02-options.md",
+          "subject": "Clarity session teaser",
+          "month": 4,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_ccc_m05_e01",
+          "offset_days": 125,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-05/e01-literacy.md",
+          "subject": "Refinance vs settle \u2014 questions to ask",
+          "month": 5,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_ccc_m05_e02",
+          "offset_days": 138,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-05/e02-readiness.md",
+          "subject": "Clarity \u2192 fit questions",
+          "month": 5,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_ccc_m06_e01",
+          "offset_days": 155,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-06/e01-scenarios.md",
+          "subject": "Composite: clarity sheet for a multi-advance shop",
+          "month": 6,
+          "slot": "scenarios"
+        },
+        {
+          "id": "nurture_ccc_m06_e02",
+          "offset_days": 168,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-06/e02-literacy.md",
+          "subject": "Refinance vs settle \u2014 questions to ask",
+          "month": 6,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_ccc_m07_e01",
+          "offset_days": 185,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-07/e01-risk.md",
+          "subject": "Numbers can't replace counsel",
+          "month": 7,
+          "slot": "risk"
+        },
+        {
+          "id": "nurture_ccc_m07_e02",
+          "offset_days": 198,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-07/e02-mistakes.md",
+          "subject": "Optimizing the wrong line item",
+          "month": 7,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_ccc_m08_e01",
+          "offset_days": 215,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-08/e01-readiness.md",
+          "subject": "Clarity \u2192 fit questions",
+          "month": 8,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_ccc_m08_e02",
+          "offset_days": 228,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-08/e02-soft_cta.md",
+          "subject": "Run your clarity session",
+          "month": 8,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_ccc_m09_e01",
+          "offset_days": 245,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-09/e01-trust.md",
+          "subject": "If prior \u201caudits\u201d were sales pitches",
+          "month": 9,
+          "slot": "trust"
+        },
+        {
+          "id": "nurture_ccc_m09_e02",
+          "offset_days": 258,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-09/e02-options.md",
+          "subject": "Clarity session teaser",
+          "month": 9,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_ccc_m10_e01",
+          "offset_days": 275,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-10/e01-commit.md",
+          "subject": "Clarity session + options review",
+          "month": 10,
+          "slot": "commit"
+        },
+        {
+          "id": "nurture_ccc_m10_e02",
+          "offset_days": 288,
+          "brand_id": "ccc",
+          "content_path": "content/nurture-by-brand/ccc/month-10/e02-trust.md",
+          "subject": "If prior \u201caudits\u201d were sales pitches",
+          "month": 10,
+          "slot": "trust"
+        }
+      ]
+    },
+    "nurture-slc": {
+      "name": "Stack Literacy Co. \u2014 10-month nurture",
+      "primary_goal": "booked_discovery_enrollment_call",
+      "brand_id": "slc",
+      "cycle_member": true,
+      "cadence": {
+        "kickoff": "every_other_day_d0_to_d12",
+        "months_2_to_10": "2_per_month",
+        "total_touches": 25
+      },
+      "conversion_exit": {
+        "on": [
+          "booked_call",
+          "enrolled",
+          "convert_flag"
+        ],
+        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+      },
+      "touches": [
+        {
+          "id": "nurture_slc_m01_e01",
+          "offset_days": 0,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-01/e01-welcome.md",
+          "subject": "Stack Literacy \u2014 class is open",
+          "month": 1,
+          "slot": "welcome"
+        },
+        {
+          "id": "nurture_slc_m01_e02",
+          "offset_days": 2,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-01/e02-pain.md",
+          "subject": "The \u201cpaying twice\u201d feeling",
+          "month": 1,
+          "slot": "pain"
+        },
+        {
+          "id": "nurture_slc_m01_e03",
+          "offset_days": 4,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-01/e03-stack.md",
+          "subject": "Stacking mechanics literacy",
+          "month": 1,
+          "slot": "stack"
+        },
+        {
+          "id": "nurture_slc_m01_e04",
+          "offset_days": 6,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-01/e04-cost.md",
+          "subject": "Literacy on effective cost",
+          "month": 1,
+          "slot": "cost"
+        },
+        {
+          "id": "nurture_slc_m01_e05",
+          "offset_days": 8,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-01/e05-options.md",
+          "subject": "Literacy session teaser",
+          "month": 1,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_slc_m01_e06",
+          "offset_days": 10,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-01/e06-mistakes.md",
+          "subject": "Renewal language that hides a stack",
+          "month": 1,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_slc_m01_e07",
+          "offset_days": 12,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-01/e07-soft_cta.md",
+          "subject": "Book a literacy session",
+          "month": 1,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_slc_m02_e01",
+          "offset_days": 35,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-02/e01-mechanics.md",
+          "subject": "Holds, splits, and stack entries",
+          "month": 2,
+          "slot": "mechanics"
+        },
+        {
+          "id": "nurture_slc_m02_e02",
+          "offset_days": 48,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-02/e02-triage.md",
+          "subject": "Literacy under cash stress",
+          "month": 2,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_slc_m03_e01",
+          "offset_days": 65,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-03/e01-triage.md",
+          "subject": "Literacy under cash stress",
+          "month": 3,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_slc_m03_e02",
+          "offset_days": 78,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-03/e02-soft_cta.md",
+          "subject": "Book a literacy session",
+          "month": 3,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_slc_m04_e01",
+          "offset_days": 95,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-04/e01-escalation.md",
+          "subject": "When literacy isn't enough",
+          "month": 4,
+          "slot": "escalation"
+        },
+        {
+          "id": "nurture_slc_m04_e02",
+          "offset_days": 108,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-04/e02-options.md",
+          "subject": "Literacy session teaser",
+          "month": 4,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_slc_m05_e01",
+          "offset_days": 125,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-05/e01-literacy.md",
+          "subject": "Settlement words merchants confuse",
+          "month": 5,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_slc_m05_e02",
+          "offset_days": 138,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-05/e02-readiness.md",
+          "subject": "Literacy \u2192 options review",
+          "month": 5,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_slc_m06_e01",
+          "offset_days": 155,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-06/e01-scenarios.md",
+          "subject": "Composite: stack literacy for a multi-advance shop",
+          "month": 6,
+          "slot": "scenarios"
+        },
+        {
+          "id": "nurture_slc_m06_e02",
+          "offset_days": 168,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-06/e02-literacy.md",
+          "subject": "Settlement words merchants confuse",
+          "month": 6,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_slc_m07_e01",
+          "offset_days": 185,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-07/e01-risk.md",
+          "subject": "Contract words that imply PG heat",
+          "month": 7,
+          "slot": "risk"
+        },
+        {
+          "id": "nurture_slc_m07_e02",
+          "offset_days": 198,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-07/e02-mistakes.md",
+          "subject": "Renewal language that hides a stack",
+          "month": 7,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_slc_m08_e01",
+          "offset_days": 215,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-08/e01-readiness.md",
+          "subject": "Literacy \u2192 options review",
+          "month": 8,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_slc_m08_e02",
+          "offset_days": 228,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-08/e02-soft_cta.md",
+          "subject": "Book a literacy session",
+          "month": 8,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_slc_m09_e01",
+          "offset_days": 245,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-09/e01-trust.md",
+          "subject": "If education was just a sales funnel before",
+          "month": 9,
+          "slot": "trust"
+        },
+        {
+          "id": "nurture_slc_m09_e02",
+          "offset_days": 258,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-09/e02-options.md",
+          "subject": "Literacy session teaser",
+          "month": 9,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_slc_m10_e01",
+          "offset_days": 275,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-10/e01-commit.md",
+          "subject": "Literacy + options review",
+          "month": 10,
+          "slot": "commit"
+        },
+        {
+          "id": "nurture_slc_m10_e02",
+          "offset_days": 288,
+          "brand_id": "slc",
+          "content_path": "content/nurture-by-brand/slc/month-10/e02-trust.md",
+          "subject": "If education was just a sales funnel before",
+          "month": 10,
+          "slot": "trust"
+        }
+      ]
+    },
+    "nurture-aab": {
+      "name": "Advance Alternatives Brief \u2014 10-month nurture",
+      "primary_goal": "booked_discovery_enrollment_call",
+      "brand_id": "aab",
+      "cycle_member": true,
+      "cadence": {
+        "kickoff": "every_other_day_d0_to_d12",
+        "months_2_to_10": "2_per_month",
+        "total_touches": 25
+      },
+      "conversion_exit": {
+        "on": [
+          "booked_call",
+          "enrolled",
+          "convert_flag"
+        ],
+        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+      },
+      "touches": [
+        {
+          "id": "nurture_aab_m01_e01",
+          "offset_days": 0,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-01/e01-welcome.md",
+          "subject": "Before you take another advance",
+          "month": 1,
+          "slot": "welcome"
+        },
+        {
+          "id": "nurture_aab_m01_e02",
+          "offset_days": 2,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-01/e02-pain.md",
+          "subject": "Quick capital fog",
+          "month": 1,
+          "slot": "pain"
+        },
+        {
+          "id": "nurture_aab_m01_e03",
+          "offset_days": 4,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-01/e03-stack.md",
+          "subject": "Why \u201cone more\u201d feels rational",
+          "month": 1,
+          "slot": "stack"
+        },
+        {
+          "id": "nurture_aab_m01_e04",
+          "offset_days": 6,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-01/e04-cost.md",
+          "subject": "Cost of the next advance (illustrative)",
+          "month": 1,
+          "slot": "cost"
+        },
+        {
+          "id": "nurture_aab_m01_e05",
+          "offset_days": 8,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-01/e05-options.md",
+          "subject": "Fund vs wait vs other path",
+          "month": 1,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_aab_m01_e06",
+          "offset_days": 10,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-01/e06-mistakes.md",
+          "subject": "Signing under NSF panic",
+          "month": 1,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_aab_m01_e07",
+          "offset_days": 12,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-01/e07-soft_cta.md",
+          "subject": "Book an alternatives brief",
+          "month": 1,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_aab_m02_e01",
+          "offset_days": 35,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-02/e01-mechanics.md",
+          "subject": "Reading a hard-money offer",
+          "month": 2,
+          "slot": "mechanics"
+        },
+        {
+          "id": "nurture_aab_m02_e02",
+          "offset_days": 48,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-02/e02-triage.md",
+          "subject": "Is this a capital problem or an ACH problem?",
+          "month": 2,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_aab_m03_e01",
+          "offset_days": 65,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-03/e01-triage.md",
+          "subject": "Is this a capital problem or an ACH problem?",
+          "month": 3,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_aab_m03_e02",
+          "offset_days": 78,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-03/e02-soft_cta.md",
+          "subject": "Book an alternatives brief",
+          "month": 3,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_aab_m04_e01",
+          "offset_days": 95,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-04/e01-escalation.md",
+          "subject": "When another advance won't fix escalation",
+          "month": 4,
+          "slot": "escalation"
+        },
+        {
+          "id": "nurture_aab_m04_e02",
+          "offset_days": 108,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-04/e02-options.md",
+          "subject": "Fund vs wait vs other path",
+          "month": 4,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_aab_m05_e01",
+          "offset_days": 125,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-05/e01-literacy.md",
+          "subject": "Refinance vs stack vs settle \u2014 question set",
+          "month": 5,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_aab_m05_e02",
+          "offset_days": 138,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-05/e02-readiness.md",
+          "subject": "Decision checklist before any new capital",
+          "month": 5,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_aab_m06_e01",
+          "offset_days": 155,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-06/e01-scenarios.md",
+          "subject": "Composite: owner offered a \u201csave\u201d refinance",
+          "month": 6,
+          "slot": "scenarios"
+        },
+        {
+          "id": "nurture_aab_m06_e02",
+          "offset_days": 168,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-06/e02-literacy.md",
+          "subject": "Refinance vs stack vs settle \u2014 question set",
+          "month": 6,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_aab_m07_e01",
+          "offset_days": 185,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-07/e01-risk.md",
+          "subject": "Contracts that quietly add PG heat",
+          "month": 7,
+          "slot": "risk"
+        },
+        {
+          "id": "nurture_aab_m07_e02",
+          "offset_days": 198,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-07/e02-mistakes.md",
+          "subject": "Signing under NSF panic",
+          "month": 7,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_aab_m08_e01",
+          "offset_days": 215,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-08/e01-readiness.md",
+          "subject": "Decision checklist before any new capital",
+          "month": 8,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_aab_m08_e02",
+          "offset_days": 228,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-08/e02-soft_cta.md",
+          "subject": "Book an alternatives brief",
+          "month": 8,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_aab_m09_e01",
+          "offset_days": 245,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-09/e01-trust.md",
+          "subject": "If the last broker oversold ease",
+          "month": 9,
+          "slot": "trust"
+        },
+        {
+          "id": "nurture_aab_m09_e02",
+          "offset_days": 258,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-09/e02-options.md",
+          "subject": "Fund vs wait vs other path",
+          "month": 9,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_aab_m10_e01",
+          "offset_days": 275,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-10/e01-commit.md",
+          "subject": "Alternatives brief \u2192 options handoff",
+          "month": 10,
+          "slot": "commit"
+        },
+        {
+          "id": "nurture_aab_m10_e02",
+          "offset_days": 288,
+          "brand_id": "aab",
+          "content_path": "content/nurture-by-brand/aab/month-10/e02-trust.md",
+          "subject": "If the last broker oversold ease",
+          "month": 10,
+          "slot": "trust"
+        }
+      ]
+    },
+    "nurture-spa": {
+      "name": "Settlement Path Advisors \u2014 10-month nurture",
+      "primary_goal": "booked_discovery_enrollment_call",
+      "brand_id": "spa",
+      "cycle_member": true,
+      "cadence": {
+        "kickoff": "every_other_day_d0_to_d12",
+        "months_2_to_10": "2_per_month",
+        "total_touches": 25
+      },
+      "conversion_exit": {
+        "on": [
+          "booked_call",
+          "enrolled",
+          "convert_flag"
+        ],
+        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+      },
+      "touches": [
+        {
+          "id": "nurture_spa_m01_e01",
+          "offset_days": 0,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-01/e01-welcome.md",
+          "subject": "Path, not panic",
+          "month": 1,
+          "slot": "welcome"
+        },
+        {
+          "id": "nurture_spa_m01_e02",
+          "offset_days": 2,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-01/e02-pain.md",
+          "subject": "Pressure without a map",
+          "month": 1,
+          "slot": "pain"
+        },
+        {
+          "id": "nurture_spa_m01_e03",
+          "offset_days": 4,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-01/e03-stack.md",
+          "subject": "Stacked path checkpoints",
+          "month": 1,
+          "slot": "stack"
+        },
+        {
+          "id": "nurture_spa_m01_e04",
+          "offset_days": 6,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-01/e04-cost.md",
+          "subject": "Tradeoffs on the path",
+          "month": 1,
+          "slot": "cost"
+        },
+        {
+          "id": "nurture_spa_m01_e05",
+          "offset_days": 8,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-01/e05-options.md",
+          "subject": "Options map teaser",
+          "month": 1,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_spa_m01_e06",
+          "offset_days": 10,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-01/e06-mistakes.md",
+          "subject": "Skipping checkpoints",
+          "month": 1,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_spa_m01_e07",
+          "offset_days": 12,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-01/e07-soft_cta.md",
+          "subject": "Book a path review",
+          "month": 1,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_spa_m02_e01",
+          "offset_days": 35,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-02/e01-mechanics.md",
+          "subject": "How settlement paths are often sequenced",
+          "month": 2,
+          "slot": "mechanics"
+        },
+        {
+          "id": "nurture_spa_m02_e02",
+          "offset_days": 48,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-02/e02-triage.md",
+          "subject": "Path vs. crisis fork",
+          "month": 2,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_spa_m03_e01",
+          "offset_days": 65,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-03/e01-triage.md",
+          "subject": "Path vs. crisis fork",
+          "month": 3,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_spa_m03_e02",
+          "offset_days": 78,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-03/e02-soft_cta.md",
+          "subject": "Book a path review",
+          "month": 3,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_spa_m04_e01",
+          "offset_days": 95,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-04/e01-escalation.md",
+          "subject": "Path checkpoints under creditor heat",
+          "month": 4,
+          "slot": "escalation"
+        },
+        {
+          "id": "nurture_spa_m04_e02",
+          "offset_days": 108,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-04/e02-options.md",
+          "subject": "Options map teaser",
+          "month": 4,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_spa_m05_e01",
+          "offset_days": 125,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-05/e01-literacy.md",
+          "subject": "What settlement is \u2014 and isn't",
+          "month": 5,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_spa_m05_e02",
+          "offset_days": 138,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-05/e02-readiness.md",
+          "subject": "Readiness checklist",
+          "month": 5,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_spa_m06_e01",
+          "offset_days": 155,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-06/e01-scenarios.md",
+          "subject": "Composite: path review for a service business",
+          "month": 6,
+          "slot": "scenarios"
+        },
+        {
+          "id": "nurture_spa_m06_e02",
+          "offset_days": 168,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-06/e02-literacy.md",
+          "subject": "What settlement is \u2014 and isn't",
+          "month": 6,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_spa_m07_e01",
+          "offset_days": 185,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-07/e01-risk.md",
+          "subject": "Legal fork on the path",
+          "month": 7,
+          "slot": "risk"
+        },
+        {
+          "id": "nurture_spa_m07_e02",
+          "offset_days": 198,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-07/e02-mistakes.md",
+          "subject": "Skipping checkpoints",
+          "month": 7,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_spa_m08_e01",
+          "offset_days": 215,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-08/e01-readiness.md",
+          "subject": "Readiness checklist",
+          "month": 8,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_spa_m08_e02",
+          "offset_days": 228,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-08/e02-soft_cta.md",
+          "subject": "Book a path review",
+          "month": 8,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_spa_m09_e01",
+          "offset_days": 245,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-09/e01-trust.md",
+          "subject": "Burned before? Trust rebuild",
+          "month": 9,
+          "slot": "trust"
+        },
+        {
+          "id": "nurture_spa_m09_e02",
+          "offset_days": 258,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-09/e02-options.md",
+          "subject": "Options map teaser",
+          "month": 9,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_spa_m10_e01",
+          "offset_days": 275,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-10/e01-commit.md",
+          "subject": "Enrollment-adjacent path review",
+          "month": 10,
+          "slot": "commit"
+        },
+        {
+          "id": "nurture_spa_m10_e02",
+          "offset_days": 288,
+          "brand_id": "spa",
+          "content_path": "content/nurture-by-brand/spa/month-10/e02-trust.md",
+          "subject": "Burned before? Trust rebuild",
+          "month": 10,
+          "slot": "trust"
+        }
+      ]
+    },
+    "nurture-bds": {
+      "name": "Business Debt Solutions \u2014 10-month nurture",
+      "primary_goal": "booked_discovery_enrollment_call",
+      "brand_id": "bds",
+      "cycle_member": true,
+      "cadence": {
+        "kickoff": "every_other_day_d0_to_d12",
+        "months_2_to_10": "2_per_month",
+        "total_touches": 25
+      },
+      "conversion_exit": {
+        "on": [
+          "booked_call",
+          "enrolled",
+          "convert_flag"
+        ],
+        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+      },
+      "touches": [
+        {
+          "id": "nurture_bds_m01_e01",
+          "offset_days": 0,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-01/e01-welcome.md",
+          "subject": "Welcome from Business Debt Solutions",
+          "month": 1,
+          "slot": "welcome"
+        },
+        {
+          "id": "nurture_bds_m01_e02",
+          "offset_days": 2,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-01/e02-pain.md",
+          "subject": "Daily ACH is eating the week",
+          "month": 1,
+          "slot": "pain"
+        },
+        {
+          "id": "nurture_bds_m01_e03",
+          "offset_days": 4,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-01/e03-stack.md",
+          "subject": "Stacked advances, one bank account",
+          "month": 1,
+          "slot": "stack"
+        },
+        {
+          "id": "nurture_bds_m01_e04",
+          "offset_days": 6,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-01/e04-cost.md",
+          "subject": "Sketching true cost (illustrative)",
+          "month": 1,
+          "slot": "cost"
+        },
+        {
+          "id": "nurture_bds_m01_e05",
+          "offset_days": 8,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-01/e05-options.md",
+          "subject": "Discovery exists when you're ready",
+          "month": 1,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_bds_m01_e06",
+          "offset_days": 10,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-01/e06-mistakes.md",
+          "subject": "Don't ghost funders in a panic",
+          "month": 1,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_bds_m01_e07",
+          "offset_days": 12,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-01/e07-soft_cta.md",
+          "subject": "A discovery call \u2014 only when you're ready",
+          "month": 1,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_bds_m02_e01",
+          "offset_days": 35,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-02/e01-mechanics.md",
+          "subject": "Factor rate in merchant English",
+          "month": 2,
+          "slot": "mechanics"
+        },
+        {
+          "id": "nurture_bds_m02_e02",
+          "offset_days": 48,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-02/e02-triage.md",
+          "subject": "Stabilize core ops first",
+          "month": 2,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_bds_m03_e01",
+          "offset_days": 65,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-03/e01-triage.md",
+          "subject": "Stabilize core ops first",
+          "month": 3,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_bds_m03_e02",
+          "offset_days": 78,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-03/e02-soft_cta.md",
+          "subject": "A discovery call \u2014 only when you're ready",
+          "month": 3,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_bds_m04_e01",
+          "offset_days": 95,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-04/e01-escalation.md",
+          "subject": "When funders turn up the heat",
+          "month": 4,
+          "slot": "escalation"
+        },
+        {
+          "id": "nurture_bds_m04_e02",
+          "offset_days": 108,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-04/e02-options.md",
+          "subject": "Discovery exists when you're ready",
+          "month": 4,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_bds_m05_e01",
+          "offset_days": 125,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-05/e01-literacy.md",
+          "subject": "What settlement is \u2014 and isn't",
+          "month": 5,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_bds_m05_e02",
+          "offset_days": 138,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-05/e02-readiness.md",
+          "subject": "Fit questions before enrollment",
+          "month": 5,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_bds_m06_e01",
+          "offset_days": 155,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-06/e01-scenarios.md",
+          "subject": "Composite: multi-advance retail stack",
+          "month": 6,
+          "slot": "scenarios"
+        },
+        {
+          "id": "nurture_bds_m06_e02",
+          "offset_days": 168,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-06/e02-literacy.md",
+          "subject": "What settlement is \u2014 and isn't",
+          "month": 6,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_bds_m07_e01",
+          "offset_days": 185,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-07/e01-risk.md",
+          "subject": "If a suit shows up, pause and get counsel",
+          "month": 7,
+          "slot": "risk"
+        },
+        {
+          "id": "nurture_bds_m07_e02",
+          "offset_days": 198,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-07/e02-mistakes.md",
+          "subject": "Don't ghost funders in a panic",
+          "month": 7,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_bds_m08_e01",
+          "offset_days": 215,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-08/e01-readiness.md",
+          "subject": "Fit questions before enrollment",
+          "month": 8,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_bds_m08_e02",
+          "offset_days": 228,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-08/e02-soft_cta.md",
+          "subject": "A discovery call \u2014 only when you're ready",
+          "month": 8,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_bds_m09_e01",
+          "offset_days": 245,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-09/e01-trust.md",
+          "subject": "If you've been burned before",
+          "month": 9,
+          "slot": "trust"
+        },
+        {
+          "id": "nurture_bds_m09_e02",
+          "offset_days": 258,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-09/e02-options.md",
+          "subject": "Discovery exists when you're ready",
+          "month": 9,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_bds_m10_e01",
+          "offset_days": 275,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-10/e01-commit.md",
+          "subject": "Enrollment-oriented discovery",
+          "month": 10,
+          "slot": "commit"
+        },
+        {
+          "id": "nurture_bds_m10_e02",
+          "offset_days": 288,
+          "brand_id": "bds",
+          "content_path": "content/nurture-by-brand/bds/month-10/e02-trust.md",
+          "subject": "If you've been burned before",
+          "month": 10,
+          "slot": "trust"
+        }
+      ]
+    },
+    "nurture-mcb": {
+      "name": "Merchant Crisis Brief \u2014 10-month nurture",
+      "primary_goal": "booked_discovery_enrollment_call",
+      "brand_id": "mcb",
+      "cycle_member": true,
+      "cadence": {
+        "kickoff": "every_other_day_d0_to_d12",
+        "months_2_to_10": "2_per_month",
+        "total_touches": 25
+      },
+      "conversion_exit": {
+        "on": [
+          "booked_call",
+          "enrolled",
+          "convert_flag"
+        ],
+        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+      },
+      "touches": [
+        {
+          "id": "nurture_mcb_m01_e01",
+          "offset_days": 0,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-01/e01-welcome.md",
+          "subject": "Crisis Brief \u2014 this week\u2019s fire",
+          "month": 1,
+          "slot": "welcome"
+        },
+        {
+          "id": "nurture_mcb_m01_e02",
+          "offset_days": 2,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-01/e02-pain.md",
+          "subject": "Urgent vs loud in a crisis window",
+          "month": 1,
+          "slot": "pain"
+        },
+        {
+          "id": "nurture_mcb_m01_e03",
+          "offset_days": 4,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-01/e03-stack.md",
+          "subject": "Stacked drafts in a crisis week",
+          "month": 1,
+          "slot": "stack"
+        },
+        {
+          "id": "nurture_mcb_m01_e04",
+          "offset_days": 6,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-01/e04-cost.md",
+          "subject": "Cost of waiting 72 more hours",
+          "month": 1,
+          "slot": "cost"
+        },
+        {
+          "id": "nurture_mcb_m01_e05",
+          "offset_days": 8,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-01/e05-options.md",
+          "subject": "Crisis brief booking",
+          "month": 1,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_mcb_m01_e06",
+          "offset_days": 10,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-01/e06-mistakes.md",
+          "subject": "Panic communications",
+          "month": 1,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_mcb_m01_e07",
+          "offset_days": 12,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-01/e07-soft_cta.md",
+          "subject": "Book a crisis brief",
+          "month": 1,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_mcb_m02_e01",
+          "offset_days": 35,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-02/e01-mechanics.md",
+          "subject": "Crisis \u2260 mechanics class",
+          "month": 2,
+          "slot": "mechanics"
+        },
+        {
+          "id": "nurture_mcb_m02_e02",
+          "offset_days": 48,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-02/e02-triage.md",
+          "subject": "72-hour plan",
+          "month": 2,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_mcb_m03_e01",
+          "offset_days": 65,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-03/e01-triage.md",
+          "subject": "72-hour plan",
+          "month": 3,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_mcb_m03_e02",
+          "offset_days": 78,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-03/e02-soft_cta.md",
+          "subject": "Book a crisis brief",
+          "month": 3,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_mcb_m04_e01",
+          "offset_days": 95,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-04/e01-escalation.md",
+          "subject": "Legal tripwire \u2192 DAG",
+          "month": 4,
+          "slot": "escalation"
+        },
+        {
+          "id": "nurture_mcb_m04_e02",
+          "offset_days": 108,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-04/e02-options.md",
+          "subject": "Crisis brief booking",
+          "month": 4,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_mcb_m05_e01",
+          "offset_days": 125,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-05/e01-literacy.md",
+          "subject": "After the fire: literacy later",
+          "month": 5,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_mcb_m05_e02",
+          "offset_days": 138,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-05/e02-readiness.md",
+          "subject": "What triage needs from you",
+          "month": 5,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_mcb_m06_e01",
+          "offset_days": 155,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-06/e01-scenarios.md",
+          "subject": "Composite: owner with suit threat this week",
+          "month": 6,
+          "slot": "scenarios"
+        },
+        {
+          "id": "nurture_mcb_m06_e02",
+          "offset_days": 168,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-06/e02-literacy.md",
+          "subject": "After the fire: literacy later",
+          "month": 6,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_mcb_m07_e01",
+          "offset_days": 185,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-07/e01-risk.md",
+          "subject": "Account freeze / levy language",
+          "month": 7,
+          "slot": "risk"
+        },
+        {
+          "id": "nurture_mcb_m07_e02",
+          "offset_days": 198,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-07/e02-mistakes.md",
+          "subject": "Panic communications",
+          "month": 7,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_mcb_m08_e01",
+          "offset_days": 215,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-08/e01-readiness.md",
+          "subject": "What triage needs from you",
+          "month": 8,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_mcb_m08_e02",
+          "offset_days": 228,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-08/e02-soft_cta.md",
+          "subject": "Book a crisis brief",
+          "month": 8,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_mcb_m09_e01",
+          "offset_days": 245,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-09/e01-trust.md",
+          "subject": "If last \u201chelp\u201d vanished in a crisis",
+          "month": 9,
+          "slot": "trust"
+        },
+        {
+          "id": "nurture_mcb_m09_e02",
+          "offset_days": 258,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-09/e02-options.md",
+          "subject": "Crisis brief booking",
+          "month": 9,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_mcb_m10_e01",
+          "offset_days": 275,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-10/e01-commit.md",
+          "subject": "Crisis brief \u2192 next stable step",
+          "month": 10,
+          "slot": "commit"
+        },
+        {
+          "id": "nurture_mcb_m10_e02",
+          "offset_days": 288,
+          "brand_id": "mcb",
+          "content_path": "content/nurture-by-brand/mcb/month-10/e02-trust.md",
+          "subject": "If last \u201chelp\u201d vanished in a crisis",
+          "month": 10,
+          "slot": "trust"
+        }
+      ]
+    },
+    "nurture-lrl": {
+      "name": "Ledger Reset Lab \u2014 10-month nurture",
+      "primary_goal": "booked_discovery_enrollment_call",
+      "brand_id": "lrl",
+      "cycle_member": true,
+      "cadence": {
+        "kickoff": "every_other_day_d0_to_d12",
+        "months_2_to_10": "2_per_month",
+        "total_touches": 25
+      },
+      "conversion_exit": {
+        "on": [
+          "booked_call",
+          "enrolled",
+          "convert_flag"
+        ],
+        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+      },
+      "touches": [
+        {
+          "id": "nurture_lrl_m01_e01",
+          "offset_days": 0,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-01/e01-welcome.md",
+          "subject": "Lab open \u2014 experiment before you lock",
+          "month": 1,
+          "slot": "welcome"
+        },
+        {
+          "id": "nurture_lrl_m01_e02",
+          "offset_days": 2,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-01/e02-pain.md",
+          "subject": "Ledger under ACH stress",
+          "month": 1,
+          "slot": "pain"
+        },
+        {
+          "id": "nurture_lrl_m01_e03",
+          "offset_days": 4,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-01/e03-stack.md",
+          "subject": "Stacking as a lab problem",
+          "month": 1,
+          "slot": "stack"
+        },
+        {
+          "id": "nurture_lrl_m01_e04",
+          "offset_days": 6,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-01/e04-cost.md",
+          "subject": "Scenario cost without fake stats",
+          "month": 1,
+          "slot": "cost"
+        },
+        {
+          "id": "nurture_lrl_m01_e05",
+          "offset_days": 8,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-01/e05-options.md",
+          "subject": "Reset session teaser",
+          "month": 1,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_lrl_m01_e06",
+          "offset_days": 10,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-01/e06-mistakes.md",
+          "subject": "Locking a plan on day-one emotion",
+          "month": 1,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_lrl_m01_e07",
+          "offset_days": 12,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-01/e07-soft_cta.md",
+          "subject": "Book a lab walkthrough",
+          "month": 1,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_lrl_m02_e01",
+          "offset_days": 35,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-02/e01-mechanics.md",
+          "subject": "Modeling factor cost in scenarios",
+          "month": 2,
+          "slot": "mechanics"
+        },
+        {
+          "id": "nurture_lrl_m02_e02",
+          "offset_days": 48,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-02/e02-triage.md",
+          "subject": "Scenario A status quo vs B structured path",
+          "month": 2,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_lrl_m03_e01",
+          "offset_days": 65,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-03/e01-triage.md",
+          "subject": "Scenario A status quo vs B structured path",
+          "month": 3,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_lrl_m03_e02",
+          "offset_days": 78,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-03/e02-soft_cta.md",
+          "subject": "Book a lab walkthrough",
+          "month": 3,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_lrl_m04_e01",
+          "offset_days": 95,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-04/e01-escalation.md",
+          "subject": "When the lab says pause for counsel",
+          "month": 4,
+          "slot": "escalation"
+        },
+        {
+          "id": "nurture_lrl_m04_e02",
+          "offset_days": 108,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-04/e02-options.md",
+          "subject": "Reset session teaser",
+          "month": 4,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_lrl_m05_e01",
+          "offset_days": 125,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-05/e01-literacy.md",
+          "subject": "Settlement as a ledger redesign",
+          "month": 5,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_lrl_m05_e02",
+          "offset_days": 138,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-05/e02-readiness.md",
+          "subject": "Which scenario are you ready to test?",
+          "month": 5,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_lrl_m06_e01",
+          "offset_days": 155,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-06/e01-scenarios.md",
+          "subject": "Composite: multi-advance restaurant lab",
+          "month": 6,
+          "slot": "scenarios"
+        },
+        {
+          "id": "nurture_lrl_m06_e02",
+          "offset_days": 168,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-06/e02-literacy.md",
+          "subject": "Settlement as a ledger redesign",
+          "month": 6,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_lrl_m07_e01",
+          "offset_days": 185,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-07/e01-risk.md",
+          "subject": "PG risk in the model",
+          "month": 7,
+          "slot": "risk"
+        },
+        {
+          "id": "nurture_lrl_m07_e02",
+          "offset_days": 198,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-07/e02-mistakes.md",
+          "subject": "Locking a plan on day-one emotion",
+          "month": 7,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_lrl_m08_e01",
+          "offset_days": 215,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-08/e01-readiness.md",
+          "subject": "Which scenario are you ready to test?",
+          "month": 8,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_lrl_m08_e02",
+          "offset_days": 228,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-08/e02-soft_cta.md",
+          "subject": "Book a lab walkthrough",
+          "month": 8,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_lrl_m09_e01",
+          "offset_days": 245,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-09/e01-trust.md",
+          "subject": "Prior plans that ignored the ledger",
+          "month": 9,
+          "slot": "trust"
+        },
+        {
+          "id": "nurture_lrl_m09_e02",
+          "offset_days": 258,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-09/e02-options.md",
+          "subject": "Reset session teaser",
+          "month": 9,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_lrl_m10_e01",
+          "offset_days": 275,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-10/e01-commit.md",
+          "subject": "Lab walkthrough \u2192 human decision",
+          "month": 10,
+          "slot": "commit"
+        },
+        {
+          "id": "nurture_lrl_m10_e02",
+          "offset_days": 288,
+          "brand_id": "lrl",
+          "content_path": "content/nurture-by-brand/lrl/month-10/e02-trust.md",
+          "subject": "Prior plans that ignored the ledger",
+          "month": 10,
+          "slot": "trust"
+        }
+      ]
+    },
+    "nurture-dag": {
+      "name": "DAG Law \u2014 10-month nurture",
+      "primary_goal": "booked_discovery_enrollment_call",
+      "brand_id": "dag",
+      "cycle_member": true,
+      "cadence": {
+        "kickoff": "every_other_day_d0_to_d12",
+        "months_2_to_10": "2_per_month",
+        "total_touches": 25
+      },
+      "conversion_exit": {
+        "on": [
+          "booked_call",
+          "enrolled",
+          "convert_flag"
+        ],
+        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+      },
+      "touches": [
+        {
+          "id": "nurture_dag_m01_e01",
+          "offset_days": 0,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-01/e01-welcome.md",
+          "subject": "A measured introduction from DAG Law",
+          "month": 1,
+          "slot": "welcome"
+        },
+        {
+          "id": "nurture_dag_m01_e02",
+          "offset_days": 2,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-01/e02-pain.md",
+          "subject": "When pressure becomes a legal question",
+          "month": 1,
+          "slot": "pain"
+        },
+        {
+          "id": "nurture_dag_m01_e03",
+          "offset_days": 4,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-01/e03-stack.md",
+          "subject": "Stacked obligations \u2014 informational overview",
+          "month": 1,
+          "slot": "stack"
+        },
+        {
+          "id": "nurture_dag_m01_e04",
+          "offset_days": 6,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-01/e04-cost.md",
+          "subject": "Cost is not only the factor rate",
+          "month": 1,
+          "slot": "cost"
+        },
+        {
+          "id": "nurture_dag_m01_e05",
+          "offset_days": 8,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-01/e05-options.md",
+          "subject": "Counsel vs. non-counsel paths",
+          "month": 1,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_dag_m01_e06",
+          "offset_days": 10,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-01/e06-mistakes.md",
+          "subject": "Panic replies that can hurt your position",
+          "month": 1,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_dag_m01_e07",
+          "offset_days": 12,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-01/e07-soft_cta.md",
+          "subject": "Consultation when the facts warrant it",
+          "month": 1,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_dag_m02_e01",
+          "offset_days": 35,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-02/e01-mechanics.md",
+          "subject": "MCA contracts \u2014 what counsel often reviews",
+          "month": 2,
+          "slot": "mechanics"
+        },
+        {
+          "id": "nurture_dag_m02_e02",
+          "offset_days": 48,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-02/e02-triage.md",
+          "subject": "Urgent legal events vs. loud collection noise",
+          "month": 2,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_dag_m03_e01",
+          "offset_days": 65,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-03/e01-triage.md",
+          "subject": "Urgent legal events vs. loud collection noise",
+          "month": 3,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_dag_m03_e02",
+          "offset_days": 78,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-03/e02-soft_cta.md",
+          "subject": "Consultation when the facts warrant it",
+          "month": 3,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_dag_m04_e01",
+          "offset_days": 95,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-04/e01-escalation.md",
+          "subject": "How escalation often appears in the file",
+          "month": 4,
+          "slot": "escalation"
+        },
+        {
+          "id": "nurture_dag_m04_e02",
+          "offset_days": 108,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-04/e02-options.md",
+          "subject": "Counsel vs. non-counsel paths",
+          "month": 4,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_dag_m05_e01",
+          "offset_days": 125,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-05/e01-literacy.md",
+          "subject": "Settlement talk vs. legal strategy",
+          "month": 5,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_dag_m05_e02",
+          "offset_days": 138,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-05/e02-readiness.md",
+          "subject": "What to bring to a consultation",
+          "month": 5,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_dag_m06_e01",
+          "offset_days": 155,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-06/e01-scenarios.md",
+          "subject": "Composite: owner with PG + active suit risk",
+          "month": 6,
+          "slot": "scenarios"
+        },
+        {
+          "id": "nurture_dag_m06_e02",
+          "offset_days": 168,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-06/e02-literacy.md",
+          "subject": "Settlement talk vs. legal strategy",
+          "month": 6,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_dag_m07_e01",
+          "offset_days": 185,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-07/e01-risk.md",
+          "subject": "Personal guaranty \u2014 informational overview",
+          "month": 7,
+          "slot": "risk"
+        },
+        {
+          "id": "nurture_dag_m07_e02",
+          "offset_days": 198,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-07/e02-mistakes.md",
+          "subject": "Panic replies that can hurt your position",
+          "month": 7,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_dag_m08_e01",
+          "offset_days": 215,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-08/e01-readiness.md",
+          "subject": "What to bring to a consultation",
+          "month": 8,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_dag_m08_e02",
+          "offset_days": 228,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-08/e02-soft_cta.md",
+          "subject": "Consultation when the facts warrant it",
+          "month": 8,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_dag_m09_e01",
+          "offset_days": 245,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-09/e01-trust.md",
+          "subject": "Burned by aggressive collectors?",
+          "month": 9,
+          "slot": "trust"
+        },
+        {
+          "id": "nurture_dag_m09_e02",
+          "offset_days": 258,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-09/e02-options.md",
+          "subject": "Counsel vs. non-counsel paths",
+          "month": 9,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_dag_m10_e01",
+          "offset_days": 275,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-10/e01-commit.md",
+          "subject": "If legal pressure is active, talk to counsel",
+          "month": 10,
+          "slot": "commit"
+        },
+        {
+          "id": "nurture_dag_m10_e02",
+          "offset_days": 288,
+          "brand_id": "dag",
+          "content_path": "content/nurture-by-brand/dag/month-10/e02-trust.md",
+          "subject": "Burned by aggressive collectors?",
+          "month": 10,
+          "slot": "trust"
+        }
+      ]
+    },
+    "nurture-fintrilo": {
+      "name": "Fintrilo \u2014 10-month nurture",
+      "primary_goal": "booked_discovery_enrollment_call",
+      "brand_id": "fintrilo",
+      "cycle_member": true,
+      "cadence": {
+        "kickoff": "every_other_day_d0_to_d12",
+        "months_2_to_10": "2_per_month",
+        "total_touches": 25
+      },
+      "conversion_exit": {
+        "on": [
+          "booked_call",
+          "enrolled",
+          "convert_flag"
+        ],
+        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+      },
+      "touches": [
+        {
+          "id": "nurture_fintrilo_m01_e01",
+          "offset_days": 0,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-01/e01-welcome.md",
+          "subject": "One picture beats three vendors",
+          "month": 1,
+          "slot": "welcome"
+        },
+        {
+          "id": "nurture_fintrilo_m01_e02",
+          "offset_days": 2,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-01/e02-pain.md",
+          "subject": "Fragmented vendors, fragmented cash",
+          "month": 1,
+          "slot": "pain"
+        },
+        {
+          "id": "nurture_fintrilo_m01_e03",
+          "offset_days": 4,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-01/e03-stack.md",
+          "subject": "Processing float vs. advance pulls",
+          "month": 1,
+          "slot": "stack"
+        },
+        {
+          "id": "nurture_fintrilo_m01_e04",
+          "offset_days": 6,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-01/e04-cost.md",
+          "subject": "Cost of sprawl",
+          "month": 1,
+          "slot": "cost"
+        },
+        {
+          "id": "nurture_fintrilo_m01_e05",
+          "offset_days": 8,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-01/e05-options.md",
+          "subject": "Liaison Officer conversation",
+          "month": 1,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_fintrilo_m01_e06",
+          "offset_days": 10,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-01/e06-mistakes.md",
+          "subject": "Buying another tool instead of a plan",
+          "month": 1,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_fintrilo_m01_e07",
+          "offset_days": 12,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-01/e07-soft_cta.md",
+          "subject": "Connect with a Liaison Officer",
+          "month": 1,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_fintrilo_m02_e01",
+          "offset_days": 35,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-02/e01-mechanics.md",
+          "subject": "Funding options without fog",
+          "month": 2,
+          "slot": "mechanics"
+        },
+        {
+          "id": "nurture_fintrilo_m02_e02",
+          "offset_days": 48,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-02/e02-triage.md",
+          "subject": "Stabilize payments rails while cash is tight",
+          "month": 2,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_fintrilo_m03_e01",
+          "offset_days": 65,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-03/e01-triage.md",
+          "subject": "Stabilize payments rails while cash is tight",
+          "month": 3,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_fintrilo_m03_e02",
+          "offset_days": 78,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-03/e02-soft_cta.md",
+          "subject": "Connect with a Liaison Officer",
+          "month": 3,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_fintrilo_m04_e01",
+          "offset_days": 95,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-04/e01-escalation.md",
+          "subject": "When capital talk must pause for legal",
+          "month": 4,
+          "slot": "escalation"
+        },
+        {
+          "id": "nurture_fintrilo_m04_e02",
+          "offset_days": 108,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-04/e02-options.md",
+          "subject": "Liaison Officer conversation",
+          "month": 4,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_fintrilo_m05_e01",
+          "offset_days": 125,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-05/e01-literacy.md",
+          "subject": "Optimization vs. settlement lanes",
+          "month": 5,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_fintrilo_m05_e02",
+          "offset_days": 138,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-05/e02-readiness.md",
+          "subject": "What a liaison session covers",
+          "month": 5,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_fintrilo_m06_e01",
+          "offset_days": 155,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-06/e01-scenarios.md",
+          "subject": "Composite: retail needing Clover + capital clarity",
+          "month": 6,
+          "slot": "scenarios"
+        },
+        {
+          "id": "nurture_fintrilo_m06_e02",
+          "offset_days": 168,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-06/e02-literacy.md",
+          "subject": "Optimization vs. settlement lanes",
+          "month": 6,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_fintrilo_m07_e01",
+          "offset_days": 185,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-07/e01-risk.md",
+          "subject": "Debt-relief interest \u2260 legal advice",
+          "month": 7,
+          "slot": "risk"
+        },
+        {
+          "id": "nurture_fintrilo_m07_e02",
+          "offset_days": 198,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-07/e02-mistakes.md",
+          "subject": "Buying another tool instead of a plan",
+          "month": 7,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_fintrilo_m08_e01",
+          "offset_days": 215,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-08/e01-readiness.md",
+          "subject": "What a liaison session covers",
+          "month": 8,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_fintrilo_m08_e02",
+          "offset_days": 228,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-08/e02-soft_cta.md",
+          "subject": "Connect with a Liaison Officer",
+          "month": 8,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_fintrilo_m09_e01",
+          "offset_days": 245,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-09/e01-trust.md",
+          "subject": "If prior funders overpromised",
+          "month": 9,
+          "slot": "trust"
+        },
+        {
+          "id": "nurture_fintrilo_m09_e02",
+          "offset_days": 258,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-09/e02-options.md",
+          "subject": "Liaison Officer conversation",
+          "month": 9,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_fintrilo_m10_e01",
+          "offset_days": 275,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-10/e01-commit.md",
+          "subject": "Explore funding + payments fit",
+          "month": 10,
+          "slot": "commit"
+        },
+        {
+          "id": "nurture_fintrilo_m10_e02",
+          "offset_days": 288,
+          "brand_id": "fintrilo",
+          "content_path": "content/nurture-by-brand/fintrilo/month-10/e02-trust.md",
+          "subject": "If prior funders overpromised",
+          "month": 10,
+          "slot": "trust"
+        }
+      ]
+    },
+    "nurture-lsp": {
+      "name": "Level Set Partners \u2014 10-month nurture",
+      "primary_goal": "booked_discovery_enrollment_call",
+      "brand_id": "lsp",
+      "cycle_member": true,
+      "cadence": {
+        "kickoff": "every_other_day_d0_to_d12",
+        "months_2_to_10": "2_per_month",
+        "total_touches": 25
+      },
+      "conversion_exit": {
+        "on": [
+          "booked_call",
+          "enrolled",
+          "convert_flag"
+        ],
+        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+      },
+      "touches": [
+        {
+          "id": "nurture_lsp_m01_e01",
+          "offset_days": 0,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-01/e01-welcome.md",
+          "subject": "Level Set \u2014 partner orientation",
+          "month": 1,
+          "slot": "welcome"
+        },
+        {
+          "id": "nurture_lsp_m01_e02",
+          "offset_days": 2,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-01/e02-pain.md",
+          "subject": "When your merchant's ACH stress hits you",
+          "month": 1,
+          "slot": "pain"
+        },
+        {
+          "id": "nurture_lsp_m01_e03",
+          "offset_days": 4,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-01/e03-stack.md",
+          "subject": "Stack signals partners should spot",
+          "month": 1,
+          "slot": "stack"
+        },
+        {
+          "id": "nurture_lsp_m01_e04",
+          "offset_days": 6,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-01/e04-cost.md",
+          "subject": "True cost talk for partner desks",
+          "month": 1,
+          "slot": "cost"
+        },
+        {
+          "id": "nurture_lsp_m01_e05",
+          "offset_days": 8,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-01/e05-options.md",
+          "subject": "Referral paths that stay clean",
+          "month": 1,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_lsp_m01_e06",
+          "offset_days": 10,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-01/e06-mistakes.md",
+          "subject": "Handoffs that damage trust",
+          "month": 1,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_lsp_m01_e07",
+          "offset_days": 12,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-01/e07-soft_cta.md",
+          "subject": "Connect on next steps",
+          "month": 1,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_lsp_m02_e01",
+          "offset_days": 35,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-02/e01-mechanics.md",
+          "subject": "MCA mechanics partners must explain fairly",
+          "month": 2,
+          "slot": "mechanics"
+        },
+        {
+          "id": "nurture_lsp_m02_e02",
+          "offset_days": 48,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-02/e02-triage.md",
+          "subject": "Partner triage checklist",
+          "month": 2,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_lsp_m03_e01",
+          "offset_days": 65,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-03/e01-triage.md",
+          "subject": "Partner triage checklist",
+          "month": 3,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_lsp_m03_e02",
+          "offset_days": 78,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-03/e02-soft_cta.md",
+          "subject": "Connect on next steps",
+          "month": 3,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_lsp_m04_e01",
+          "offset_days": 95,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-04/e01-escalation.md",
+          "subject": "Escalation signals in partner pipelines",
+          "month": 4,
+          "slot": "escalation"
+        },
+        {
+          "id": "nurture_lsp_m04_e02",
+          "offset_days": 108,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-04/e02-options.md",
+          "subject": "Referral paths that stay clean",
+          "month": 4,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_lsp_m05_e01",
+          "offset_days": 125,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-05/e01-literacy.md",
+          "subject": "Settlement vs funding \u2014 partner script hygiene",
+          "month": 5,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_lsp_m05_e02",
+          "offset_days": 138,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-05/e02-readiness.md",
+          "subject": "Align before you enroll a referral",
+          "month": 5,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_lsp_m06_e01",
+          "offset_days": 155,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-06/e01-scenarios.md",
+          "subject": "Composite: ISO caught between funder and merchant",
+          "month": 6,
+          "slot": "scenarios"
+        },
+        {
+          "id": "nurture_lsp_m06_e02",
+          "offset_days": 168,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-06/e02-literacy.md",
+          "subject": "Settlement vs funding \u2014 partner script hygiene",
+          "month": 6,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_lsp_m07_e01",
+          "offset_days": 185,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-07/e01-risk.md",
+          "subject": "Legal tripwires \u2014 stop and route",
+          "month": 7,
+          "slot": "risk"
+        },
+        {
+          "id": "nurture_lsp_m07_e02",
+          "offset_days": 198,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-07/e02-mistakes.md",
+          "subject": "Handoffs that damage trust",
+          "month": 7,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_lsp_m08_e01",
+          "offset_days": 215,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-08/e01-readiness.md",
+          "subject": "Align before you enroll a referral",
+          "month": 8,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_lsp_m08_e02",
+          "offset_days": 228,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-08/e02-soft_cta.md",
+          "subject": "Connect on next steps",
+          "month": 8,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_lsp_m09_e01",
+          "offset_days": 245,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-09/e01-trust.md",
+          "subject": "Repairing a burned referral",
+          "month": 9,
+          "slot": "trust"
+        },
+        {
+          "id": "nurture_lsp_m09_e02",
+          "offset_days": 258,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-09/e02-options.md",
+          "subject": "Referral paths that stay clean",
+          "month": 9,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_lsp_m10_e01",
+          "offset_days": 275,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-10/e01-commit.md",
+          "subject": "Partner sync + merchant handoff",
+          "month": 10,
+          "slot": "commit"
+        },
+        {
+          "id": "nurture_lsp_m10_e02",
+          "offset_days": 288,
+          "brand_id": "lsp",
+          "content_path": "content/nurture-by-brand/lsp/month-10/e02-trust.md",
+          "subject": "Repairing a burned referral",
+          "month": 10,
+          "slot": "trust"
+        }
+      ]
+    },
+    "nurture-icd": {
+      "name": "ISO Care Desk \u2014 10-month nurture",
+      "primary_goal": "booked_discovery_enrollment_call",
+      "brand_id": "icd",
+      "cycle_member": true,
+      "cadence": {
+        "kickoff": "every_other_day_d0_to_d12",
+        "months_2_to_10": "2_per_month",
+        "total_touches": 25
+      },
+      "conversion_exit": {
+        "on": [
+          "booked_call",
+          "enrolled",
+          "convert_flag"
+        ],
+        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+      },
+      "touches": [
+        {
+          "id": "nurture_icd_m01_e01",
+          "offset_days": 0,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-01/e01-welcome.md",
+          "subject": "ISO Care Desk \u2014 handoff hygiene",
+          "month": 1,
+          "slot": "welcome"
+        },
+        {
+          "id": "nurture_icd_m01_e02",
+          "offset_days": 2,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-01/e02-pain.md",
+          "subject": "When your funded merchant starts drowning",
+          "month": 1,
+          "slot": "pain"
+        },
+        {
+          "id": "nurture_icd_m01_e03",
+          "offset_days": 4,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-01/e03-stack.md",
+          "subject": "Stack signals on the ISO desk",
+          "month": 1,
+          "slot": "stack"
+        },
+        {
+          "id": "nurture_icd_m01_e04",
+          "offset_days": 6,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-01/e04-cost.md",
+          "subject": "Cost of a messy handoff",
+          "month": 1,
+          "slot": "cost"
+        },
+        {
+          "id": "nurture_icd_m01_e05",
+          "offset_days": 8,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-01/e05-options.md",
+          "subject": "Handoff brief request",
+          "month": 1,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_icd_m01_e06",
+          "offset_days": 10,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-01/e06-mistakes.md",
+          "subject": "Promising settlement outcomes as an ISO",
+          "month": 1,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_icd_m01_e07",
+          "offset_days": 12,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-01/e07-soft_cta.md",
+          "subject": "Book a partner sync",
+          "month": 1,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_icd_m02_e01",
+          "offset_days": 35,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-02/e01-mechanics.md",
+          "subject": "What to explain fairly about MCA cost",
+          "month": 2,
+          "slot": "mechanics"
+        },
+        {
+          "id": "nurture_icd_m02_e02",
+          "offset_days": 48,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-02/e02-triage.md",
+          "subject": "Distress checklist for ISOs",
+          "month": 2,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_icd_m03_e01",
+          "offset_days": 65,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-03/e01-triage.md",
+          "subject": "Distress checklist for ISOs",
+          "month": 3,
+          "slot": "triage"
+        },
+        {
+          "id": "nurture_icd_m03_e02",
+          "offset_days": 78,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-03/e02-soft_cta.md",
+          "subject": "Book a partner sync",
+          "month": 3,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_icd_m04_e01",
+          "offset_days": 95,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-04/e01-escalation.md",
+          "subject": "Escalation without burning the funder",
+          "month": 4,
+          "slot": "escalation"
+        },
+        {
+          "id": "nurture_icd_m04_e02",
+          "offset_days": 108,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-04/e02-options.md",
+          "subject": "Handoff brief request",
+          "month": 4,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_icd_m05_e01",
+          "offset_days": 125,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-05/e01-literacy.md",
+          "subject": "Settlement lane vs funding lane",
+          "month": 5,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_icd_m05_e02",
+          "offset_days": 138,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-05/e02-readiness.md",
+          "subject": "Clean referral packet",
+          "month": 5,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_icd_m06_e01",
+          "offset_days": 155,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-06/e01-scenarios.md",
+          "subject": "Composite: ISO between funder and stressed merchant",
+          "month": 6,
+          "slot": "scenarios"
+        },
+        {
+          "id": "nurture_icd_m06_e02",
+          "offset_days": 168,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-06/e02-literacy.md",
+          "subject": "Settlement lane vs funding lane",
+          "month": 6,
+          "slot": "literacy"
+        },
+        {
+          "id": "nurture_icd_m07_e01",
+          "offset_days": 185,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-07/e01-risk.md",
+          "subject": "Legal tripwires \u2014 you are not counsel",
+          "month": 7,
+          "slot": "risk"
+        },
+        {
+          "id": "nurture_icd_m07_e02",
+          "offset_days": 198,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-07/e02-mistakes.md",
+          "subject": "Promising settlement outcomes as an ISO",
+          "month": 7,
+          "slot": "mistakes"
+        },
+        {
+          "id": "nurture_icd_m08_e01",
+          "offset_days": 215,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-08/e01-readiness.md",
+          "subject": "Clean referral packet",
+          "month": 8,
+          "slot": "readiness"
+        },
+        {
+          "id": "nurture_icd_m08_e02",
+          "offset_days": 228,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-08/e02-soft_cta.md",
+          "subject": "Book a partner sync",
+          "month": 8,
+          "slot": "soft_cta"
+        },
+        {
+          "id": "nurture_icd_m09_e01",
+          "offset_days": 245,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-09/e01-trust.md",
+          "subject": "Repairing partner trust after a bad transfer",
+          "month": 9,
+          "slot": "trust"
+        },
+        {
+          "id": "nurture_icd_m09_e02",
+          "offset_days": 258,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-09/e02-options.md",
+          "subject": "Handoff brief request",
+          "month": 9,
+          "slot": "options"
+        },
+        {
+          "id": "nurture_icd_m10_e01",
+          "offset_days": 275,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-10/e01-commit.md",
+          "subject": "Partner sync + care handoff",
+          "month": 10,
+          "slot": "commit"
+        },
+        {
+          "id": "nurture_icd_m10_e02",
+          "offset_days": 288,
+          "brand_id": "icd",
+          "content_path": "content/nurture-by-brand/icd/month-10/e02-trust.md",
+          "subject": "Repairing partner trust after a bad transfer",
+          "month": 10,
+          "slot": "trust"
+        }
+      ]
+    }
+  },
+  "brand_cycle": {
+    "enabled": true,
+    "order": [
+      "mrd",
+      "abr",
+      "bdn",
+      "ccc",
+      "slc",
+      "aab",
+      "spa",
+      "bds",
+      "mcb",
+      "lrl",
+      "dag",
+      "fintrilo",
+      "lsp",
+      "icd"
+    ],
+    "description": "Contacts cycle through per-brand nurture journeys until conversion. Kickoff on each brand: D0/D2/D4/D6/D8/D10/D12, then months 2\u201310 at 2 touches/month. On conversion (booked_call | enrolled | convert_flag): stop ALL other brand sequences for that email; keep only post-convert track for the winning brand (client-edu handoff).",
+    "rules": {
+      "max_one_send_per_email_per_calendar_day": true,
+      "cooldown_days_between_brand_switch": 3,
+      "switch_after": "journey_complete_or_kickoff_plus_idle",
+      "kickoff_complete_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12
+      ],
+      "idle_days_after_last_touch_to_rotate": 14,
+      "exclude_brands": [
+        "mda"
+      ],
+      "conversion_exit": {
+        "triggers": [
+          "booked_call",
+          "enrolled",
+          "convert_flag"
+        ],
+        "action": "stop_all_other_brand_journeys",
+        "winning_brand_next": "client-edu",
+        "suppress_parallel_nurture": true
+      },
+      "suppression": {
+        "global_unsub_stops_all_brands": true,
+        "same_day_multi_brand_forbidden": true
+      }
     }
   }
 }

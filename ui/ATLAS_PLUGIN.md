@@ -27,7 +27,12 @@ None (localhost sandbox). ATLAS production must wrap with `atlas_session` / bot 
 | POST | `/api/contacts/import` | `{ csv_text }` or `{ rows:[{...}] }` | `{ added, updated, total }` |
 | POST | `/api/contacts/seed` | `{}` | Loads `ui/seed/fake-contacts.csv` |
 | GET | `/api/enrollments` | — | `{ enrollments }` |
-| POST | `/api/enroll` | `{ emails?:[], segment?, journey, cohort?, start_day_offset? }` | `{ enrolled, count }` |
+
+| GET | `/api/brand-cycle` | — | Cycle order, rules, conversion_exit, journeys_present |
+| POST | `/api/enroll` | `{ emails?, segment?, journey, cohort?, start_day_offset?, cycle_index? }` | Enroll. Use `journey:"brand-cycle"` to start/continue per-brand cycle (`nurture-<brand>`). |
+| POST | `/api/cycle/advance` | `{ email, cohort? }` | Rotate contact to next brand in order (blocked if converted/suppressed). Marks prior nurture as `rotated`. |
+| POST | `/api/convert` | `{ email, winning_brand, trigger: booked_call\|enrolled\|convert_flag, cohort? }` | **Conversion exit:** stop all other brand nurtures; enroll `client-edu` for winning brand only. |
+
 | POST | `/api/preview` | `{ journey, touch_id?, day?, email?, first_name?, business_name? }` | Rendered subject/body + brand + day_offset |
 | POST | `/api/send-test` | `{ to, journey?, touch_id?, day?, confirm:true, first_name?, business_name? }` | `{ sent, dry_run, detail, payload_meta }` |
 | GET | `/api/send-log` | — | Local send/dry-run log |
@@ -83,3 +88,14 @@ Map local `/api/*` to `/api/email/*` under ATLAS bridge. Keep payload shapes sta
 ---
 
 *Contract v1 · 2026-09-27 ET*
+
+
+## Brand cycle + conversion exit
+
+- Per-brand journeys: `nurture-<brandId>` (25 touches: kickoff D0–D12, then months 2–10 × 2).
+- Meta enroll: `journey: "brand-cycle"` + optional `cycle_index`.
+- Order / rules: `delivery/brand-cycle.json` and `sequences.json` → `brand_cycle`.
+- **No MDA.** Same-day multi-brand send forbidden. 3-day cooldown on switch (ops).
+- On convert: siblings → `stopped_converted`; winning brand → `client-edu`.
+- Mailgun-first · `DRY_RUN` default · no live sends without keys + `DRY_RUN=false` + confirm.
+

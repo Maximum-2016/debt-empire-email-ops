@@ -1,0 +1,64 @@
+{
+  "version": "1.0.0",
+  "wall": "MGP",
+  "order": [
+    "mrd",
+    "abr",
+    "bdn",
+    "ccc",
+    "slc",
+    "aab",
+    "spa",
+    "bds",
+    "mcb",
+    "lrl",
+    "dag",
+    "fintrilo",
+    "lsp",
+    "icd"
+  ],
+  "exclude": [
+    "mda"
+  ],
+  "per_brand_emails": {
+    "mrd": 25,
+    "abr": 25,
+    "bdn": 25,
+    "ccc": 25,
+    "slc": 25,
+    "aab": 25,
+    "spa": 25,
+    "bds": 25,
+    "mcb": 25,
+    "lrl": 25,
+    "dag": 25,
+    "fintrilo": 25,
+    "lsp": 25,
+    "icd": 25
+  },
+  "total_emails": 350,
+  "brand_count": 14,
+  "conversion_exit": {
+    "triggers": [
+      "booked_call",
+      "enrolled",
+      "convert_flag"
+    ],
+    "action": "stop_all_other_brand_journeys",
+    "winning_brand_next": "client-edu",
+    "suppress_parallel_nurture": true
+  },
+  "cadence": {
+    "kickoff_offsets_days": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12
+    ],
+    "months_2_10": "2 emails/month (~day +5 and +18 within each 30-day month block)",
+    "emails_per_brand": 25
+  }
+}

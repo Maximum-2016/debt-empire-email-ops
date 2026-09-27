@@ -9,5 +9,7 @@
     "keys_present": false,
     "dry_run": true
   },
-  "time": "static-demo"
+  "brand_count": 14,
+  "per_brand_journeys": 14,
+  "total_nurture_by_brand_emails": 350
 }

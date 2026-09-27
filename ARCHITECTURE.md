@@ -11,7 +11,7 @@
 
 1. **Primary:** Lead nurture → booked discovery / enrollment calls.
 2. **Same stack capacities:** client education/retention, cold/stale re-engage, partner/referral nurture.
-3. **Multi-brand rotation** across distinct from-domains and brand URLs so the inbox does not feel like one company hammering.
+3. **Multi-brand rotation + per-brand 10-month journeys** with contact **cycling until conversion**, then hard exit to client-edu for the winning brand only.
 4. **Flexible list ingress:** Salesforce + CSV + form webhooks.
 5. **Compliant US + CA** (CAN-SPAM + CASL) with hard suppression and easy STOP.
 
@@ -284,7 +284,7 @@ Warm **each** brand domain separately. Do not point a cold domain at the full nu
 ### Steady-state rate limits (sketch)
 
 - Per brand domain: start ~500–2,000/day after warm-up; raise with reputation.
-- Per contact: nurture max ~1 email / 5–7 days (calendar allows 2–4 / month).
+- Per contact: **kickoff** every other day for 14 days (D0–D12), then ~2 / month months 2–10 on the *current* brand; never two brands same calendar day.
 - Global kill switch + weekly send caps in rail-guard (ATLAS pattern).
 
 ---
@@ -306,6 +306,46 @@ UTM pattern:
 
 ---
 
+
+## 11b. Per-brand journeys + contact brand cycle (until conversion)
+
+Primary nurture is no longer only the shared rotating `nurture` journey. Each active brand (except **MDA — dead**) has:
+
+- Journey id: `nurture-<brandId>`
+- Content: `content/nurture-by-brand/<brandId>/month-01…10/`
+- Cadence: **kickoff** D0, D2, D4, D6, D8, D10, D12 (7 emails), then **months 2–10** at 2 emails/month → **25 emails/brand**
+- Calendar: `CALENDAR-BY-BRAND.md` · machine config: `delivery/brand-cycle.json` + `sequences.json` → `brand_cycle`
+
+### Cycle order
+
+Contacts are **cycled through brand campaigns** — not locked to one brand forever:
+
+`mrd → abr → bdn → ccc → slc → aab → spa → bds → mcb → lrl → dag → fintrilo → lsp → icd`
+
+(Ops may start mid-order via `cycle_index`. **mda excluded.**)
+
+### Rotation rules
+
+| Rule | Detail |
+|------|--------|
+| Same-day collision | **Forbidden** — max one send per email per calendar day across all brands |
+| Cooldown on switch | **3 days** after last touch of brand A before brand B kickoff |
+| When to rotate | Journey complete, **or** kickoff done + 14 idle days (configurable) |
+| Shared `nurture` | Kept as optional multi-brand rotation; per-brand journeys are primary |
+
+### Conversion exit (hard stop)
+
+Triggers on contact: `booked_call` · `enrolled` · `convert_flag` (explicit).
+
+On conversion for email **E** under winning brand **W**:
+
+1. Set all other `nurture-*` enrollments for **E** → `status: stopped_converted`.
+2. Do **not** start the next brand in the cycle.
+3. Hand **E** to **`client-edu`** (post-convert track) attributed to **W** (or brand-appropriate client-edu content).
+4. Global unsubscribe still stops everything.
+
+Demo/API: `POST /api/enroll` with `journey: "brand-cycle"` starts cycle; `POST /api/convert` with `{email, winning_brand, trigger}` applies exit. See `ui/ATLAS_PLUGIN.md`.
+
 ## 12. What is intentionally out of scope
 
 - Instantly or any cold-email SaaS “unlimited inbox” product
@@ -316,4 +356,4 @@ UTM pattern:
 
 ---
 
-*Architecture v1 · 2026-09-27 ET · MGP wall*
+*Architecture v1.3 · 2026-09-27 ET · MGP wall · per-brand cycle + conversion exit*
