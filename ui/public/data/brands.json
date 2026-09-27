@@ -73,27 +73,6 @@
       "notes": "Media/education skin for BDS lane"
     },
     {
-      "id": "mda",
-      "display_name": "MCA Debt Advisors",
-      "wall": "MGP",
-      "entity_type": "settlement_llc",
-      "status": "active_existing",
-      "domain": "mcadebtadvisors.com",
-      "from_domain": "mail.mcadebtadvisors.com",
-      "from_email": "advisors@mail.mcadebtadvisors.com",
-      "from_name_pattern": "{{person}} \u00b7 MCA Debt Advisors",
-      "reply_to": "hello@mcadebtadvisors.com",
-      "brand_url": "https://mcadebtadvisors.com",
-      "booking_url_key": "booking_mda",
-      "legal_disclaimer_key": "settlement_non_law",
-      "voice": "consultative",
-      "journey_ownership": [
-        "nurture",
-        "reengage"
-      ],
-      "notes": "Advisory/settlement-adjacent"
-    },
-    {
       "id": "lsp",
       "display_name": "Level Set Partners",
       "wall": "MGP",
@@ -342,7 +321,6 @@
     "booking_default": "https://BOOKING.example/debt-empire",
     "booking_bds": "https://BOOKING.example/bds",
     "booking_dag": "https://BOOKING.example/dag",
-    "booking_mda": "https://BOOKING.example/mda",
     "booking_lsp": "https://BOOKING.example/partners",
     "booking_fintrilo": "https://BOOKING.example/fintrilo"
   }

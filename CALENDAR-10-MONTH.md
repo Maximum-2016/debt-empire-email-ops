@@ -45,12 +45,12 @@ Tokens: `{{booking_url}}` · `{{brand_url}}` · UTM via architecture pattern
 
 ### Month 2 — MCA mechanics without hype
 **Theme:** Factor rates, holds, and how advances really cost.  
-**Emails:** 3 · BDN → Clarity → MCA Debt Advisors  
+**Emails:** 3 · BDN → Clarity → Settlement Path Advisors  
 | # | Brand | Angle |
 |---|-------|-------|
 | 1 | Business Debt Ninjas | Factor rate in plain English |
 | 2 | Cashflow Clarity Co. | True cost sketch (illustrative, no fake stats) |
-| 3 | MCA Debt Advisors | “Options map” teaser → advisory call |
+| 3 | Settlement Path Advisors | “Options map” teaser → path review |
 
 ### Month 3 — Cash-flow triage
 **Theme:** Urgent vs loud; what to stabilize first.  
@@ -81,12 +81,12 @@ Tokens: `{{booking_url}}` · `{{brand_url}}` · UTM via architecture pattern
 
 ### Month 6 — Case-study thinking (illustrative)
 **Theme:** Composite scenarios — not fake testimonials with invented numbers.  
-**Emails:** 3 · Lab → BDN → MCA Debt Advisors  
+**Emails:** 3 · Lab → BDN → Settlement Path Advisors  
 | # | Brand | Angle |
 |---|-------|-------|
 | 1 | Ledger Reset Lab | Composite: multi-advance restaurant |
 | 2 | Business Debt Ninjas | Composite: broker-stacked retail |
-| 3 | MCA Debt Advisors | “Second look” advisory CTA |
+| 3 | Settlement Path Advisors | “Second look” path-review CTA |
 
 ### Month 7 — Legal tripwires (authority)
 **Theme:** Judgment, PG, levy risk — calm, formal.  
@@ -108,11 +108,11 @@ Tokens: `{{booking_url}}` · `{{brand_url}}` · UTM via architecture pattern
 
 ### Month 9 — Objection handling (ethical)
 **Theme:** “I’ll refinance,” “I’ll wait,” “I’ve been burned.”  
-**Emails:** 3 · Clarity → MCA Debt Advisors → BDS  
+**Emails:** 3 · Clarity → Settlement Path Advisors → BDS  
 | # | Brand | Angle |
 |---|-------|-------|
 | 1 | Cashflow Clarity Co. | Refinance vs settle — questions to ask |
-| 2 | MCA Debt Advisors | Burned-before trust rebuild |
+| 2 | Settlement Path Advisors | Burned-before trust rebuild |
 | 3 | Business Debt Solutions | Book the call — no hard sell script |
 
 ### Month 10 — Decision window
@@ -152,8 +152,7 @@ Brands: Level Set Partners, BDS, Clarity, Ninjas, Level Set
 | Business Debt Ninjas | 5 | Education / myths |
 | Merchant Relief Desk | 4 | Empathy / triage |
 | Cashflow Clarity Co. | 4 | Diagnostic education |
-| Settlement Path Advisors | 4 | Path / readiness |
-| MCA Debt Advisors | 3 | Advisory / second look |
+| Settlement Path Advisors | 7 | Path / readiness / advisory / second look |
 | Ledger Reset Lab | 2 | Scenarios |
 | DAG Law | 3 | Legal authority |
 | Level Set Partners | 0 on consumer nurture | Partner track only |

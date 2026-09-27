@@ -2,6 +2,7 @@
   "journeys": {
     "nurture": {
       "name": "Lead nurture 10-month",
+      "primary_goal": "booked_discovery_enrollment_call",
       "touches": [
         {
           "id": "nurture_m01_e01",
@@ -185,29 +186,29 @@
         {
           "id": "nurture_m02_e03",
           "offset_days": 44,
-          "brand_id": "mda",
-          "content_path": "content/nurture/month-02/e03-mda.md",
+          "brand_id": "spa",
+          "content_path": "content/nurture/month-02/e03-spa.md",
           "subject": "Your options map (teaser)",
           "brand": {
-            "id": "mda",
-            "display_name": "MCA Debt Advisors",
+            "id": "spa",
+            "display_name": "Settlement Path Advisors",
             "wall": "MGP",
-            "entity_type": "settlement_llc",
-            "status": "active_existing",
-            "domain": "mcadebtadvisors.com",
-            "from_domain": "mail.mcadebtadvisors.com",
-            "from_email": "advisors@mail.mcadebtadvisors.com",
-            "from_name_pattern": "{{person}} \u00b7 MCA Debt Advisors",
-            "reply_to": "hello@mcadebtadvisors.com",
-            "brand_url": "https://mcadebtadvisors.com",
-            "booking_url_key": "booking_mda",
+            "entity_type": "proposed_skin",
+            "status": "proposed_skin",
+            "domain": "settlementpathadvisors.com",
+            "from_domain": "mail.settlementpathadvisors.com",
+            "from_email": "path@mail.settlementpathadvisors.com",
+            "from_name_pattern": "{{person}} \u00b7 Settlement Path Advisors",
+            "reply_to": "path@settlementpathadvisors.com",
+            "brand_url": "https://settlementpathadvisors.com",
+            "booking_url_key": "booking_default",
             "legal_disclaimer_key": "settlement_non_law",
-            "voice": "consultative",
+            "voice": "steady_guide",
             "journey_ownership": [
               "nurture",
               "reengage"
             ],
-            "notes": "Advisory/settlement-adjacent"
+            "notes": "Proposed skin / DBA candidate"
           }
         },
         {
@@ -533,29 +534,29 @@
         {
           "id": "nurture_m06_e03",
           "offset_days": 145,
-          "brand_id": "mda",
-          "content_path": "content/nurture/month-06/e03-mda.md",
-          "subject": "Second-look advisory",
+          "brand_id": "spa",
+          "content_path": "content/nurture/month-06/e03-spa.md",
+          "subject": "Second-look path review",
           "brand": {
-            "id": "mda",
-            "display_name": "MCA Debt Advisors",
+            "id": "spa",
+            "display_name": "Settlement Path Advisors",
             "wall": "MGP",
-            "entity_type": "settlement_llc",
-            "status": "active_existing",
-            "domain": "mcadebtadvisors.com",
-            "from_domain": "mail.mcadebtadvisors.com",
-            "from_email": "advisors@mail.mcadebtadvisors.com",
-            "from_name_pattern": "{{person}} \u00b7 MCA Debt Advisors",
-            "reply_to": "hello@mcadebtadvisors.com",
-            "brand_url": "https://mcadebtadvisors.com",
-            "booking_url_key": "booking_mda",
+            "entity_type": "proposed_skin",
+            "status": "proposed_skin",
+            "domain": "settlementpathadvisors.com",
+            "from_domain": "mail.settlementpathadvisors.com",
+            "from_email": "path@mail.settlementpathadvisors.com",
+            "from_name_pattern": "{{person}} \u00b7 Settlement Path Advisors",
+            "reply_to": "path@settlementpathadvisors.com",
+            "brand_url": "https://settlementpathadvisors.com",
+            "booking_url_key": "booking_default",
             "legal_disclaimer_key": "settlement_non_law",
-            "voice": "consultative",
+            "voice": "steady_guide",
             "journey_ownership": [
               "nurture",
               "reengage"
             ],
-            "notes": "Advisory/settlement-adjacent"
+            "notes": "Proposed skin / DBA candidate"
           }
         },
         {
@@ -766,29 +767,29 @@
         {
           "id": "nurture_m09_e02",
           "offset_days": 212,
-          "brand_id": "mda",
-          "content_path": "content/nurture/month-09/e02-mda.md",
+          "brand_id": "spa",
+          "content_path": "content/nurture/month-09/e02-spa.md",
           "subject": "Burned before? Trust rebuild",
           "brand": {
-            "id": "mda",
-            "display_name": "MCA Debt Advisors",
+            "id": "spa",
+            "display_name": "Settlement Path Advisors",
             "wall": "MGP",
-            "entity_type": "settlement_llc",
-            "status": "active_existing",
-            "domain": "mcadebtadvisors.com",
-            "from_domain": "mail.mcadebtadvisors.com",
-            "from_email": "advisors@mail.mcadebtadvisors.com",
-            "from_name_pattern": "{{person}} \u00b7 MCA Debt Advisors",
-            "reply_to": "hello@mcadebtadvisors.com",
-            "brand_url": "https://mcadebtadvisors.com",
-            "booking_url_key": "booking_mda",
+            "entity_type": "proposed_skin",
+            "status": "proposed_skin",
+            "domain": "settlementpathadvisors.com",
+            "from_domain": "mail.settlementpathadvisors.com",
+            "from_email": "path@mail.settlementpathadvisors.com",
+            "from_name_pattern": "{{person}} \u00b7 Settlement Path Advisors",
+            "reply_to": "path@settlementpathadvisors.com",
+            "brand_url": "https://settlementpathadvisors.com",
+            "booking_url_key": "booking_default",
             "legal_disclaimer_key": "settlement_non_law",
-            "voice": "consultative",
+            "voice": "steady_guide",
             "journey_ownership": [
               "nurture",
               "reengage"
             ],
-            "notes": "Advisory/settlement-adjacent"
+            "notes": "Proposed skin / DBA candidate"
           }
         },
         {
@@ -912,6 +913,7 @@
     },
     "client-edu": {
       "name": "Client education",
+      "primary_goal": "retention_education",
       "touches": [
         {
           "id": "ce_e01",
@@ -1095,6 +1097,7 @@
     },
     "reengage": {
       "name": "Cold/stale reengage",
+      "primary_goal": "soft_rebook_or_reply",
       "touches": [
         {
           "id": "re_e01",
@@ -1247,6 +1250,7 @@
     },
     "partner": {
       "name": "Partner/referral nurture",
+      "primary_goal": "referral_alignment",
       "touches": [
         {
           "id": "pt_e01",
@@ -1396,6 +1400,8 @@
     },
     "fintrilo": {
       "name": "Fintrilo capacity track",
+      "primary_goal": "liaison_officer_connect",
+      "audience": "SMB owners + ISO/partner overlap (MGP)",
       "touches": [
         {
           "id": "ft_e01",
@@ -1625,6 +1631,10 @@
     },
     "new-skins-batch2": {
       "name": "New skins batch2 starter calendar",
+      "primary_goal": "brand_skin_pilot_education",
+      "audience": "MGP merchant / MCA / ISO pilot lists (proposed skins only)",
+      "status": "proposed_only",
+      "notes": "Thin parallel calendar for batch2 proposed skins. Not live. Not FM.",
       "touches": [
         {
           "id": "b2_aab_e01",

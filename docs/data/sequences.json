@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.2.1",
   "wall": "MGP",
   "journeys": {
     "nurture": {
@@ -51,8 +51,8 @@
         {
           "id": "nurture_m02_e03",
           "offset_days": 44,
-          "brand_id": "mda",
-          "content_path": "content/nurture/month-02/e03-mda.md",
+          "brand_id": "spa",
+          "content_path": "content/nurture/month-02/e03-spa.md",
           "subject": "Your options map (teaser)"
         },
         {
@@ -135,9 +135,9 @@
         {
           "id": "nurture_m06_e03",
           "offset_days": 145,
-          "brand_id": "mda",
-          "content_path": "content/nurture/month-06/e03-mda.md",
-          "subject": "Second-look advisory"
+          "brand_id": "spa",
+          "content_path": "content/nurture/month-06/e03-spa.md",
+          "subject": "Second-look path review"
         },
         {
           "id": "nurture_m07_e01",
@@ -191,8 +191,8 @@
         {
           "id": "nurture_m09_e02",
           "offset_days": 212,
-          "brand_id": "mda",
-          "content_path": "content/nurture/month-09/e02-mda.md",
+          "brand_id": "spa",
+          "content_path": "content/nurture/month-09/e02-spa.md",
           "subject": "Burned before? Trust rebuild"
         },
         {

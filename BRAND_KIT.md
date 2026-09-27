@@ -84,26 +84,8 @@
 
 ---
 
-### 4. MCA Debt Advisors
 
-| Field | Value |
-|-------|-------|
-| **Brand name** | MCA Debt Advisors |
-| **Domain** | mcadebtadvisors.com |
-| **Suggested from-domain** | `mail.mcadebtadvisors.com` |
-| **From-name pattern** | `{{person}} · MCA Debt Advisors` |
-| **Entity type** | Advisory / settlement-adjacent (non-law; confirm exact entity with Anthony) |
-| **Positioning** | Advisor-framed guidance for merchants evaluating MCA debt options — structured, consultative |
-| **Voice** | Professional consultative; less casual than Ninjas, less formal than DAG |
-| **CTA style** | “Book an advisory call” / “Request a debt review” |
-| **Journey ownership** | Mid-funnel nurture, reengage “second look,” selective partner intros |
-| **Disclaimer key** | `settlement_non_law` |
-| **When to use** | Review / options framing; comparison of paths (settlement vs refinance vs status quo) |
-| **When NOT to use** | Pure viral education; attorney advertising |
-
----
-
-### 5. Level Set Partners
+### 4. Level Set Partners
 
 | Field | Value |
 |-------|-------|
@@ -124,8 +106,6 @@
 
 ---
 
-
----
 
 ### 5b. Fintrilo *(existing MGP-adjacent — not a proposed skin)*
 
@@ -156,7 +136,7 @@
 
 > These are **creative skins for multi-brand rotation**, not filed EINs or guaranteed legal entities. Marked `proposed_skin` in the registry. Anthony may adopt, rename, or discard.
 
-### 6. Merchant Relief Desk
+### 5. Merchant Relief Desk
 
 | Field | Value |
 |-------|-------|
@@ -172,7 +152,7 @@
 
 ---
 
-### 7. Cashflow Clarity Co.
+### 6. Cashflow Clarity Co.
 
 | Field | Value |
 |-------|-------|
@@ -188,7 +168,7 @@
 
 ---
 
-### 8. Settlement Path Advisors
+### 7. Settlement Path Advisors
 
 | Field | Value |
 |-------|-------|
@@ -204,7 +184,7 @@
 
 ---
 
-### 9. Ledger Reset Lab
+### 8. Ledger Reset Lab
 
 | Field | Value |
 |-------|-------|
@@ -221,7 +201,7 @@
 ---
 
 
-### 10. Advance Alternatives Brief
+### 9. Advance Alternatives Brief
 
 | Field | Value |
 |-------|-------|
@@ -237,7 +217,7 @@
 
 ---
 
-### 11. ACH Breath Room
+### 10. ACH Breath Room
 
 | Field | Value |
 |-------|-------|
@@ -253,7 +233,7 @@
 
 ---
 
-### 12. ISO Care Desk
+### 11. ISO Care Desk
 
 | Field | Value |
 |-------|-------|
@@ -269,7 +249,7 @@
 
 ---
 
-### 13. Merchant Crisis Brief
+### 12. Merchant Crisis Brief
 
 | Field | Value |
 |-------|-------|
@@ -286,7 +266,7 @@
 
 ---
 
-### 14. Stack Literacy Co.
+### 13. Stack Literacy Co.
 
 | Field | Value |
 |-------|-------|
@@ -327,7 +307,7 @@ See DAG section above.
 |-----------------|--------|
 | Empathy / “daily ACH pain” | Merchant Relief Desk, BDS |
 | MCA mechanics education | Business Debt Ninjas, Cashflow Clarity Co. |
-| Options / fit / review | MCA Debt Advisors, Settlement Path Advisors |
+| Options / fit / review | Settlement Path Advisors, Business Debt Solutions |
 | Scenario / case-study thinking | Ledger Reset Lab, BDN |
 | Legal risk / suits / UCC / judgment | **DAG Law only** |
 | Hard enrollment CTA | BDS or Settlement Path Advisors |
