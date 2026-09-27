@@ -616,6 +616,65 @@ def build_touches_for_brand(brand_id: str):
     return touches, files
 
 
+def write_brand_calendars(seq: dict, order: list[str]) -> None:
+    """Persist per-brand calendars as source of truth (campaigns are generated FROM these)."""
+    cal_dir = DELIVERY / "calendars"
+    cal_dir.mkdir(parents=True, exist_ok=True)
+    index = {
+        "version": "1.0.0",
+        "wall": "MGP",
+        "description": "Per-brand sequence calendars are the source of truth. Campaigns (nurture-<brand>) are GENERATED from these files.",
+        "generate_endpoint": "POST /api/campaigns/generate",
+        "brands": [],
+    }
+    brands_map = {}
+    for brand_id in order:
+        jid = f"nurture-{brand_id}"
+        j = seq["journeys"][jid]
+        cal = {
+            "version": "1.0.0",
+            "wall": "MGP",
+            "brand_id": brand_id,
+            "journey_id": jid,
+            "name": j["name"],
+            "primary_goal": j.get("primary_goal", "booked_discovery_enrollment_call"),
+            "cycle_member": j.get("cycle_member", True),
+            "cadence": j.get("cadence"),
+            "conversion_exit": j.get("conversion_exit"),
+            "touches": [
+                {
+                    "id": t["id"],
+                    "offset_days": t["offset_days"],
+                    "brand_id": t["brand_id"],
+                    "content_path": t["content_path"],
+                    "subject": t["subject"],
+                    "month": t.get("month"),
+                    "slot": t.get("slot"),
+                }
+                for t in j["touches"]
+            ],
+        }
+        (cal_dir / f"{brand_id}.json").write_text(json.dumps(cal, indent=2) + "\n")
+        brands_map[brand_id] = f"delivery/calendars/{brand_id}.json"
+        index["brands"].append({
+            "brand_id": brand_id,
+            "journey_id": jid,
+            "calendar_path": f"delivery/calendars/{brand_id}.json",
+            "touch_count": len(cal["touches"]),
+            "offsets": [t["offset_days"] for t in cal["touches"]],
+        })
+    (cal_dir / "index.json").write_text(json.dumps(index, indent=2) + "\n")
+    (DELIVERY / "brand-calendars.json").write_text(json.dumps({
+        "version": "1.0.0",
+        "wall": "MGP",
+        "source_of_truth": "delivery/calendars/<brandId>.json",
+        "note": "Campaigns are generated FROM per-brand calendars. Edit calendar then run scripts/generate_campaign_from_calendar.py or POST /api/campaigns/generate.",
+        "brands": brands_map,
+        "index": "delivery/calendars/index.json",
+    }, indent=2) + "\n")
+
+
+
 def main():
     seq_path = DELIVERY / "sequences.json"
     seq = json.loads(seq_path.read_text())
@@ -672,6 +731,7 @@ def main():
                 "on": ["booked_call", "enrolled", "convert_flag"],
                 "then": "stop_sibling_brand_journeys_hand_to_client_edu",
             },
+            "source_calendar": f"delivery/calendars/{brand_id}.json",
             "touches": touches,
         }
         per_brand[brand_id] = len(touches)
@@ -682,6 +742,8 @@ def main():
     assert "nurture" in seq["journeys"]
 
     seq_path.write_text(json.dumps(seq, indent=2) + "\n")
+
+    write_brand_calendars(seq, CYCLE_ORDER)
 
     # brand-cycle.json companion for UI/ops
     cycle_doc = {

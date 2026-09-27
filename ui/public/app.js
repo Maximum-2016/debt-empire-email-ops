@@ -14,6 +14,7 @@ const STATIC_MAP = {
   "/api/brands": "/data/brands.json",
   "/api/sequences": "/data/sequences.json",
   "/api/calendar": "/data/calendar.json",
+  "/api/calendars": "/data/calendars-index.json",
   "/api/brand-cycle": "/data/brand-cycle.json",
   "/api/contacts": "/data/contacts.json",
   "/api/enrollments": "/data/enrollments.json",
@@ -51,8 +52,10 @@ async function api(path, opts = {}) {
   const staticRel = STATIC_MAP[apiPath];
 
   // On GitHub Pages, go straight to static JSON for known GETs
-  if (staticRel && method === "GET" && isStaticHost()) {
-    return fetchJson(withBase(staticRel));
+  if (method === "GET" && isStaticHost()) {
+    if (staticRel) return fetchJson(withBase(staticRel));
+    const mCal = apiPath.match(/^\/api\/calendars\/([a-z0-9-]+)$/i);
+    if (mCal) return fetchJson(withBase(`/data/calendars/${mCal[1]}.json`));
   }
 
   try {
@@ -71,6 +74,8 @@ async function api(path, opts = {}) {
     if (method !== "GET" && method !== "HEAD") {
       throw new Error("Read-only GitHub Pages demo — use local server for enroll/send.");
     }
+    const mCal2 = apiPath.match(/^\/api\/calendars\/([a-z0-9-]+)$/i);
+    if (mCal2) return fetchJson(withBase(`/data/calendars/${mCal2[1]}.json`));
     if (!staticRel) throw err;
     return fetchJson(withBase(staticRel));
   }
@@ -118,28 +123,94 @@ async function loadHealth() {
 
 async function renderBrands() {
   const data = await api("/api/brands");
+  let calIndex = { brands: [] };
+  try { calIndex = await api("/api/calendars"); } catch (e) { /* static ok */ }
+  const calByBrand = Object.fromEntries((calIndex.brands || []).map((c) => [c.brand_id, c]));
   const root = $("#tab-brands");
-  root.innerHTML = `<h2>Brand registry</h2><p class="lead">Umbrella: <strong>${escapeHtml(data.umbrella_external)}</strong> · Wall: ${escapeHtml(data.wall)}</p><div class="grid" id="brand-grid"></div>`;
+  root.innerHTML = `<h2>Brand registry</h2>
+    <p class="lead">Umbrella: <strong>${escapeHtml(data.umbrella_external)}</strong> · Wall: ${escapeHtml(data.wall)}.
+    Click a brand to open <em>its</em> sequence calendar. Campaigns are generated from <code>delivery/calendars/&lt;brandId&gt;.json</code>.</p>
+    <div class="grid" id="brand-grid"></div>
+    <div id="brand-detail" class="brand-detail" hidden></div>`;
   const grid = $("#brand-grid");
-  for (const b of (data.brands || [])) {
+  const detail = $("#brand-detail");
+  const activeBrands = (data.brands || []).filter((b) => b.id !== "mda");
+  for (const b of activeBrands) {
     const badge =
       b.entity_type === "law_firm" ? "law" :
       b.status === "proposed_skin" ? "proposed" :
       b.status === "use_carefully" ? "careful" : "";
-    grid.innerHTML += `<article class="card">
-      <h3>${escapeHtml(b.display_name)}</h3>
+    const cal = calByBrand[b.id];
+    const touches = cal ? cal.touch_count : "—";
+    const card = document.createElement("article");
+    card.className = "card brand-card";
+    card.dataset.brandId = b.id;
+    card.tabIndex = 0;
+    card.innerHTML = `<h3>${escapeHtml(b.display_name)}</h3>
       <div class="meta">
         <span class="badge ${badge}">${escapeHtml(b.status)}</span>
         <span class="badge">${escapeHtml(b.entity_type)}</span>
         <div><code>${escapeHtml(b.id)}</code> · ${escapeHtml(b.domain)}</div>
         <div>From: ${escapeHtml(b.from_email)}</div>
         <div>Voice: ${escapeHtml(b.voice)}</div>
-        <div>Journeys: ${(b.journey_ownership || []).map(escapeHtml).join(", ")}</div>
+        <div>Calendar: <code>nurture-${escapeHtml(b.id)}</code> · ${touches} touches</div>
         <div>${escapeHtml(b.notes || "")}</div>
-      </div>
-    </article>`;
+      </div>`;
+    card.onclick = () => showBrandCalendar(b.id, b.display_name);
+    card.onkeydown = (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); showBrandCalendar(b.id, b.display_name); } };
+    grid.appendChild(card);
+  }
+
+  async function showBrandCalendar(brandId, displayName) {
+    detail.hidden = false;
+    detail.innerHTML = `<div class="msg info">Loading calendar for ${escapeHtml(displayName)}…</div>`;
+    detail.scrollIntoView({ behavior: "smooth", block: "start" });
+    try {
+      const cal = await api(`/api/calendars/${brandId}`);
+      const rows = (cal.touches || []).map((t) => `<tr>
+        <td><code>D+${t.offset_days}</code></td>
+        <td><code>${escapeHtml(t.id)}</code></td>
+        <td>${escapeHtml(t.slot || "")}</td>
+        <td>${escapeHtml(t.subject)}</td>
+        <td><code>${escapeHtml(t.content_path)}</code></td>
+      </tr>`).join("");
+      detail.innerHTML = `
+        <div class="card">
+          <div class="row" style="align-items:center">
+            <div>
+              <h3 style="margin:0">${escapeHtml(displayName || brandId)} sequence calendar</h3>
+              <p class="lead" style="margin:.35rem 0 0">Source: <code>delivery/calendars/${escapeHtml(brandId)}.json</code> · Journey: <code>${escapeHtml(cal.journey_id || "nurture-" + brandId)}</code> · ${(cal.touches || []).length} touches</p>
+            </div>
+            <div style="flex:0;min-width:auto">
+              <button class="primary" id="btn-gen-campaign">Generate campaign from calendar</button>
+              <button class="ghost" id="btn-close-brand">Close</button>
+            </div>
+          </div>
+          <div id="gen-msg"></div>
+          <div style="overflow:auto;margin-top:.75rem">
+            <table><thead><tr><th>Day</th><th>Touch</th><th>Slot</th><th>Subject</th><th>Content</th></tr></thead>
+            <tbody>${rows}</tbody></table>
+          </div>
+        </div>`;
+      $("#btn-close-brand").onclick = () => { detail.hidden = true; detail.innerHTML = ""; };
+      $("#btn-gen-campaign").onclick = async () => {
+        const msgEl = $("#gen-msg");
+        try {
+          const r = await api("/api/campaigns/generate", {
+            method: "POST",
+            body: JSON.stringify({ brand_id: brandId }),
+          });
+          msg(msgEl, `Generated ${r.journey_id}: ${r.touch_count} touches · stubs created ${r.stubs_created_count || 0}. ${r.dry_run_note || ""}`, "ok");
+        } catch (e) {
+          msg(msgEl, e.message, "err");
+        }
+      };
+    } catch (e) {
+      detail.innerHTML = `<div class="msg err">${escapeHtml(e.message)}</div>`;
+    }
   }
 }
+
 
 async function renderCalendar() {
   const data = await api("/api/calendar");
@@ -148,20 +219,53 @@ async function renderCalendar() {
     const rank = (j) => j.startsWith("nurture-") ? 0 : j === "nurture" ? 1 : 2;
     return rank(a) - rank(b) || a.localeCompare(b);
   });
+  const perBrand = journeys.filter((j) => j.startsWith("nurture-"));
+  const shared = journeys.filter((j) => !j.startsWith("nurture-"));
+  const defaultJ = perBrand[0] || journeys[0] || "nurture";
   root.innerHTML = `<h2>Sequence calendar</h2>
-    <p class="lead">10-month nurture + side tracks. Offsets in days from enrollment.</p>
+    <p class="lead">Default: <strong>per-brand</strong> nurture calendars (source of truth under <code>delivery/calendars/</code>). Shared tracks are secondary.</p>
+    <div class="row" style="margin-bottom:.75rem">
+      <div style="flex:0;min-width:220px">
+        <label>Filter / group</label>
+        <select id="cal-filter">
+          <option value="per-brand" selected>Per-brand nurture (default)</option>
+          <option value="all">All journeys</option>
+          <option value="shared">Shared tracks only</option>
+        </select>
+      </div>
+      <div style="flex:0;min-width:220px">
+        <label>Brand</label>
+        <select id="cal-brand">
+          <option value="">(all brands in filter)</option>
+          ${perBrand.map((j) => {
+            const bid = j.replace(/^nurture-/, "");
+            return `<option value="${escapeHtml(bid)}">${escapeHtml(bid)}</option>`;
+          }).join("")}
+        </select>
+      </div>
+    </div>
     <div class="journey-tabs" id="jtabs"></div>
     <div class="card" style="overflow:auto"><table><thead><tr>
       <th>Day</th><th>Touch</th><th>Brand</th><th>Subject</th><th>Content</th>
     </tr></thead><tbody id="cal-body"></tbody></table></div>`;
-  const jtabs = $("#jtabs");
-  let current = "nurture";
+
+  let current = defaultJ;
+  function visibleJourneys() {
+    const mode = $("#cal-filter").value;
+    const brand = $("#cal-brand").value;
+    let list = mode === "shared" ? shared : mode === "all" ? journeys : perBrand;
+    if (brand) {
+      list = list.filter((j) => j === `nurture-${brand}` || ((data.journeys[j] || {}).brand_id === brand));
+    }
+    return list;
+  }
   function paint(jid) {
     current = jid;
     $$("#jtabs button").forEach((b) => b.classList.toggle("active", b.dataset.j === jid));
     const body = $("#cal-body");
     body.innerHTML = "";
-    for (const t of ((data.journeys[jid] || {}).touches || [])) {
+    const jmeta = data.journeys[jid] || {};
+    for (const t of (jmeta.touches || [])) {
       const bn = t.brand ? t.brand.display_name : t.brand_id;
       body.innerHTML += `<tr>
         <td><code>D+${t.offset_days}</code></td>
@@ -172,16 +276,30 @@ async function renderCalendar() {
       </tr>`;
     }
   }
-  journeys.forEach((j) => {
-    const b = document.createElement("button");
-    b.className = "ghost";
-    b.dataset.j = j;
-    b.textContent = `${j} (${((data.journeys[j] || {}).touches || []).length})`;
-    b.onclick = () => paint(j);
-    jtabs.appendChild(b);
-  });
-  paint(current);
+  function rebuildTabs() {
+    const jtabs = $("#jtabs");
+    jtabs.innerHTML = "";
+    const list = visibleJourneys();
+    list.forEach((j) => {
+      const b = document.createElement("button");
+      b.className = "ghost";
+      b.dataset.j = j;
+      b.textContent = `${j} (${((data.journeys[j] || {}).touches || []).length})`;
+      b.onclick = () => paint(j);
+      jtabs.appendChild(b);
+    });
+    const next = list.includes(current) ? current : (list[0] || defaultJ);
+    if (next) paint(next);
+  }
+  $("#cal-filter").onchange = rebuildTabs;
+  $("#cal-brand").onchange = () => {
+    const brand = $("#cal-brand").value;
+    if (brand) $("#cal-filter").value = "per-brand";
+    rebuildTabs();
+  };
+  rebuildTabs();
 }
+
 
 function renderImport() {
   const root = $("#tab-import");

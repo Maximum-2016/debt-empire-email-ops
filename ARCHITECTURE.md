@@ -314,7 +314,9 @@ Primary nurture is no longer only the shared rotating `nurture` journey. Each ac
 - Journey id: `nurture-<brandId>`
 - Content: `content/nurture-by-brand/<brandId>/month-01…10/`
 - Cadence: **kickoff** D0, D2, D4, D6, D8, D10, D12 (7 emails), then **months 2–10** at 2 emails/month → **25 emails/brand**
-- Calendar: `CALENDAR-BY-BRAND.md` · machine config: `delivery/brand-cycle.json` + `sequences.json` → `brand_cycle`
+- **Sequence calendar (source of truth):** `delivery/calendars/<brandId>.json` (index: `delivery/calendars/index.json` · map: `delivery/brand-calendars.json`)
+- **Campaign generation:** edit the brand calendar, then `POST /api/campaigns/generate` `{ "brand_id" }` (or `scripts/generate_campaign_from_calendar.py`) → builds/updates `nurture-<brandId>` in `sequences.json` + content stubs if missing
+- Human-readable calendar: `CALENDAR-BY-BRAND.md` · cycle machine config: `delivery/brand-cycle.json` + `sequences.json` → `brand_cycle`
 
 ### Cycle order
 
@@ -344,7 +346,7 @@ On conversion for email **E** under winning brand **W**:
 3. Hand **E** to **`client-edu`** (post-convert track) attributed to **W** (or brand-appropriate client-edu content).
 4. Global unsubscribe still stops everything.
 
-Demo/API: `POST /api/enroll` with `journey: "brand-cycle"` starts cycle; `POST /api/convert` with `{email, winning_brand, trigger}` applies exit. See `ui/ATLAS_PLUGIN.md`.
+Demo/API: `POST /api/enroll` with `journey: "brand-cycle"` starts cycle; `POST /api/convert` with `{email, winning_brand, trigger}` applies exit; `POST /api/campaigns/generate` `{brand_id}` rebuilds the nurture journey from that brand's calendar. See `ui/ATLAS_PLUGIN.md`.
 
 ## 12. What is intentionally out of scope
 
@@ -356,4 +358,4 @@ Demo/API: `POST /api/enroll` with `journey: "brand-cycle"` starts cycle; `POST /
 
 ---
 
-*Architecture v1.3 · 2026-09-27 ET · MGP wall · per-brand cycle + conversion exit*
+*Architecture v1.4 · 2026-09-27 ET · MGP wall · calendar-per-brand → generate campaign*

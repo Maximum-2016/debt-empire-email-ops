@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "wall": "MGP",
+  "source_of_truth": "delivery/calendars/<brandId>.json",
+  "note": "Campaigns are generated FROM per-brand calendars. Do not edit nurture-<brand> journeys by hand \u2014 edit the calendar then POST /api/campaigns/generate.",
+  "brands": {
+    "mrd": "delivery/calendars/mrd.json",
+    "abr": "delivery/calendars/abr.json",
+    "bdn": "delivery/calendars/bdn.json",
+    "ccc": "delivery/calendars/ccc.json",
+    "slc": "delivery/calendars/slc.json",
+    "aab": "delivery/calendars/aab.json",
+    "spa": "delivery/calendars/spa.json",
+    "bds": "delivery/calendars/bds.json",
+    "mcb": "delivery/calendars/mcb.json",
+    "lrl": "delivery/calendars/lrl.json",
+    "dag": "delivery/calendars/dag.json",
+    "fintrilo": "delivery/calendars/fintrilo.json",
+    "lsp": "delivery/calendars/lsp.json",
+    "icd": "delivery/calendars/icd.json"
+  },
+  "index": "delivery/calendars/index.json"
+}

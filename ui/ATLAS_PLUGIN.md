@@ -22,7 +22,10 @@ None (localhost sandbox). ATLAS production must wrap with `atlas_session` / bot 
 | GET | `/api/brands` | — | Brand registry JSON (`delivery/brand-registry.json`) |
 | GET | `/api/sequences` | — | All journeys + touches |
 | GET | `/api/sequences/:journey` | — | One journey |
-| GET | `/api/calendar` | — | Journeys with brand objects expanded |
+| GET | `/api/calendar` | — | Journeys with brand objects expanded (per-brand default in UI) |
+| GET | `/api/calendars` | — | Index of per-brand sequence calendars (`delivery/calendars/`) |
+| GET | `/api/calendars/:brandId` | — | One brand calendar (source of truth) |
+| POST | `/api/campaigns/generate` | `{ brand_id }` or `{ all:true }` | Build/update `nurture-<brand>` + content stubs FROM that brand's calendar. No live sends. |
 | GET | `/api/contacts` | — | `{ contacts: [...] }` |
 | POST | `/api/contacts/import` | `{ csv_text }` or `{ rows:[{...}] }` | `{ added, updated, total }` |
 | POST | `/api/contacts/seed` | `{}` | Loads `ui/seed/fake-contacts.csv` |
@@ -77,8 +80,8 @@ Map local `/api/*` to `/api/email/*` under ATLAS bridge. Keep payload shapes sta
 
 | Screen | APIs |
 |--------|------|
-| Brands | GET `/api/brands` |
-| Sequence calendar | GET `/api/calendar` |
+| Brands | GET `/api/brands`, GET `/api/calendars/:brandId`, POST `/api/campaigns/generate` |
+| Sequence calendar | GET `/api/calendar`, GET `/api/calendars` (filter/group by brand; default per-brand) |
 | CSV import | POST `/api/contacts/import`, `/seed` |
 | Enroll cohort | POST `/api/enroll` |
 | Dry-run preview | POST `/api/preview` |
@@ -87,12 +90,12 @@ Map local `/api/*` to `/api/email/*` under ATLAS bridge. Keep payload shapes sta
 
 ---
 
-*Contract v1 · 2026-09-27 ET*
+*Contract v1.1 · 2026-09-27 ET · calendar-per-brand → generate*
 
 
 ## Brand cycle + conversion exit
 
-- Per-brand journeys: `nurture-<brandId>` (25 touches: kickoff D0–D12, then months 2–10 × 2).
+- Per-brand **calendars** are SoT: `delivery/calendars/<brandId>.json` → generate `nurture-<brandId>` (25 touches: kickoff D0–D12, then months 2–10 × 2).
 - Meta enroll: `journey: "brand-cycle"` + optional `cycle_index`.
 - Order / rules: `delivery/brand-cycle.json` and `sequences.json` → `brand_cycle`.
 - **No MDA.** Same-day multi-brand send forbidden. 3-day cooldown on switch (ops).

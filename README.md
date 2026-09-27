@@ -43,11 +43,18 @@ email-empire/
 │   ├── partner/              ← 5-email ISO/referral track
 │   └── fintrilo/             ← Fintrilo capacity (8 emails + RESEARCH.md)
 ├── CALENDAR-BY-BRAND.md      ← per-brand calendars + cycle / conversion exit
+├── scripts/
+│   ├── generate_nurture_by_brand.py        ← seeds calendars + content + journeys
+│   └── generate_campaign_from_calendar.py  ← calendar → nurture-<brand> (SoT path)
 └── delivery/
     ├── PHASES.md              ← Mailgun-first → SES-later rollout and cutover checklist
     ├── brand-registry.json
     ├── brand-cycle.json       ← cycle order + conversion exit machine config
-    ├── sequences.json         ← includes nurture-<brandId> journeys + brand_cycle
+    ├── brand-calendars.json   ← map of brand_id → calendar file
+    ├── calendars/             ← **source of truth** per-brand sequence calendars
+    │   ├── <brandId>.json
+    │   └── index.json
+    ├── sequences.json         ← generated nurture-<brandId> journeys + brand_cycle
     ├── import-schema.csv
     ├── bot-ops.md
     └── adapters/
@@ -60,7 +67,7 @@ email-empire/
 1. Anthony supplies domains and DNS; follow `delivery/PHASES.md`: Mailgun is the Phase 1–2 primary, SES is introduced in Phase 3, and may become primary in Phase 4 (see `NEXT-STEPS.md`).
 2. Ops loads `delivery/brand-registry.json` into ATLAS brand tenancy + Email Desk.
 3. Lists land via Salesforce sync, CSV import (`import-schema.csv`), or form webhooks.
-4. Sequences in `sequences.json` drive schedule offsets; content lives under `content/`.
+4. Edit `delivery/calendars/<brandId>.json` (SoT), then generate the campaign (`POST /api/campaigns/generate` or the script). `sequences.json` journeys + content stubs are **outputs** of the calendar.
 5. Email Desk (proposed under ATLAS) owns queue → adapter → send → webhook handling. Rail-guard: consent, suppression, brand identity, kill switch, weekly caps.
 6. **Dry-run first.** No blast without counsel + Anthony yes.
 
@@ -100,7 +107,7 @@ Full detail: `BRAND_KIT.md`.
 
 ---
 
-*Debt Empire email pack · MGP wall · per-brand cycle · conversion exit · no live sends*
+*Debt Empire email pack · MGP wall · calendar-per-brand → generate campaign · no live sends*
 
 ## Local UI (ops sandbox)
 
@@ -125,7 +132,8 @@ This directory is the publish copy pushed to `Maximum-2016/debt-empire-email-ops
 
 ```
 docs/                     ← GitHub Pages static demo (ui/public snapshot)
-ui/public/data/*.json     ← sequences (incl. nurture-<brand>), brands, calendar + brand_cycle
+ui/public/data/*.json     ← sequences (incl. nurture-<brand>), brands, calendar + calendars/
+delivery/calendars/       ← per-brand sequence calendars (SoT) → generate campaign
 delivery/brand-cycle.json ← cycle order + conversion exit
 content/nurture-by-brand/ ← 14 brands × 25 emails
 ```

@@ -550,6 +550,7 @@
         ],
         "then": "stop_sibling_brand_journeys_hand_to_client_edu"
       },
+      "source_calendar": "delivery/calendars/mrd.json",
       "touches": [
         {
           "id": "nurture_mrd_m01_e01",
@@ -1022,7 +1023,8 @@
           "month": 10,
           "slot": "trust"
         }
-      ]
+      ],
+      "source_calendar": "delivery/calendars/abr.json"
     },
     "nurture-bdn": {
       "name": "Business Debt Ninjas \u2014 10-month nurture",
@@ -1268,7 +1270,8 @@
           "month": 10,
           "slot": "trust"
         }
-      ]
+      ],
+      "source_calendar": "delivery/calendars/bdn.json"
     },
     "nurture-ccc": {
       "name": "Cashflow Clarity Co. \u2014 10-month nurture",
@@ -1514,7 +1517,8 @@
           "month": 10,
           "slot": "trust"
         }
-      ]
+      ],
+      "source_calendar": "delivery/calendars/ccc.json"
     },
     "nurture-slc": {
       "name": "Stack Literacy Co. \u2014 10-month nurture",
@@ -1760,7 +1764,8 @@
           "month": 10,
           "slot": "trust"
         }
-      ]
+      ],
+      "source_calendar": "delivery/calendars/slc.json"
     },
     "nurture-aab": {
       "name": "Advance Alternatives Brief \u2014 10-month nurture",
@@ -2006,7 +2011,8 @@
           "month": 10,
           "slot": "trust"
         }
-      ]
+      ],
+      "source_calendar": "delivery/calendars/aab.json"
     },
     "nurture-spa": {
       "name": "Settlement Path Advisors \u2014 10-month nurture",
@@ -2252,7 +2258,8 @@
           "month": 10,
           "slot": "trust"
         }
-      ]
+      ],
+      "source_calendar": "delivery/calendars/spa.json"
     },
     "nurture-bds": {
       "name": "Business Debt Solutions \u2014 10-month nurture",
@@ -2498,7 +2505,8 @@
           "month": 10,
           "slot": "trust"
         }
-      ]
+      ],
+      "source_calendar": "delivery/calendars/bds.json"
     },
     "nurture-mcb": {
       "name": "Merchant Crisis Brief \u2014 10-month nurture",
@@ -2744,7 +2752,8 @@
           "month": 10,
           "slot": "trust"
         }
-      ]
+      ],
+      "source_calendar": "delivery/calendars/mcb.json"
     },
     "nurture-lrl": {
       "name": "Ledger Reset Lab \u2014 10-month nurture",
@@ -2990,7 +2999,8 @@
           "month": 10,
           "slot": "trust"
         }
-      ]
+      ],
+      "source_calendar": "delivery/calendars/lrl.json"
     },
     "nurture-dag": {
       "name": "DAG Law \u2014 10-month nurture",
@@ -3236,7 +3246,8 @@
           "month": 10,
           "slot": "trust"
         }
-      ]
+      ],
+      "source_calendar": "delivery/calendars/dag.json"
     },
     "nurture-fintrilo": {
       "name": "Fintrilo \u2014 10-month nurture",
@@ -3482,7 +3493,8 @@
           "month": 10,
           "slot": "trust"
         }
-      ]
+      ],
+      "source_calendar": "delivery/calendars/fintrilo.json"
     },
     "nurture-lsp": {
       "name": "Level Set Partners \u2014 10-month nurture",
@@ -3728,7 +3740,8 @@
           "month": 10,
           "slot": "trust"
         }
-      ]
+      ],
+      "source_calendar": "delivery/calendars/lsp.json"
     },
     "nurture-icd": {
       "name": "ISO Care Desk \u2014 10-month nurture",
@@ -3974,7 +3987,8 @@
           "month": 10,
           "slot": "trust"
         }
-      ]
+      ],
+      "source_calendar": "delivery/calendars/icd.json"
     }
   },
   "brand_cycle": {

@@ -110,3 +110,13 @@ button.danger { background: #5a2028; color: #ffd0d4; border-color: #7a3038; widt
 }
 .journey-tabs { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .75rem; }
 .journey-tabs button { width: auto; cursor: pointer; }
+
+.brand-card { cursor: pointer; transition: border-color .15s, transform .15s; }
+.brand-card:hover, .brand-card:focus {
+  border-color: var(--accent); outline: none;
+  transform: translateY(-1px);
+}
+.brand-detail { margin-top: 1.25rem; }
+.journey-tabs button.active {
+  border-color: var(--accent); color: var(--text); background: var(--panel2);
+}

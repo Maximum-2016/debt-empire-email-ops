@@ -1,12 +1,11 @@
 {
+  "source_of_truth": "delivery/calendars/<brandId>.json",
+  "note": "Per-brand calendars generate nurture-<brand> campaigns. Default UI view is per-brand.",
   "journeys": {
     "nurture": {
       "name": "Lead nurture 10-month",
-      "primary_goal": "booked_discovery_enrollment_call",
       "brand_id": null,
-      "cycle_member": null,
-      "cadence": null,
-      "conversion_exit": null,
+      "source_calendar": null,
       "touches": [
         {
           "id": "nurture_m01_e01",
@@ -917,11 +916,8 @@
     },
     "client-edu": {
       "name": "Client education",
-      "primary_goal": "retention_education",
       "brand_id": null,
-      "cycle_member": null,
-      "cadence": null,
-      "conversion_exit": null,
+      "source_calendar": null,
       "touches": [
         {
           "id": "ce_e01",
@@ -1105,11 +1101,8 @@
     },
     "reengage": {
       "name": "Cold/stale reengage",
-      "primary_goal": "soft_rebook_or_reply",
       "brand_id": null,
-      "cycle_member": null,
-      "cadence": null,
-      "conversion_exit": null,
+      "source_calendar": null,
       "touches": [
         {
           "id": "re_e01",
@@ -1262,11 +1255,8 @@
     },
     "partner": {
       "name": "Partner/referral nurture",
-      "primary_goal": "referral_alignment",
       "brand_id": null,
-      "cycle_member": null,
-      "cadence": null,
-      "conversion_exit": null,
+      "source_calendar": null,
       "touches": [
         {
           "id": "pt_e01",
@@ -1416,11 +1406,8 @@
     },
     "fintrilo": {
       "name": "Fintrilo capacity track",
-      "primary_goal": "liaison_officer_connect",
       "brand_id": null,
-      "cycle_member": null,
-      "cadence": null,
-      "conversion_exit": null,
+      "source_calendar": null,
       "touches": [
         {
           "id": "ft_e01",
@@ -1650,11 +1637,8 @@
     },
     "new-skins-batch2": {
       "name": "New skins batch2 starter calendar",
-      "primary_goal": "brand_skin_pilot_education",
       "brand_id": null,
-      "cycle_member": null,
-      "cadence": null,
-      "conversion_exit": null,
+      "source_calendar": null,
       "touches": [
         {
           "id": "b2_aab_e01",
@@ -2092,22 +2076,8 @@
     },
     "nurture-mrd": {
       "name": "Merchant Relief Desk \u2014 10-month nurture",
-      "primary_goal": "booked_discovery_enrollment_call",
       "brand_id": "mrd",
-      "cycle_member": true,
-      "cadence": {
-        "kickoff": "every_other_day_d0_to_d12",
-        "months_2_to_10": "2_per_month",
-        "total_touches": 25
-      },
-      "conversion_exit": {
-        "on": [
-          "booked_call",
-          "enrolled",
-          "convert_flag"
-        ],
-        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
-      },
+      "source_calendar": "delivery/calendars/mrd.json",
       "touches": [
         {
           "id": "nurture_mrd_m01_e01",
@@ -2888,22 +2858,8 @@
     },
     "nurture-abr": {
       "name": "ACH Breath Room \u2014 10-month nurture",
-      "primary_goal": "booked_discovery_enrollment_call",
       "brand_id": "abr",
-      "cycle_member": true,
-      "cadence": {
-        "kickoff": "every_other_day_d0_to_d12",
-        "months_2_to_10": "2_per_month",
-        "total_touches": 25
-      },
-      "conversion_exit": {
-        "on": [
-          "booked_call",
-          "enrolled",
-          "convert_flag"
-        ],
-        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
-      },
+      "source_calendar": "delivery/calendars/abr.json",
       "touches": [
         {
           "id": "nurture_abr_m01_e01",
@@ -3684,22 +3640,8 @@
     },
     "nurture-bdn": {
       "name": "Business Debt Ninjas \u2014 10-month nurture",
-      "primary_goal": "booked_discovery_enrollment_call",
       "brand_id": "bdn",
-      "cycle_member": true,
-      "cadence": {
-        "kickoff": "every_other_day_d0_to_d12",
-        "months_2_to_10": "2_per_month",
-        "total_touches": 25
-      },
-      "conversion_exit": {
-        "on": [
-          "booked_call",
-          "enrolled",
-          "convert_flag"
-        ],
-        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
-      },
+      "source_calendar": "delivery/calendars/bdn.json",
       "touches": [
         {
           "id": "nurture_bdn_m01_e01",
@@ -4505,22 +4447,8 @@
     },
     "nurture-ccc": {
       "name": "Cashflow Clarity Co. \u2014 10-month nurture",
-      "primary_goal": "booked_discovery_enrollment_call",
       "brand_id": "ccc",
-      "cycle_member": true,
-      "cadence": {
-        "kickoff": "every_other_day_d0_to_d12",
-        "months_2_to_10": "2_per_month",
-        "total_touches": 25
-      },
-      "conversion_exit": {
-        "on": [
-          "booked_call",
-          "enrolled",
-          "convert_flag"
-        ],
-        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
-      },
+      "source_calendar": "delivery/calendars/ccc.json",
       "touches": [
         {
           "id": "nurture_ccc_m01_e01",
@@ -5326,22 +5254,8 @@
     },
     "nurture-slc": {
       "name": "Stack Literacy Co. \u2014 10-month nurture",
-      "primary_goal": "booked_discovery_enrollment_call",
       "brand_id": "slc",
-      "cycle_member": true,
-      "cadence": {
-        "kickoff": "every_other_day_d0_to_d12",
-        "months_2_to_10": "2_per_month",
-        "total_touches": 25
-      },
-      "conversion_exit": {
-        "on": [
-          "booked_call",
-          "enrolled",
-          "convert_flag"
-        ],
-        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
-      },
+      "source_calendar": "delivery/calendars/slc.json",
       "touches": [
         {
           "id": "nurture_slc_m01_e01",
@@ -6122,22 +6036,8 @@
     },
     "nurture-aab": {
       "name": "Advance Alternatives Brief \u2014 10-month nurture",
-      "primary_goal": "booked_discovery_enrollment_call",
       "brand_id": "aab",
-      "cycle_member": true,
-      "cadence": {
-        "kickoff": "every_other_day_d0_to_d12",
-        "months_2_to_10": "2_per_month",
-        "total_touches": 25
-      },
-      "conversion_exit": {
-        "on": [
-          "booked_call",
-          "enrolled",
-          "convert_flag"
-        ],
-        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
-      },
+      "source_calendar": "delivery/calendars/aab.json",
       "touches": [
         {
           "id": "nurture_aab_m01_e01",
@@ -6918,22 +6818,8 @@
     },
     "nurture-spa": {
       "name": "Settlement Path Advisors \u2014 10-month nurture",
-      "primary_goal": "booked_discovery_enrollment_call",
       "brand_id": "spa",
-      "cycle_member": true,
-      "cadence": {
-        "kickoff": "every_other_day_d0_to_d12",
-        "months_2_to_10": "2_per_month",
-        "total_touches": 25
-      },
-      "conversion_exit": {
-        "on": [
-          "booked_call",
-          "enrolled",
-          "convert_flag"
-        ],
-        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
-      },
+      "source_calendar": "delivery/calendars/spa.json",
       "touches": [
         {
           "id": "nurture_spa_m01_e01",
@@ -7689,22 +7575,8 @@
     },
     "nurture-bds": {
       "name": "Business Debt Solutions \u2014 10-month nurture",
-      "primary_goal": "booked_discovery_enrollment_call",
       "brand_id": "bds",
-      "cycle_member": true,
-      "cadence": {
-        "kickoff": "every_other_day_d0_to_d12",
-        "months_2_to_10": "2_per_month",
-        "total_touches": 25
-      },
-      "conversion_exit": {
-        "on": [
-          "booked_call",
-          "enrolled",
-          "convert_flag"
-        ],
-        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
-      },
+      "source_calendar": "delivery/calendars/bds.json",
       "touches": [
         {
           "id": "nurture_bds_m01_e01",
@@ -8510,22 +8382,8 @@
     },
     "nurture-mcb": {
       "name": "Merchant Crisis Brief \u2014 10-month nurture",
-      "primary_goal": "booked_discovery_enrollment_call",
       "brand_id": "mcb",
-      "cycle_member": true,
-      "cadence": {
-        "kickoff": "every_other_day_d0_to_d12",
-        "months_2_to_10": "2_per_month",
-        "total_touches": 25
-      },
-      "conversion_exit": {
-        "on": [
-          "booked_call",
-          "enrolled",
-          "convert_flag"
-        ],
-        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
-      },
+      "source_calendar": "delivery/calendars/mcb.json",
       "touches": [
         {
           "id": "nurture_mcb_m01_e01",
@@ -9306,22 +9164,8 @@
     },
     "nurture-lrl": {
       "name": "Ledger Reset Lab \u2014 10-month nurture",
-      "primary_goal": "booked_discovery_enrollment_call",
       "brand_id": "lrl",
-      "cycle_member": true,
-      "cadence": {
-        "kickoff": "every_other_day_d0_to_d12",
-        "months_2_to_10": "2_per_month",
-        "total_touches": 25
-      },
-      "conversion_exit": {
-        "on": [
-          "booked_call",
-          "enrolled",
-          "convert_flag"
-        ],
-        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
-      },
+      "source_calendar": "delivery/calendars/lrl.json",
       "touches": [
         {
           "id": "nurture_lrl_m01_e01",
@@ -10077,22 +9921,8 @@
     },
     "nurture-dag": {
       "name": "DAG Law \u2014 10-month nurture",
-      "primary_goal": "booked_discovery_enrollment_call",
       "brand_id": "dag",
-      "cycle_member": true,
-      "cadence": {
-        "kickoff": "every_other_day_d0_to_d12",
-        "months_2_to_10": "2_per_month",
-        "total_touches": 25
-      },
-      "conversion_exit": {
-        "on": [
-          "booked_call",
-          "enrolled",
-          "convert_flag"
-        ],
-        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
-      },
+      "source_calendar": "delivery/calendars/dag.json",
       "touches": [
         {
           "id": "nurture_dag_m01_e01",
@@ -10873,22 +10703,8 @@
     },
     "nurture-fintrilo": {
       "name": "Fintrilo \u2014 10-month nurture",
-      "primary_goal": "booked_discovery_enrollment_call",
       "brand_id": "fintrilo",
-      "cycle_member": true,
-      "cadence": {
-        "kickoff": "every_other_day_d0_to_d12",
-        "months_2_to_10": "2_per_month",
-        "total_touches": 25
-      },
-      "conversion_exit": {
-        "on": [
-          "booked_call",
-          "enrolled",
-          "convert_flag"
-        ],
-        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
-      },
+      "source_calendar": "delivery/calendars/fintrilo.json",
       "touches": [
         {
           "id": "nurture_fintrilo_m01_e01",
@@ -11644,22 +11460,8 @@
     },
     "nurture-lsp": {
       "name": "Level Set Partners \u2014 10-month nurture",
-      "primary_goal": "booked_discovery_enrollment_call",
       "brand_id": "lsp",
-      "cycle_member": true,
-      "cadence": {
-        "kickoff": "every_other_day_d0_to_d12",
-        "months_2_to_10": "2_per_month",
-        "total_touches": 25
-      },
-      "conversion_exit": {
-        "on": [
-          "booked_call",
-          "enrolled",
-          "convert_flag"
-        ],
-        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
-      },
+      "source_calendar": "delivery/calendars/lsp.json",
       "touches": [
         {
           "id": "nurture_lsp_m01_e01",
@@ -12390,22 +12192,8 @@
     },
     "nurture-icd": {
       "name": "ISO Care Desk \u2014 10-month nurture",
-      "primary_goal": "booked_discovery_enrollment_call",
       "brand_id": "icd",
-      "cycle_member": true,
-      "cadence": {
-        "kickoff": "every_other_day_d0_to_d12",
-        "months_2_to_10": "2_per_month",
-        "total_touches": 25
-      },
-      "conversion_exit": {
-        "on": [
-          "booked_call",
-          "enrolled",
-          "convert_flag"
-        ],
-        "then": "stop_sibling_brand_journeys_hand_to_client_edu"
-      },
+      "source_calendar": "delivery/calendars/icd.json",
       "touches": [
         {
           "id": "nurture_icd_m01_e01",
@@ -13158,58 +12946,6 @@
           }
         }
       ]
-    }
-  },
-  "brand_cycle": {
-    "enabled": true,
-    "order": [
-      "mrd",
-      "abr",
-      "bdn",
-      "ccc",
-      "slc",
-      "aab",
-      "spa",
-      "bds",
-      "mcb",
-      "lrl",
-      "dag",
-      "fintrilo",
-      "lsp",
-      "icd"
-    ],
-    "description": "Contacts cycle through per-brand nurture journeys until conversion. Kickoff on each brand: D0/D2/D4/D6/D8/D10/D12, then months 2\u201310 at 2 touches/month. On conversion (booked_call | enrolled | convert_flag): stop ALL other brand sequences for that email; keep only post-convert track for the winning brand (client-edu handoff).",
-    "rules": {
-      "max_one_send_per_email_per_calendar_day": true,
-      "cooldown_days_between_brand_switch": 3,
-      "switch_after": "journey_complete_or_kickoff_plus_idle",
-      "kickoff_complete_offsets": [
-        0,
-        2,
-        4,
-        6,
-        8,
-        10,
-        12
-      ],
-      "idle_days_after_last_touch_to_rotate": 14,
-      "exclude_brands": [
-        "mda"
-      ],
-      "conversion_exit": {
-        "triggers": [
-          "booked_call",
-          "enrolled",
-          "convert_flag"
-        ],
-        "action": "stop_all_other_brand_journeys",
-        "winning_brand_next": "client-edu",
-        "suppress_parallel_nurture": true
-      },
-      "suppression": {
-        "global_unsub_stops_all_brands": true,
-        "same_day_multi_brand_forbidden": true
-      }
     }
   }
 }

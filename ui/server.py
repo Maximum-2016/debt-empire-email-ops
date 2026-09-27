@@ -63,6 +63,46 @@ def sequences():
     return load_json(DELIVERY / "sequences.json")
 
 
+def calendars_dir() -> Path:
+    return DELIVERY / "calendars"
+
+
+def load_brand_calendar(brand_id: str) -> dict | None:
+    p = calendars_dir() / f"{brand_id}.json"
+    if not p.exists():
+        return None
+    return load_json(p)
+
+
+def list_brand_calendars() -> dict:
+    idx = calendars_dir() / "index.json"
+    if idx.exists():
+        return load_json(idx)
+    brands = []
+    for p in sorted(calendars_dir().glob("*.json")):
+        if p.stem == "index":
+            continue
+        cal = load_json(p)
+        brands.append({
+            "brand_id": cal.get("brand_id") or p.stem,
+            "journey_id": cal.get("journey_id") or f"nurture-{p.stem}",
+            "calendar_path": f"delivery/calendars/{p.stem}.json",
+            "touch_count": len(cal.get("touches") or []),
+        })
+    return {"version": "1.0.0", "wall": "MGP", "brands": brands}
+
+
+def generate_campaign_for_brand(brand_id: str) -> dict:
+    """Import generate script from pack/scripts and run for one brand."""
+    import importlib.util
+    script = PACK / "scripts" / "generate_campaign_from_calendar.py"
+    spec = importlib.util.spec_from_file_location("gen_cal_campaign", script)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod.generate_campaign(brand_id, write_stubs=True)
+
+
+
 def read_content(rel: str) -> str:
     path = PACK / rel
     if not path.exists():
@@ -353,9 +393,15 @@ class Handler(SimpleHTTPRequestHandler):
             # Flatten nurture + side tracks for UI calendar
             seq = sequences()
             return self._json(200, {
+                "source_of_truth": "delivery/calendars/<brandId>.json",
+                "note": "Per-brand calendars generate nurture-<brand> campaigns. Default UI view is per-brand.",
                 "journeys": {
                     k: {
                         "name": v["name"],
+                        "brand_id": v.get("brand_id"),
+                        "source_calendar": v.get("source_calendar") or (
+                            f"delivery/calendars/{v['brand_id']}.json" if v.get("brand_id") else None
+                        ),
                         "touches": [
                             {
                                 **t,
@@ -366,6 +412,24 @@ class Handler(SimpleHTTPRequestHandler):
                     }
                     for k, v in seq["journeys"].items()
                 }
+            })
+        if path == "/api/calendars":
+            return self._json(200, list_brand_calendars())
+        if path.startswith("/api/calendars/"):
+            brand_id = path.split("/")[-1].strip().lower()
+            if brand_id == "mda":
+                return self._json(400, {"error": "MDA is dead — no calendar"})
+            cal = load_brand_calendar(brand_id)
+            if not cal:
+                return self._json(404, {"error": f"no calendar for {brand_id}"})
+            brand = find_brand(brand_id)
+            return self._json(200, {
+                **cal,
+                "brand": brand,
+                "touches": [
+                    {**t, "brand": brand}
+                    for t in cal.get("touches") or []
+                ],
             })
         return self._json(404, {"error": "unknown endpoint"})
 
@@ -388,8 +452,43 @@ class Handler(SimpleHTTPRequestHandler):
             return self.convert(body)
         if path == "/api/cycle/advance":
             return self.cycle_advance(body)
+        if path == "/api/campaigns/generate":
+            return self.campaigns_generate(body)
         return self._json(404, {"error": "unknown endpoint"})
 
+
+
+    def campaigns_generate(self, body):
+        """Build/update nurture-<brand> journey + content stubs FROM delivery/calendars/<brand>.json.
+
+        Body: { "brand_id": "mrd" } or { "all": true }
+        No live sends. DRY_RUN is irrelevant here (metadata/stubs only).
+        """
+        if body.get("all"):
+            import importlib.util
+            script = PACK / "scripts" / "generate_campaign_from_calendar.py"
+            spec = importlib.util.spec_from_file_location("gen_cal_campaign", script)
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)
+            try:
+                result = mod.generate_all(write_stubs=True)
+            except Exception as e:
+                return self._json(400, {"error": str(e)})
+            return self._json(200, result)
+        brand_id = (body.get("brand_id") or body.get("brand") or "").strip().lower()
+        if not brand_id:
+            return self._json(400, {"error": "brand_id required (or all:true)"})
+        if brand_id == "mda":
+            return self._json(400, {"error": "MDA is dead — refuse generate"})
+        try:
+            result = generate_campaign_for_brand(brand_id)
+        except FileNotFoundError as e:
+            return self._json(404, {"error": str(e)})
+        except ValueError as e:
+            return self._json(400, {"error": str(e)})
+        except Exception as e:
+            return self._json(500, {"error": str(e)})
+        return self._json(200, result)
 
     def convert(self, body):
         """Conversion exit: stop sibling brand nurtures; hand to client-edu for winning brand."""

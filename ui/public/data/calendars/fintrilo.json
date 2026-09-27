@@ -1,0 +1,795 @@
+{
+  "version": "1.0.0",
+  "wall": "MGP",
+  "brand_id": "fintrilo",
+  "journey_id": "nurture-fintrilo",
+  "name": "Fintrilo \u2014 10-month nurture",
+  "primary_goal": "booked_discovery_enrollment_call",
+  "cycle_member": true,
+  "cadence": {
+    "kickoff": "every_other_day_d0_to_d12",
+    "months_2_to_10": "2_per_month",
+    "total_touches": 25
+  },
+  "conversion_exit": {
+    "on": [
+      "booked_call",
+      "enrolled",
+      "convert_flag"
+    ],
+    "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+  },
+  "touches": [
+    {
+      "id": "nurture_fintrilo_m01_e01",
+      "offset_days": 0,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-01/e01-welcome.md",
+      "subject": "One picture beats three vendors",
+      "month": 1,
+      "slot": "welcome",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m01_e02",
+      "offset_days": 2,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-01/e02-pain.md",
+      "subject": "Fragmented vendors, fragmented cash",
+      "month": 1,
+      "slot": "pain",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m01_e03",
+      "offset_days": 4,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-01/e03-stack.md",
+      "subject": "Processing float vs. advance pulls",
+      "month": 1,
+      "slot": "stack",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m01_e04",
+      "offset_days": 6,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-01/e04-cost.md",
+      "subject": "Cost of sprawl",
+      "month": 1,
+      "slot": "cost",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m01_e05",
+      "offset_days": 8,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-01/e05-options.md",
+      "subject": "Liaison Officer conversation",
+      "month": 1,
+      "slot": "options",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m01_e06",
+      "offset_days": 10,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-01/e06-mistakes.md",
+      "subject": "Buying another tool instead of a plan",
+      "month": 1,
+      "slot": "mistakes",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m01_e07",
+      "offset_days": 12,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-01/e07-soft_cta.md",
+      "subject": "Connect with a Liaison Officer",
+      "month": 1,
+      "slot": "soft_cta",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m02_e01",
+      "offset_days": 35,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-02/e01-mechanics.md",
+      "subject": "Funding options without fog",
+      "month": 2,
+      "slot": "mechanics",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m02_e02",
+      "offset_days": 48,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-02/e02-triage.md",
+      "subject": "Stabilize payments rails while cash is tight",
+      "month": 2,
+      "slot": "triage",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m03_e01",
+      "offset_days": 65,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-03/e01-triage.md",
+      "subject": "Stabilize payments rails while cash is tight",
+      "month": 3,
+      "slot": "triage",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m03_e02",
+      "offset_days": 78,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-03/e02-soft_cta.md",
+      "subject": "Connect with a Liaison Officer",
+      "month": 3,
+      "slot": "soft_cta",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m04_e01",
+      "offset_days": 95,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-04/e01-escalation.md",
+      "subject": "When capital talk must pause for legal",
+      "month": 4,
+      "slot": "escalation",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m04_e02",
+      "offset_days": 108,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-04/e02-options.md",
+      "subject": "Liaison Officer conversation",
+      "month": 4,
+      "slot": "options",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m05_e01",
+      "offset_days": 125,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-05/e01-literacy.md",
+      "subject": "Optimization vs. settlement lanes",
+      "month": 5,
+      "slot": "literacy",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m05_e02",
+      "offset_days": 138,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-05/e02-readiness.md",
+      "subject": "What a liaison session covers",
+      "month": 5,
+      "slot": "readiness",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m06_e01",
+      "offset_days": 155,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-06/e01-scenarios.md",
+      "subject": "Composite: retail needing Clover + capital clarity",
+      "month": 6,
+      "slot": "scenarios",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m06_e02",
+      "offset_days": 168,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-06/e02-literacy.md",
+      "subject": "Optimization vs. settlement lanes",
+      "month": 6,
+      "slot": "literacy",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m07_e01",
+      "offset_days": 185,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-07/e01-risk.md",
+      "subject": "Debt-relief interest \u2260 legal advice",
+      "month": 7,
+      "slot": "risk",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m07_e02",
+      "offset_days": 198,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-07/e02-mistakes.md",
+      "subject": "Buying another tool instead of a plan",
+      "month": 7,
+      "slot": "mistakes",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m08_e01",
+      "offset_days": 215,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-08/e01-readiness.md",
+      "subject": "What a liaison session covers",
+      "month": 8,
+      "slot": "readiness",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m08_e02",
+      "offset_days": 228,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-08/e02-soft_cta.md",
+      "subject": "Connect with a Liaison Officer",
+      "month": 8,
+      "slot": "soft_cta",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m09_e01",
+      "offset_days": 245,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-09/e01-trust.md",
+      "subject": "If prior funders overpromised",
+      "month": 9,
+      "slot": "trust",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m09_e02",
+      "offset_days": 258,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-09/e02-options.md",
+      "subject": "Liaison Officer conversation",
+      "month": 9,
+      "slot": "options",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m10_e01",
+      "offset_days": 275,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-10/e01-commit.md",
+      "subject": "Explore funding + payments fit",
+      "month": 10,
+      "slot": "commit",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    },
+    {
+      "id": "nurture_fintrilo_m10_e02",
+      "offset_days": 288,
+      "brand_id": "fintrilo",
+      "content_path": "content/nurture-by-brand/fintrilo/month-10/e02-trust.md",
+      "subject": "If prior funders overpromised",
+      "month": 10,
+      "slot": "trust",
+      "brand": {
+        "id": "fintrilo",
+        "display_name": "Fintrilo",
+        "wall": "MGP",
+        "entity_type": "merchant_finance",
+        "status": "active_existing",
+        "domain": "fintrilo.com",
+        "from_domain": "mail.fintrilo.com",
+        "from_email": "liaison@mail.fintrilo.com",
+        "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+        "reply_to": "marketing@fintrilo.com",
+        "brand_url": "https://fintrilo.com",
+        "booking_url_key": "booking_fintrilo",
+        "legal_disclaimer_key": "merchant_finance",
+        "voice": "consultative_b2b",
+        "journey_ownership": [
+          "fintrilo",
+          "partner"
+        ],
+        "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+      }
+    }
+  ],
+  "brand": {
+    "id": "fintrilo",
+    "display_name": "Fintrilo",
+    "wall": "MGP",
+    "entity_type": "merchant_finance",
+    "status": "active_existing",
+    "domain": "fintrilo.com",
+    "from_domain": "mail.fintrilo.com",
+    "from_email": "liaison@mail.fintrilo.com",
+    "from_name_pattern": "{{person}} \u00b7 Fintrilo",
+    "reply_to": "marketing@fintrilo.com",
+    "brand_url": "https://fintrilo.com",
+    "booking_url_key": "booking_fintrilo",
+    "legal_disclaimer_key": "merchant_finance",
+    "voice": "consultative_b2b",
+    "journey_ownership": [
+      "fintrilo",
+      "partner"
+    ],
+    "notes": "Existing MGP-adjacent (Fintrilo / Biz-Pay ISO-sales overlap). NOT a proposed skin. NOT a law firm. Funding + merchant processing (Clover) + financial optimization / debt-relief interest."
+  }
+}

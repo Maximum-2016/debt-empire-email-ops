@@ -1,0 +1,249 @@
+{
+  "version": "1.0.0",
+  "wall": "MGP",
+  "brand_id": "bds",
+  "journey_id": "nurture-bds",
+  "name": "Business Debt Solutions \u2014 10-month nurture",
+  "primary_goal": "booked_discovery_enrollment_call",
+  "cycle_member": true,
+  "cadence": {
+    "kickoff": "every_other_day_d0_to_d12",
+    "months_2_to_10": "2_per_month",
+    "total_touches": 25
+  },
+  "conversion_exit": {
+    "on": [
+      "booked_call",
+      "enrolled",
+      "convert_flag"
+    ],
+    "then": "stop_sibling_brand_journeys_hand_to_client_edu"
+  },
+  "touches": [
+    {
+      "id": "nurture_bds_m01_e01",
+      "offset_days": 0,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-01/e01-welcome.md",
+      "subject": "Welcome from Business Debt Solutions",
+      "month": 1,
+      "slot": "welcome"
+    },
+    {
+      "id": "nurture_bds_m01_e02",
+      "offset_days": 2,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-01/e02-pain.md",
+      "subject": "Daily ACH is eating the week",
+      "month": 1,
+      "slot": "pain"
+    },
+    {
+      "id": "nurture_bds_m01_e03",
+      "offset_days": 4,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-01/e03-stack.md",
+      "subject": "Stacked advances, one bank account",
+      "month": 1,
+      "slot": "stack"
+    },
+    {
+      "id": "nurture_bds_m01_e04",
+      "offset_days": 6,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-01/e04-cost.md",
+      "subject": "Sketching true cost (illustrative)",
+      "month": 1,
+      "slot": "cost"
+    },
+    {
+      "id": "nurture_bds_m01_e05",
+      "offset_days": 8,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-01/e05-options.md",
+      "subject": "Discovery exists when you're ready",
+      "month": 1,
+      "slot": "options"
+    },
+    {
+      "id": "nurture_bds_m01_e06",
+      "offset_days": 10,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-01/e06-mistakes.md",
+      "subject": "Don't ghost funders in a panic",
+      "month": 1,
+      "slot": "mistakes"
+    },
+    {
+      "id": "nurture_bds_m01_e07",
+      "offset_days": 12,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-01/e07-soft_cta.md",
+      "subject": "A discovery call \u2014 only when you're ready",
+      "month": 1,
+      "slot": "soft_cta"
+    },
+    {
+      "id": "nurture_bds_m02_e01",
+      "offset_days": 35,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-02/e01-mechanics.md",
+      "subject": "Factor rate in merchant English",
+      "month": 2,
+      "slot": "mechanics"
+    },
+    {
+      "id": "nurture_bds_m02_e02",
+      "offset_days": 48,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-02/e02-triage.md",
+      "subject": "Stabilize core ops first",
+      "month": 2,
+      "slot": "triage"
+    },
+    {
+      "id": "nurture_bds_m03_e01",
+      "offset_days": 65,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-03/e01-triage.md",
+      "subject": "Stabilize core ops first",
+      "month": 3,
+      "slot": "triage"
+    },
+    {
+      "id": "nurture_bds_m03_e02",
+      "offset_days": 78,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-03/e02-soft_cta.md",
+      "subject": "A discovery call \u2014 only when you're ready",
+      "month": 3,
+      "slot": "soft_cta"
+    },
+    {
+      "id": "nurture_bds_m04_e01",
+      "offset_days": 95,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-04/e01-escalation.md",
+      "subject": "When funders turn up the heat",
+      "month": 4,
+      "slot": "escalation"
+    },
+    {
+      "id": "nurture_bds_m04_e02",
+      "offset_days": 108,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-04/e02-options.md",
+      "subject": "Discovery exists when you're ready",
+      "month": 4,
+      "slot": "options"
+    },
+    {
+      "id": "nurture_bds_m05_e01",
+      "offset_days": 125,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-05/e01-literacy.md",
+      "subject": "What settlement is \u2014 and isn't",
+      "month": 5,
+      "slot": "literacy"
+    },
+    {
+      "id": "nurture_bds_m05_e02",
+      "offset_days": 138,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-05/e02-readiness.md",
+      "subject": "Fit questions before enrollment",
+      "month": 5,
+      "slot": "readiness"
+    },
+    {
+      "id": "nurture_bds_m06_e01",
+      "offset_days": 155,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-06/e01-scenarios.md",
+      "subject": "Composite: multi-advance retail stack",
+      "month": 6,
+      "slot": "scenarios"
+    },
+    {
+      "id": "nurture_bds_m06_e02",
+      "offset_days": 168,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-06/e02-literacy.md",
+      "subject": "What settlement is \u2014 and isn't",
+      "month": 6,
+      "slot": "literacy"
+    },
+    {
+      "id": "nurture_bds_m07_e01",
+      "offset_days": 185,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-07/e01-risk.md",
+      "subject": "If a suit shows up, pause and get counsel",
+      "month": 7,
+      "slot": "risk"
+    },
+    {
+      "id": "nurture_bds_m07_e02",
+      "offset_days": 198,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-07/e02-mistakes.md",
+      "subject": "Don't ghost funders in a panic",
+      "month": 7,
+      "slot": "mistakes"
+    },
+    {
+      "id": "nurture_bds_m08_e01",
+      "offset_days": 215,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-08/e01-readiness.md",
+      "subject": "Fit questions before enrollment",
+      "month": 8,
+      "slot": "readiness"
+    },
+    {
+      "id": "nurture_bds_m08_e02",
+      "offset_days": 228,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-08/e02-soft_cta.md",
+      "subject": "A discovery call \u2014 only when you're ready",
+      "month": 8,
+      "slot": "soft_cta"
+    },
+    {
+      "id": "nurture_bds_m09_e01",
+      "offset_days": 245,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-09/e01-trust.md",
+      "subject": "If you've been burned before",
+      "month": 9,
+      "slot": "trust"
+    },
+    {
+      "id": "nurture_bds_m09_e02",
+      "offset_days": 258,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-09/e02-options.md",
+      "subject": "Discovery exists when you're ready",
+      "month": 9,
+      "slot": "options"
+    },
+    {
+      "id": "nurture_bds_m10_e01",
+      "offset_days": 275,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-10/e01-commit.md",
+      "subject": "Enrollment-oriented discovery",
+      "month": 10,
+      "slot": "commit"
+    },
+    {
+      "id": "nurture_bds_m10_e02",
+      "offset_days": 288,
+      "brand_id": "bds",
+      "content_path": "content/nurture-by-brand/bds/month-10/e02-trust.md",
+      "subject": "If you've been burned before",
+      "month": 10,
+      "slot": "trust"
+    }
+  ]
+}
