@@ -5,20 +5,20 @@ const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const BASE = (() => {
   let path = location.pathname;
   if (path.endsWith("/")) path = path.slice(0, -1);
-  if (path.endsWith("index.html")) path = path.slice(0, -10).replace(/\/$/, "");
-  return path; // e.g. "" or "/debt-empire-email-ops"
+  if (path.endsWith("index.html")) path = path.slice(0, -"index.html".length).replace(/\/$/, "");
+  return path; // "" or "/debt-empire-email-ops"
 })();
 
 const STATIC_MAP = {
-  "/api/health": "data/health.json",
-  "/api/brands": "data/brands.json",
-  "/api/sequences": "data/sequences.json",
-  "/api/calendar": "data/calendar.json",
-  "/api/brand-cycle": "data/brand-cycle.json",
-  "/api/contacts": "data/contacts.json",
-  "/api/enrollments": "data/enrollments.json",
-  "/api/suppressions": "data/suppressions.json",
-  "/api/send-log": "data/send_log.json",
+  "/api/health": "/data/health.json",
+  "/api/brands": "/data/brands.json",
+  "/api/sequences": "/data/sequences.json",
+  "/api/calendar": "/data/calendar.json",
+  "/api/brand-cycle": "/data/brand-cycle.json",
+  "/api/contacts": "/data/contacts.json",
+  "/api/enrollments": "/data/enrollments.json",
+  "/api/suppressions": "/data/suppressions.json",
+  "/api/send-log": "/data/send_log.json",
 };
 
 function withBase(rel) {
@@ -26,10 +26,40 @@ function withBase(rel) {
   return BASE + rel;
 }
 
+function isStaticHost() {
+  return /github\.io$/i.test(location.hostname) || location.search.includes("static=1");
+}
+
+async function fetchJson(url) {
+  const res = await fetch(url, { headers: { Accept: "application/json" } });
+  const ct = (res.headers.get("content-type") || "").toLowerCase();
+  const text = await res.text();
+  if (!res.ok) throw new Error(res.statusText || String(res.status));
+  if (ct.includes("text/html") || text.trimStart().startsWith("<!")) {
+    throw new Error("HTML instead of JSON");
+  }
+  try {
+    return JSON.parse(text);
+  } catch (e) {
+    throw new Error("Invalid JSON");
+  }
+}
+
 async function api(path, opts = {}) {
   const method = (opts.method || "GET").toUpperCase();
   const apiPath = path.split("?")[0];
+  const staticRel = STATIC_MAP[apiPath];
+
+  // On GitHub Pages, go straight to static JSON for known GETs
+  if (staticRel && method === "GET" && isStaticHost()) {
+    return fetchJson(withBase(staticRel));
+  }
+
   try {
+    if (method === "GET" || method === "HEAD") {
+      const data = await fetchJson(withBase(path));
+      return data;
+    }
     const res = await fetch(withBase(path), {
       headers: { "Content-Type": "application/json", ...(opts.headers || {}) },
       ...opts,
@@ -39,13 +69,10 @@ async function api(path, opts = {}) {
     return data;
   } catch (err) {
     if (method !== "GET" && method !== "HEAD") {
-      throw new Error("Read-only GitHub Pages demo — use local server for enroll/send. " + (err && err.message ? err.message : ""));
+      throw new Error("Read-only GitHub Pages demo — use local server for enroll/send.");
     }
-    const rel = STATIC_MAP[apiPath];
-    if (!rel) throw err;
-    const res2 = await fetch(withBase("/" + rel));
-    if (!res2.ok) throw new Error("Static fallback failed for " + apiPath);
-    return res2.json();
+    if (!staticRel) throw err;
+    return fetchJson(withBase(staticRel));
   }
 }
 
@@ -94,7 +121,7 @@ async function renderBrands() {
   const root = $("#tab-brands");
   root.innerHTML = `<h2>Brand registry</h2><p class="lead">Umbrella: <strong>${escapeHtml(data.umbrella_external)}</strong> · Wall: ${escapeHtml(data.wall)}</p><div class="grid" id="brand-grid"></div>`;
   const grid = $("#brand-grid");
-  for (const b of data.brands) {
+  for (const b of (data.brands || [])) {
     const badge =
       b.entity_type === "law_firm" ? "law" :
       b.status === "proposed_skin" ? "proposed" :
@@ -117,7 +144,7 @@ async function renderBrands() {
 async function renderCalendar() {
   const data = await api("/api/calendar");
   const root = $("#tab-calendar");
-  const journeys = Object.keys(data.journeys).sort((a, b) => {
+  const journeys = Object.keys(data.journeys || {}).sort((a, b) => {
     const rank = (j) => j.startsWith("nurture-") ? 0 : j === "nurture" ? 1 : 2;
     return rank(a) - rank(b) || a.localeCompare(b);
   });
@@ -410,6 +437,7 @@ async function loadSup() {
 
 async function boot() {
   await loadHealth();
+  await populateJourneySelects().catch(() => {});
   await renderBrands();
   await renderCalendar();
   renderImport();
