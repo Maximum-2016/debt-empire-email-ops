@@ -161,7 +161,7 @@ async function renderCalendar() {
     $$("#jtabs button").forEach((b) => b.classList.toggle("active", b.dataset.j === jid));
     const body = $("#cal-body");
     body.innerHTML = "";
-    for (const t of data.journeys[jid].touches) {
+    for (const t of ((data.journeys[jid] || {}).touches || [])) {
       const bn = t.brand ? t.brand.display_name : t.brand_id;
       body.innerHTML += `<tr>
         <td><code>D+${t.offset_days}</code></td>
@@ -176,7 +176,7 @@ async function renderCalendar() {
     const b = document.createElement("button");
     b.className = "ghost";
     b.dataset.j = j;
-    b.textContent = `${j} (${data.journeys[j].touches.length})`;
+    b.textContent = `${j} (${((data.journeys[j] || {}).touches || []).length})`;
     b.onclick = () => paint(j);
     jtabs.appendChild(b);
   });
@@ -221,10 +221,11 @@ function renderImport() {
 }
 
 async function loadContactsTable() {
-  const data = await api("/api/contacts");
   const body = $("#contact-body");
   if (!body) return;
-  body.innerHTML = data.contacts.map((c) => `<tr>
+  let data = { contacts: [] };
+  try { data = await api("/api/contacts"); } catch (e) { body.innerHTML = `<tr><td colspan="5">Contacts unavailable in static demo</td></tr>`; return; }
+  body.innerHTML = (data.contacts || []).map((c) => `<tr>
     <td>${escapeHtml(c.email)}</td>
     <td>${escapeHtml(c.first_name)} ${escapeHtml(c.last_name || "")}</td>
     <td>${escapeHtml(c.business_name || "")}</td>
@@ -436,17 +437,24 @@ async function loadSup() {
 }
 
 async function boot() {
-  await loadHealth();
+  try { await loadHealth(); } catch (e) {
+    $("#health").textContent = "Static demo · " + e.message;
+    $("#health").className = "status warn";
+  }
   await populateJourneySelects().catch(() => {});
-  await renderBrands();
-  await renderCalendar();
-  renderImport();
-  renderEnroll();
-  await renderPreview();
-  renderSend();
-  renderSuppress();
+  try { await renderBrands(); } catch (e) {
+    $("#tab-brands").innerHTML = `<h2>Brands</h2><div class="msg err">${escapeHtml(e.message)}</div>`;
+  }
+  try { await renderCalendar(); } catch (e) {
+    $("#tab-calendar").innerHTML = `<h2>Calendar</h2><div class="msg err">${escapeHtml(e.message)}</div>`;
+  }
+  try { renderImport(); } catch (e) {}
+  try { renderEnroll(); } catch (e) {}
+  try { await renderPreview(); } catch (e) {}
+  try { renderSend(); } catch (e) {}
+  try { renderSuppress(); } catch (e) {}
 }
 boot().catch((e) => {
-  $("#health").textContent = "API error: " + e.message;
+  $("#health").textContent = "Boot error: " + e.message;
   $("#health").className = "status warn";
 });
